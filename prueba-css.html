@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba CSS - Tablero VRAEM</title>
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="page-accent"></div>
+
+  <div class="app-shell">
+
+    <div class="dashboard-frame">
+      <div class="dashboard">
+
+        <aside class="sidebar">
+
+          <div class="sidebar__brand">
+            <img
+              src="img/logos/logo-pvdes.png"
+              alt="Provías Descentralizado"
+              class="sidebar__logo"
+            >
+          </div>
+
+          <nav class="menu">
+            <a class="menu__item" href="inicio.html"><i class="bi bi-house-door"></i><span>Inicio</span></a>
+            <a class="menu__item" href="mapa.html"><i class="bi bi-map"></i><span>Mapa</span></a>
+            <a class="menu__item" href="convenios.html"><i class="bi bi-file-earmark-text"></i><span>Convenios</span></a>
+            <a class="menu__item" href="puentes.html"><i class="bi bi-list-ul"></i><span>Lista de puentes</span></a>
+            <a class="menu__item" href="comparativo.html"><i class="bi bi-bar-chart"></i><span>Comparativo</span></a>
+          </nav>
+
+          <div class="sidebar__footer">
+            <p class="sidebar__footer-label">Unidad responsable</p>
+            <p class="sidebar__footer-title">Gerencia de Monitoreo y Seguimiento</p>
+          </div>
+        </aside>
+
+        <main class="main">
+
+          <header class="topbar">
+            <div class="topbar__left">
+              <p class="page-kicker">03. Panorama general – VRAEM</p>
+              <h1 class="page-title">VRAEM y zonas de influencia</h1>
+            </div>
+
+            <div class="topbar__actions">
+              <button class="icon-btn" title="Usuarios">
+                <i class="bi bi-people"></i>
+              </button>
+
+              <button class="icon-btn" title="Alertas">
+                <i class="bi bi-bell"></i>
+              </button>
+            </div>
+          </header>
+
+          <section class="card filters">
+            <div class="field">
+              <label>Departamento</label>
+              <select>
+                <option>Todos</option>
+                <option>Ayacucho</option>
+                <option>Apurímac</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Provincia</label>
+              <select>
+                <option>Todos</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Distrito</label>
+              <select>
+                <option>Todos</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Estado de intervención</label>
+              <select>
+                <option>Todos</option>
+              </select>
+            </div>
+          </section>
+
+          <section class="kpi-grid">
+
+            <article class="card kpi kpi--compact">
+              <div class="kpi__inline">
+                <div class="kpi__miniicon">
+                  <i class="bi bi-signpost-2"></i>
+                </div>
+                <div>
+                  <p class="kpi__value kpi__value--red">284</p>
+                  <p class="kpi__detail">Puentes IOARR</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="card kpi kpi--compact">
+              <div class="kpi__inline">
+                <div class="kpi__miniicon">
+                  <i class="bi bi-geo-alt"></i>
+                </div>
+                <div>
+                  <p class="kpi__value kpi__value--red">37</p>
+                  <p class="kpi__detail">Distritos</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="card kpi kpi--compact">
+              <div class="kpi__inline">
+                <div class="kpi__miniicon">
+                  <i class="bi bi-building"></i>
+                </div>
+                <div>
+                  <p class="kpi__value kpi__value--red">5</p>
+                  <p class="kpi__detail">Provincias</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="card kpi kpi--compact">
+              <div class="kpi__inline">
+                <div class="kpi__miniicon">
+                  <i class="bi bi-diagram-3"></i>
+                </div>
+                <div>
+                  <p class="kpi__value kpi__value--red">3</p>
+                  <p class="kpi__detail">Departamentos</p>
+                </div>
+              </div>
+            </article>
+
+          </section>
+
+          <section class="content-grid content-grid--triple">
+
+            <article class="card stat-card">
+              <div class="card__body">
+                <h2 class="card__title">Estado de intervención</h2>
+                <div class="placeholder-chart placeholder-chart--donut">
+                  <div class="fake-donut fake-donut--multi"></div>
+
+                  <div class="legend">
+                    <div><span class="dot dot--green"></span> 96 En ejecución (34%)</div>
+                    <div><span class="dot dot--blue"></span> 72 Proc. de selección (25%)</div>
+                    <div><span class="dot dot--orange"></span> 56 Elaboración de EETT (20%)</div>
+                    <div><span class="dot dot--red"></span> 36 Con convenio (13%)</div>
+                    <div><span class="dot dot--gray"></span> 20 Sin solicitud (8%)</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card stat-card">
+              <div class="card__body">
+                <h2 class="card__title">Requieren recursos adicionales</h2>
+                <div class="placeholder-chart placeholder-chart--donut">
+                  <div class="fake-donut fake-donut--dual"></div>
+
+                  <div class="legend">
+                    <div><span class="dot dot--green"></span> 176 No requieren (62%)</div>
+                    <div><span class="dot dot--red"></span> 108 Requieren (38%)</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card deficit-card">
+              <div class="card__body">
+                <h2 class="card__title">Déficit estimado de inversión</h2>
+                <div class="deficit-box">
+                  <div class="deficit-icon">
+                    <i class="bi bi-stack"></i>
+                  </div>
+                  <p class="deficit-value">S/ 1,318 M</p>
+                  <p class="deficit-sub">Para 108 puentes</p>
+                </div>
+              </div>
+            </article>
+
+          </section>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

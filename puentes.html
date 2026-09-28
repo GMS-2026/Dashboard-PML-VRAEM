@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Ficha del puente | Puentes de Menores Luces</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/dashboard.css?v=20260911-4">
+  <link rel="stylesheet" href="css/puentes.css?v=20260914-2">
+</head>
+<body class="bridge-page" data-bridge-layout="flat-v2">
+  <div class="page-accent"></div>
+
+  <div class="app-shell">
+    <div class="dashboard-frame">
+      <div class="dashboard">
+
+        <aside class="sidebar">
+          <div class="sidebar__brand">
+            <img src="img/logos/logo-pvdes.png" alt="Provías Descentralizado" class="sidebar__logo">
+          </div>
+
+          <nav class="menu">
+            <a class="menu__item" href="inicio.html" data-preserve-territory><i class="bi bi-house-door"></i><span>Inicio</span></a>
+            <a class="menu__item" href="mapa.html" data-preserve-territory><i class="bi bi-map"></i><span>Mapa</span></a>
+            <a class="menu__item" href="convenios.html" data-preserve-territory><i class="bi bi-file-earmark-text"></i><span>Convenios</span></a>
+            <a class="menu__item menu__item--active" href="puentes.html" data-preserve-territory><i class="bi bi-list-ul"></i><span>Lista de puentes</span></a>
+            <a class="menu__item" href="comparativo.html" data-preserve-territory><i class="bi bi-bar-chart"></i><span>Comparativo</span></a>
+          </nav>
+
+          <div class="sidebar__footer">
+            <p class="sidebar__footer-label">Unidad responsable</p>
+            <p class="sidebar__footer-title">Gerencia de Monitoreo y Seguimiento</p>
+          </div>
+        </aside>
+
+        <main class="main bridge-main" id="bridge-detail-module">
+          <header class="bridge-topbar">
+            <div>
+              <p class="page-kicker">08. Ficha del puente</p>
+              <h1 class="page-title">Detalle de la inversión</h1>
+            </div>
+            <div class="bridge-topbar__actions">
+              <a class="btn bridge-back" id="backToMap" href="mapa.html">
+                <i class="bi bi-arrow-left"></i><span>Volver al mapa</span>
+              </a>
+            </div>
+          </header>
+
+          <section class="card bridge-record" aria-live="polite">
+            <div class="bridge-record__toolbar">
+              <div class="bridge-record__identity">
+                <div class="bridge-record__title-row">
+                  <h2 id="bridgeName">Cargando inversión…</h2>
+                  <span class="bridge-status" id="bridgeStatus">-</span>
+                </div>
+                <p id="bridgeSubtitle">-</p>
+              </div>
+
+              <div class="bridge-record__navigation">
+                <button class="bridge-nav-btn" type="button" id="previousBridge">
+                  <i class="bi bi-arrow-left"></i><span>Anterior</span>
+                </button>
+                <strong id="bridgePosition">- de -</strong>
+                <button class="bridge-nav-btn" type="button" id="nextBridge">
+                  <span>Siguiente</span><i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="bridge-record__body">
+              <section class="bridge-media" aria-label="Fotografías del puente">
+                <div class="bridge-main-photo" id="mainPhotoStage">
+                  <img id="mainBridgePhoto" alt="Fotografía del puente" hidden>
+                  <div class="bridge-main-photo__empty" id="mainPhotoEmpty">
+                    <i class="bi bi-images"></i>
+                    <strong>Buscando fotografías…</strong>
+                    <span id="mainPhotoEmptyText">Consultando Google Drive por CUI.</span>
+                  </div>
+                  <button class="bridge-main-photo__expand" id="expandPhoto" type="button" title="Ampliar fotografía" hidden>
+                    <i class="bi bi-arrows-fullscreen"></i>
+                  </button>
+                  <button class="bridge-photo-arrow bridge-photo-arrow--prev" id="mainPhotoPrev" type="button" aria-label="Foto anterior" hidden>
+                    <i class="bi bi-chevron-left"></i>
+                  </button>
+                  <button class="bridge-photo-arrow bridge-photo-arrow--next" id="mainPhotoNext" type="button" aria-label="Foto siguiente" hidden>
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
+                  <span class="bridge-main-photo__counter" id="mainPhotoCounter" hidden>1 / 1</span>
+                </div>
+
+                <div class="bridge-thumbs" id="bridgeThumbs"></div>
+
+                <div class="bridge-photo-source">
+                  <span><i class="bi bi-google"></i> Fotografías vinculadas por CUI desde Google Drive</span>
+                  <a id="photoFolderLink" href="#" target="_blank" rel="noopener" hidden><i class="bi bi-folder2-open"></i> Abrir carpeta</a>
+                </div>
+              </section>
+
+              <section class="bridge-summary">
+                <div class="bridge-summary__actions">
+                  <button class="bridge-doc-btn bridge-doc-btn--primary" type="button" id="downloadAgreement">
+                    <i class="bi bi-file-earmark-pdf"></i><span>Descargar convenio (PDF)</span>
+                  </button>
+                  <button class="bridge-doc-btn" type="button" data-placeholder-action="expediente">
+                    <i class="bi bi-file-earmark-zip"></i><span>Ver expediente técnico</span>
+                  </button>
+                </div>
+
+                <div class="bridge-facts" id="bridgeFacts">
+                  <div class="bridge-fact"><i class="bi bi-upc-scan"></i><span>CUI</span><strong id="factCui">-</strong></div>
+                  <div class="bridge-fact"><i class="bi bi-geo-alt"></i><span>Distrito</span><strong id="factDistrict">-</strong></div>
+                  <div class="bridge-fact"><i class="bi bi-signpost-2"></i><span>Provincia</span><strong id="factProvince">-</strong></div>
+                  <div class="bridge-fact"><i class="bi bi-map"></i><span>Departamento</span><strong id="factDepartment">-</strong></div>
+                  <div class="bridge-fact"><i class="bi bi-rulers"></i><span>Longitud</span><strong id="factLength">-</strong></div>
+                  <div class="bridge-fact"><i class="bi bi-cash-stack"></i><span>Costo de inversión</span><strong id="factCost">-</strong></div>
+                  <div class="bridge-fact"><i class="bi bi-wallet2"></i><span>PIM 2026</span><strong id="factPim">-</strong></div>
+                  <div class="bridge-fact"><i class="bi bi-graph-up-arrow"></i><span>Devengado acumulado</span><strong id="factDevengado">-</strong></div>
+                  <div class="bridge-fact"><i class="bi bi-file-earmark-check"></i><span>Estado del convenio</span><strong id="factAgreement">-</strong></div>
+                </div>
+              </section>
+            </div>
+
+            <div class="bridge-tabs" role="tablist" aria-label="Detalle de la inversión">
+              <button class="bridge-tab is-active" type="button" role="tab" aria-selected="true" data-tab="location"><i class="bi bi-geo-alt"></i><span>Ubicación</span></button>
+              <button class="bridge-tab" type="button" role="tab" aria-selected="false" data-tab="finance"><i class="bi bi-currency-exchange"></i><span>Estado financiero</span></button>
+              <button class="bridge-tab" type="button" role="tab" aria-selected="false" data-tab="intervention"><i class="bi bi-cone-striped"></i><span>Estado de intervención</span></button>
+              <button class="bridge-tab" type="button" role="tab" aria-selected="false" data-tab="documents"><i class="bi bi-files"></i><span>Documentos</span></button>
+              <button class="bridge-tab" type="button" role="tab" aria-selected="false" data-tab="gallery"><i class="bi bi-images"></i><span>Galería</span></button>
+            </div>
+
+            <div class="bridge-tab-panels">
+              <section class="bridge-tab-panel is-active" id="tab-location" data-panel="location">
+                <div class="bridge-detail-grid">
+                  <article><span>Coordenada UTM Este</span><strong id="detailUtmEast">-</strong></article>
+                  <article><span>Coordenada UTM Norte</span><strong id="detailUtmNorth">-</strong></article>
+                  <article><span>Latitud</span><strong id="detailLat">-</strong></article>
+                  <article><span>Longitud</span><strong id="detailLon">-</strong></article>
+                  <article><span>Pliego</span><strong id="detailPliego">-</strong></article>
+                  <article><span>Ámbito VRAEM</span><strong id="detailScope">-</strong></article>
+                </div>
+              </section>
+
+              <section class="bridge-tab-panel" id="tab-finance" data-panel="finance" hidden>
+                <div class="bridge-detail-grid">
+                  <article><span>Costo actualizado</span><strong id="detailCost">-</strong></article>
+                  <article><span>PIM</span><strong id="detailPim">-</strong></article>
+                  <article><span>Devengado acumulado</span><strong id="detailSpent">-</strong></article>
+                  <article><span>Déficit / brecha</span><strong id="detailDeficit">-</strong></article>
+                  <article><span>Requiere recursos</span><strong id="detailResources">-</strong></article>
+                  <article><span>Paquete</span><strong id="detailPackage">-</strong></article>
+                </div>
+              </section>
+
+              <section class="bridge-tab-panel" id="tab-intervention" data-panel="intervention" hidden>
+                <div class="bridge-detail-grid bridge-detail-grid--wide">
+                  <article><span>Etapa</span><strong id="detailStage">-</strong></article>
+                  <article><span>Estado situacional</span><strong id="detailSituation">-</strong></article>
+                  <article><span>Detalle del estado</span><strong id="detailSituationDetail">-</strong></article>
+                  <article><span>Dependencia</span><strong id="detailDependency">-</strong></article>
+                </div>
+              </section>
+
+              <section class="bridge-tab-panel" id="tab-documents" data-panel="documents" hidden>
+                <div class="bridge-detail-grid bridge-detail-grid--wide">
+                  <article><span>Número de convenio</span><strong id="detailAgreementNumber">-</strong></article>
+                  <article><span>Etapa del convenio</span><strong id="detailAgreementStage">-</strong></article>
+                  <article><span>Oficio de notificación</span><strong id="detailNotification">-</strong></article>
+                  <article><span>Dispositivo legal 2026</span><strong id="detailLegal">-</strong></article>
+                </div>
+              </section>
+
+              <section class="bridge-tab-panel" id="tab-gallery" data-panel="gallery" hidden>
+                <div class="bridge-gallery" id="bridgeGallery"></div>
+              </section>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <div class="bridge-lightbox" id="bridgeLightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Fotografía ampliada">
+    <button class="bridge-lightbox__close" type="button" id="lightboxClose" aria-label="Cerrar fotografía"><i class="bi bi-x-lg"></i></button>
+    <button class="bridge-lightbox__nav bridge-lightbox__nav--prev" type="button" id="lightboxPrev" aria-label="Fotografía anterior"><i class="bi bi-chevron-left"></i></button>
+    <figure class="bridge-lightbox__figure">
+      <img id="lightboxImage" alt="Fotografía ampliada del puente">
+      <figcaption id="lightboxCaption">-</figcaption>
+    </figure>
+    <button class="bridge-lightbox__nav bridge-lightbox__nav--next" type="button" id="lightboxNext" aria-label="Fotografía siguiente"><i class="bi bi-chevron-right"></i></button>
+  </div>
+
+  <div class="bridge-toast" id="bridgeToast" hidden role="status">
+    <i class="bi bi-info-circle"></i><span>Funcionalidad pendiente.</span>
+  </div>
+
+  <script src="js/puentes.js?v=20260914-18"></script>
+</body>
+</html>

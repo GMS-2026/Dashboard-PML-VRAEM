@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio | Puentes de Menores Luces</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/dashboard.css?v=20260911-5">
+  <link rel="stylesheet" href="css/inicio.css?v=20260914-17">
+</head>
+<body class="inicio-page is-loading">
+  <div class="page-accent"></div>
+
+  <div class="app-shell">
+    <div class="dashboard-frame">
+      <div class="dashboard">
+
+        <aside class="sidebar">
+          <div class="sidebar__brand">
+            <img src="img/logos/logo-pvdes.png" alt="Provías Descentralizado" class="sidebar__logo">
+          </div>
+
+          <nav class="menu">
+            <a class="menu__item menu__item--active" href="inicio.html" data-nav-page="inicio.html"><i class="bi bi-house-door"></i><span>Inicio</span></a>
+            <a class="menu__item" href="mapa.html" data-nav-page="mapa.html"><i class="bi bi-map"></i><span>Mapa</span></a>
+            <a class="menu__item" href="convenios.html" data-nav-page="convenios.html"><i class="bi bi-file-earmark-text"></i><span>Convenios</span></a>
+            <a class="menu__item" href="puentes.html" data-nav-page="puentes.html"><i class="bi bi-list-ul"></i><span>Lista de puentes</span></a>
+            <a class="menu__item" href="comparativo.html" data-nav-page="comparativo.html"><i class="bi bi-bar-chart"></i><span>Comparativo</span></a>
+          </nav>
+
+          <div class="sidebar__footer">
+            <p class="sidebar__footer-label">Unidad responsable</p>
+            <p class="sidebar__footer-title">Gerencia de Monitoreo y Seguimiento</p>
+          </div>
+        </aside>
+
+        <main class="main inicio-main">
+          <section class="inicio-stage">
+
+            <!-- HERO -->
+            <header class="inicio-hero reveal reveal--1">
+              <div class="inicio-hero__copy">
+                <div class="inicio-hero__heading">
+                  <h1 id="inicioTitulo">Inicio - VRAEM</h1>
+                  <span class="territory-chip" id="territoryChip">VRAEM</span>
+                </div>
+                <p class="inicio-hero__subtitle" id="inicioSubtitulo">
+                  VRAEM y zonas de influencia. Situación financiera y ruta de gestión.
+                </p>
+
+                <div class="geo-kpis" aria-label="Cobertura geográfica">
+                  <div class="geo-kpi">
+                    <span class="geo-kpi__icon"><i class="ri-earth-line"></i></span>
+                    <strong id="geoDepartamentos">-</strong>
+                    <small>Departamentos</small>
+                  </div>
+                  <div class="geo-kpi">
+                    <span class="geo-kpi__icon"><i class="ri-map-2-line"></i></span>
+                    <strong id="geoProvincias">-</strong>
+                    <small>Provincias</small>
+                  </div>
+                  <div class="geo-kpi">
+                    <span class="geo-kpi__icon"><i class="ri-map-pin-2-fill"></i></span>
+                    <strong id="geoDistritos">-</strong>
+                    <small>Distritos</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="inicio-hero__visual">
+                <div class="inicio-hero__photo"></div>
+                <div class="inicio-hero__shade"></div>
+                <a class="hero-back" href="territorio.html" id="volverTerritorio">
+                  <i class="bi bi-map"></i><span>Volver a territorio</span>
+                </a>
+              </div>
+            </header>
+
+            <!-- FILTROS -->
+            <section class="filter-bar reveal reveal--2" aria-label="Filtros territoriales">
+              <div class="filter-bar__lead">
+                <span><i class="ri-filter-3-line"></i></span>
+                <div>
+                  <strong>Filtros territoriales</strong>
+                  <small>Seleccione el ámbito de análisis</small>
+                </div>
+              </div>
+
+              <label class="filter-field">
+                <span>Ámbito</span>
+                <select id="territorioSelect">
+                  <option value="VRAEM">VRAEM</option>
+                  <option value="NORVRAEM">NORVRAEM</option>
+                  <option value="AMUVRAEM">AMUVRAE</option>
+                </select>
+              </label>
+
+              <label class="filter-field">
+                <span>Departamento</span>
+                <select id="departamentoSelect"><option value="">Todos</option></select>
+              </label>
+
+              <label class="filter-field">
+                <span>Provincia</span>
+                <select id="provinciaSelect"><option value="">Todas</option></select>
+              </label>
+
+              <label class="filter-field">
+                <span>Distrito</span>
+                <select id="distritoSelect"><option value="">Todos</option></select>
+              </label>
+
+              <button class="filter-reset" id="resetFilters" type="button">
+                <i class="bi bi-arrow-counterclockwise"></i><span>Restablecer</span>
+              </button>
+            </section>
+
+            <!-- KPI -->
+            <section class="kpi-row reveal reveal--3" aria-label="Indicadores principales">
+              <article class="kpi-card kpi-card--wine">
+                <span class="kpi-card__stripe"></span>
+                <span class="kpi-card__icon"><i class="fa-solid fa-building-columns"></i></span>
+                <div class="kpi-card__text">
+                  <small>Inversiones IOARR</small>
+                  <div><strong id="kpiInversiones">-</strong></div>
+                </div>
+                <div class="kpi-card__bars"><i></i><i></i><i></i><i></i></div>
+              </article>
+
+              <article class="kpi-card kpi-card--blue">
+                <span class="kpi-card__stripe"></span>
+                <span class="kpi-card__icon" aria-hidden="true"><i class="fa-solid fa-bridge-water"></i></span>
+                <div class="kpi-card__text">
+                  <small>Puentes</small>
+                  <div><strong id="kpiPuentes">-</strong></div>
+                </div>
+                <div class="kpi-card__bars"><i></i><i></i><i></i><i></i></div>
+              </article>
+
+              <article class="kpi-card kpi-card--green">
+                <span class="kpi-card__stripe"></span>
+                <span class="kpi-card__icon"><i class="fa-solid fa-circle-check"></i></span>
+                <div class="kpi-card__text">
+                  <small>IOARR con totalidad de recursos</small>
+                  <div><strong id="kpiSinDeficit">-</strong></div>
+                </div>
+                <div class="kpi-card__bars"><i></i><i></i><i></i><i></i></div>
+              </article>
+
+              <article class="kpi-card kpi-card--ochre">
+                <span class="kpi-card__stripe"></span>
+                <span class="kpi-card__icon"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+                <div class="kpi-card__text">
+                  <small>Requieren recursos</small>
+                  <div><strong id="kpiConDeficit">-</strong></div>
+                </div>
+                <div class="kpi-card__bars"><i></i><i></i><i></i><i></i></div>
+              </article>
+
+              <article class="kpi-card kpi-card--wine">
+                <span class="kpi-card__stripe"></span>
+                <span class="kpi-card__icon"><i class="fa-solid fa-money-bill-trend-up"></i></span>
+                <div class="kpi-card__text kpi-card__text--money">
+                  <small>Déficit estimado</small>
+                  <div><strong id="kpiDeficit">-</strong></div>
+                </div>
+                <div class="kpi-card__bars"><i></i><i></i><i></i><i></i></div>
+              </article>
+            </section>
+
+            <!-- FILA PRINCIPAL -->
+            <section class="main-grid reveal reveal--4">
+
+              <!-- CARTERA -->
+              <article class="exec-card card-portfolio">
+                <header class="exec-card__head">
+                  <span class="exec-card__head-icon exec-card__head-icon--wine"><i class="ri-file-chart-line"></i></span>
+                  <div class="exec-card__titles">
+                    <h2>Situación de la cartera seleccionada</h2>
+                    <p>Estado y requerimientos de la cartera de inversiones IOARR</p>
+                  </div>
+                  <a class="card-action" data-drill="mapa" href="mapa.html">Ver más <i class="bi bi-arrow-right"></i></a>
+                </header>
+
+                <div class="portfolio-content">
+                  <div class="portfolio-resource">
+                    <div class="donut donut--resource">
+                      <svg viewBox="0 0 150 150" aria-hidden="true">
+                        <circle class="donut-track" cx="75" cy="75" r="57"></circle>
+                        <circle class="donut-seg donut-seg--good" id="resourceDonutOk" cx="75" cy="75" r="57"></circle>
+                        <circle class="donut-seg donut-seg--wine" id="resourceDonutRisk" cx="75" cy="75" r="57"></circle>
+                      </svg>
+                      <span class="donut-label donut-label--resource-good" id="resourceOkPctLabel">-</span>
+                      <span class="donut-label donut-label--resource-risk" id="resourceRiskPctLabel">-</span>
+                      <div class="donut-center"><strong id="resourceDonutTotal">-</strong><span>IOARR</span></div>
+                    </div>
+
+                    <div class="resource-legend">
+                      <div class="resource-item resource-item--good">
+                        <i></i><span>Cuentan con la totalidad<br>de recursos</span><strong id="resourceOkCount">-</strong><em id="resourceOkPct">-</em>
+                      </div>
+                      <div class="resource-item resource-item--risk">
+                        <i></i><span>Requieren recursos<br>adicionales</span><strong id="resourceRiskCount">-</strong><em id="resourceRiskPct">-</em>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="investment-strip">
+                    <div class="investment-total">
+                      <span><i class="bi bi-coins"></i> Monto actualizado total</span>
+                      <strong id="investmentTotal">-</strong>
+                    </div>
+
+                    <div class="investment-progress">
+                      <div class="investment-progress__bar">
+                        <i class="investment-progress__funded" id="investmentFundedBar"></i>
+                        <i class="investment-progress__deficit" id="investmentDeficitBar"></i>
+                      </div>
+                      <div class="investment-progress__legend">
+                        <div><strong id="investmentFunded">-</strong><span>Con recursos</span><em id="investmentFundedPct">-</em></div>
+                        <div><strong id="investmentDeficit">-</strong><span>Déficit</span><em id="investmentDeficitPct">-</em></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- CÁLCULO DEL DÉFICIT FINANCIERO -->
+              <article class="exec-card card-financial-gap">
+                <header class="exec-card__head">
+                  <span class="exec-card__head-icon exec-card__head-icon--blue"><i class="ri-bar-chart-box-line"></i></span>
+                  <div class="exec-card__titles">
+                    <h2>Cálculo del Déficit Financiero</h2>
+                    <p>Detalle por CUI de las inversiones IOARR con déficit</p>
+                  </div>
+                  <button class="card-action card-action--expand" id="expandFinancialTable" type="button">
+                    Expandir <i class="bi bi-arrows-fullscreen"></i>
+                  </button>
+                </header>
+
+                <div class="financial-summary-kpis" aria-label="Ecuación del déficit financiero del filtro activo">
+                  <div class="financial-summary-kpi financial-summary-kpi--cost">
+                    <span><i class="fa-solid fa-coins"></i></span>
+                    <p><small>Costo total actualizado</small><strong id="financialTotalCost">-</strong></p>
+                  </div>
+                  <b class="financial-summary-operator" aria-hidden="true">−</b>
+                  <div class="financial-summary-kpi financial-summary-kpi--accrued">
+                    <span><i class="fa-solid fa-file-invoice-dollar"></i></span>
+                    <p><small>Devengado acumulado al 2025</small><strong id="financialTotalAccrued">-</strong></p>
+                  </div>
+                  <b class="financial-summary-operator" aria-hidden="true">−</b>
+                  <div class="financial-summary-kpi financial-summary-kpi--pim">
+                    <span><i class="fa-solid fa-wallet"></i></span>
+                    <p><small>PIM 2026</small><strong id="financialTotalPim">-</strong></p>
+                  </div>
+                  <b class="financial-summary-operator financial-summary-operator--equals" aria-hidden="true">=</b>
+                  <div class="financial-summary-kpi financial-summary-kpi--deficit">
+                    <span><i class="fa-solid fa-arrow-trend-down"></i></span>
+                    <p><small>Déficit</small><strong id="financialTotalDeficit">-</strong></p>
+                  </div>
+                </div>
+
+                <div class="financial-table-wrap">
+                  <div class="financial-table" role="table" aria-label="Cálculo del déficit financiero por CUI">
+                    <div class="financial-table__head" role="row">
+                      <span role="columnheader">CUI</span>
+                      <span role="columnheader">PLIEGO</span>
+                      <span role="columnheader">Costo total<br>actualizado</span>
+                      <span role="columnheader">Devengado acumulado<br>al 2025</span>
+                      <span role="columnheader">PIM 2026</span>
+                      <span role="columnheader">Déficit</span>
+                    </div>
+                    <div class="financial-table__body" id="financialGapRows"></div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- CONVENIOS -->
+              <article class="exec-card card-agreements">
+                <header class="exec-card__head">
+                  <span class="exec-card__head-icon exec-card__head-icon--blue"><i class="ri-file-list-3-line"></i></span>
+                  <div class="exec-card__titles">
+                    <h2>Situación general de los convenios</h2>
+                    <p id="agreementSubtitle">Estado de los convenios en el ámbito VRAEM</p>
+                  </div>
+                  <a class="card-action" data-drill="convenios" href="convenios.html">Ver más <i class="bi bi-arrow-right"></i></a>
+                </header>
+
+                <div class="agreements-content">
+                  <div class="donut donut--agreement">
+                    <svg viewBox="0 0 150 150" aria-hidden="true">
+                      <circle class="donut-track" cx="75" cy="75" r="57"></circle>
+                      <circle class="donut-seg donut-seg--good" id="agreementDonutSigned" cx="75" cy="75" r="57"></circle>
+                      <circle class="donut-seg donut-seg--ochre" id="agreementDonutPending" cx="75" cy="75" r="57"></circle>
+                      <circle class="donut-seg donut-seg--wine" id="agreementDonutNone" cx="75" cy="75" r="57"></circle>
+                    </svg>
+                    <span class="donut-label donut-label--agreement-signed" id="agreementSignedPctDonut">-</span>
+                    <span class="donut-label donut-label--agreement-pending" id="agreementPendingPctDonut">-</span>
+                    <span class="donut-label donut-label--agreement-none" id="agreementNonePctDonut">-</span>
+                    <div class="donut-center"><strong id="agreementDonutTotal">-</strong><span>con déficit</span></div>
+                  </div>
+
+                  <div class="agreement-list">
+                    <div>
+                      <span class="agreement-list__icon agreement-list__icon--green"><i class="bi bi-check-circle-fill"></i></span>
+                      <p><small>Convenio suscrito</small><strong id="agreementSignedCount">-</strong></p>
+                      <em id="agreementSignedPct">-</em>
+                    </div>
+                    <div>
+                      <span class="agreement-list__icon agreement-list__icon--ochre"><i class="bi bi-hourglass-split"></i></span>
+                      <p><small>En trámite</small><strong id="agreementPendingCount">-</strong></p>
+                      <em id="agreementPendingPct">-</em>
+                    </div>
+                    <div>
+                      <span class="agreement-list__icon agreement-list__icon--wine"><i class="bi bi-file-earmark-text-fill"></i></span>
+                      <p><small>No presentó trámite</small><strong id="agreementNoneCount">-</strong></p>
+                      <em id="agreementNonePct">-</em>
+                    </div>
+                  </div>
+                </div>
+
+              </article>
+            </section>
+
+            <!-- FILA ANALÍTICA -->
+            <section class="bottom-grid reveal reveal--5">
+
+              <!-- GESTIÓN DE RECURSOS -->
+              <article class="analytics-card analytics-card--management">
+                <header class="analytics-card__head">
+                  <span class="analytics-card__icon analytics-card__icon--ochre"><i class="ri-settings-3-line"></i></span>
+                  <div><h3>Gestión de recursos</h3><p>Seguimiento de requerimientos de financiamiento</p></div>
+                </header>
+
+                <div class="management-kicker"><i></i><strong>Preparación del requerimiento</strong></div>
+                <div class="prep-chart prep-chart--management">
+                  <div class="prep-item prep-item--package">
+                    <strong id="routeChartPackage1Count">-</strong>
+                    <div class="prep-bar"><i id="routeChartPackage1Bar"></i><span id="routeChartPackage1Pct">-</span></div>
+                    <small>Paquete 1</small><em>Requerimiento realizado</em>
+                  </div>
+                  <div class="prep-item prep-item--pending">
+                    <strong id="routeChartPendingCount">-</strong>
+                    <div class="prep-bar"><i id="routeChartPendingBar"></i><span id="routeChartPendingPct">-</span></div>
+                    <small>Por solicitar</small><em>Requerimiento de recursos</em>
+                  </div>
+                  <div class="prep-item prep-item--conditioned">
+                    <strong id="routeChartConditionedCount">-</strong>
+                    <div class="prep-bar"><i id="routeChartConditionedBar"></i><span id="routeChartConditionedPct">-</span></div>
+                    <small>Pendientes de</small><em>convenio</em>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ESTADO SITUACIONAL -->
+              <article class="analytics-card analytics-card--stage">
+                <header class="analytics-card__head">
+                  <span class="analytics-card__icon analytics-card__icon--blue"><i class="fa-solid fa-chart-simple"></i></span>
+                  <div><h3>Estado situacional</h3><p>Avance en la gestión de la cartera</p></div>
+                </header>
+
+                <div class="stage-content stage-content--compact">
+                  <div class="stage-total">
+                    <strong id="stageTotalBridges">-</strong><span>IOARR</span>
+                  </div>
+                  <div class="stage-stack" aria-label="Distribución por estado">
+                    <i class="stage-stack__seg stage-stack__seg--selection" id="stageSelectionSegment"></i>
+                    <i class="stage-stack__seg stage-stack__seg--eett" id="stageEettSegment"></i>
+                    <i class="stage-stack__seg stage-stack__seg--other" id="stageOtherSegment"></i>
+                  </div>
+                  <div class="stage-values" aria-label="Porcentaje por estado situacional">
+                    <span class="stage-value stage-value--selection" id="stageSelectionPct">-</span>
+                    <span class="stage-value stage-value--eett" id="stageEettPct">-</span>
+                    <span class="stage-value stage-value--other" id="stageOtherPct">-</span>
+                  </div>
+                  <div class="stage-legend">
+                    <div><i class="legend-dot legend-dot--selection"></i><span>Proceso de selección</span><strong id="stageSelectionCount">-</strong></div>
+                    <div><i class="legend-dot legend-dot--eett"></i><span>Elaboración de EETT</span><strong id="stageEettCount">-</strong></div>
+                    <div id="stageOtherRow"><i class="legend-dot legend-dot--other"></i><span>Otros / sin inicio</span><strong id="stageOtherCount">-</strong></div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- BRECHA TERRITORIAL -->
+              <article class="analytics-card analytics-card--province">
+                <header class="analytics-card__head">
+                  <span class="analytics-card__icon"><i class="ri-bar-chart-box-line"></i></span>
+                  <div><h3 id="territorialGapTitle">Brecha por provincia</h3><p>Monto del déficit</p></div>
+                </header>
+
+                <div class="province-table-head">
+                  <span id="territorialGapLeadHead">Provincia</span><span>Monto con déficit (S/)</span><span>% del total</span>
+                </div>
+                <div class="province-bars" id="provinceBars"></div>
+              </article>
+
+              <!-- DISTRIBUCIÓN TERRITORIAL: se mantiene su diseño, solo cambia de posición -->
+              <article class="analytics-card analytics-card--map">
+                <header class="analytics-card__head">
+                  <span class="analytics-card__icon"><i class="ri-road-map-line"></i></span>
+                  <div><h3>Distribución territorial</h3><p>IOARR por provincia del filtro activo</p></div>
+                  <a data-drill="mapa" href="mapa.html">Ver mapa <i class="bi bi-arrow-right"></i></a>
+                </header>
+
+                <div class="territory-map-content">
+                  <svg class="scope-map" id="scopeMiniMap" viewBox="0 0 320 230" aria-label="Distribución territorial"></svg>
+                  <div class="scope-map-legend" id="scopeMapLegend"></div>
+                </div>
+
+                <div class="map-geo-footer map-geo-footer--context">
+                  <div><i class="fa-solid fa-location-crosshairs"></i><strong id="mapDirectCount">-</strong><span>Intervención directa</span></div>
+                  <div><i class="fa-solid fa-arrows-to-circle"></i><strong id="mapInfluenceCount">-</strong><span>Zona de influencia</span></div>
+                  <div><i class="fa-solid fa-map-location-dot"></i><strong id="mapGeocodedCount">-</strong><span>Georreferenciadas</span></div>
+                </div>
+              </article>
+            </section>
+
+          </section>
+        </main>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="financial-modal" id="financialModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="financialModalTitle">
+    <div class="financial-modal__backdrop" data-close-financial-modal></div>
+    <section class="financial-modal__panel">
+      <header class="financial-modal__head">
+        <div>
+          <span class="financial-modal__eyebrow">Detalle financiero</span>
+          <h2 id="financialModalTitle">Cálculo del Déficit Financiero</h2>
+          <p>Vista expandida de las inversiones con déficit según los filtros activos.</p>
+        </div>
+        <button class="financial-modal__close" id="closeFinancialModal" type="button" aria-label="Cerrar tabla expandida"><i class="bi bi-x-lg"></i></button>
+      </header>
+      <div class="financial-summary-kpis financial-summary-kpis--modal" aria-label="Ecuación del déficit financiero del filtro activo en vista expandida">
+        <div class="financial-summary-kpi financial-summary-kpi--cost">
+          <span><i class="fa-solid fa-coins"></i></span>
+          <p><small>Costo total actualizado</small><strong id="financialModalTotalCost">-</strong></p>
+        </div>
+        <b class="financial-summary-operator" aria-hidden="true">−</b>
+        <div class="financial-summary-kpi financial-summary-kpi--accrued">
+          <span><i class="fa-solid fa-file-invoice-dollar"></i></span>
+          <p><small>Devengado acumulado al 2025</small><strong id="financialModalTotalAccrued">-</strong></p>
+        </div>
+        <b class="financial-summary-operator" aria-hidden="true">−</b>
+        <div class="financial-summary-kpi financial-summary-kpi--pim">
+          <span><i class="fa-solid fa-wallet"></i></span>
+          <p><small>PIM 2026</small><strong id="financialModalTotalPim">-</strong></p>
+        </div>
+        <b class="financial-summary-operator financial-summary-operator--equals" aria-hidden="true">=</b>
+        <div class="financial-summary-kpi financial-summary-kpi--deficit">
+          <span><i class="fa-solid fa-arrow-trend-down"></i></span>
+          <p><small>Déficit</small><strong id="financialModalTotalDeficit">-</strong></p>
+        </div>
+      </div>
+      <div class="financial-modal__table financial-table" role="table" aria-label="Tabla financiera expandida">
+        <div class="financial-table__head" role="row">
+          <span role="columnheader">CUI</span>
+          <span role="columnheader">PLIEGO</span>
+          <span role="columnheader">Costo total actualizado</span>
+          <span role="columnheader">Devengado acumulado al 2025</span>
+          <span role="columnheader">PIM 2026</span>
+          <span role="columnheader">Déficit</span>
+        </div>
+        <div class="financial-table__body" id="financialGapRowsModal"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/inicio.js?v=20260914-19"></script>
+</body>
+</html>

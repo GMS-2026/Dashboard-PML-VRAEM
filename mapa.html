@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mapa interactivo | Puentes de Menores Luces</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
+<link crossorigin="" href="https://tile.openstreetmap.org" rel="preconnect"/>
+
+<link crossorigin="" href="https://lh3.googleusercontent.com" rel="preconnect"/>
+<link crossorigin="" href="https://drive.google.com" rel="preconnect"/>
+<link crossorigin="" href="https://script.google.com" rel="preconnect"/>
+
+<link href="css/base.css" rel="stylesheet"/>
+<link href="css/dashboard.css?v=20260911-4" rel="stylesheet"/>
+<link href="css/mapa.css?v=20260914-28" rel="stylesheet"/>
+<link crossorigin="" href="https://a.basemaps.cartocdn.com" rel="preconnect"/><link crossorigin="" href="https://server.arcgisonline.com" rel="preconnect"/><link crossorigin="" href="https://api.open-meteo.com" rel="preconnect"/></head>
+<body class="map-page">
+<div class="page-accent"></div>
+<div class="app-shell">
+<div class="dashboard-frame">
+<div class="dashboard">
+<aside class="sidebar">
+<div class="sidebar__brand">
+<img alt="Provías Descentralizado" class="sidebar__logo" src="img/logos/logo-pvdes.png"/>
+</div>
+<nav class="menu">
+<a class="menu__item" data-preserve-territory="" href="inicio.html"><i class="bi bi-house-door"></i><span>Inicio</span></a>
+<a class="menu__item menu__item--active" data-preserve-territory="" href="mapa.html"><i class="bi bi-map"></i><span>Mapa</span></a>
+<a class="menu__item" data-preserve-territory="" href="convenios.html"><i class="bi bi-file-earmark-text"></i><span>Convenios</span></a>
+<a class="menu__item" data-preserve-territory="" href="puentes.html"><i class="bi bi-list-ul"></i><span>Lista de puentes</span></a>
+<a class="menu__item" data-preserve-territory="" href="comparativo.html"><i class="bi bi-bar-chart"></i><span>Comparativo</span></a>
+</nav>
+<div class="sidebar__footer">
+<p class="sidebar__footer-label">Unidad responsable</p>
+<p class="sidebar__footer-title">Gerencia de Monitoreo y Seguimiento</p>
+</div>
+</aside>
+<main class="main map-main" id="vraem-map-module">
+<header class="topbar map-topbar">
+<div class="topbar__left map-topbar__title-block">
+<h1 class="page-title" id="mapPageTitle">Mapa interactivo - VRAEM</h1>
+<p class="map-topbar__subtitle">Georreferenciación de inversiones IOARR y puentes menores</p>
+</div>
+<div class="topbar__actions">
+<a class="btn map-back-btn" href="territorio.html"><i class="bi bi-grid-3x3-gap"></i><span>Volver a territorio</span></a>
+</div>
+</header>
+<section aria-label="Navegación territorial" class="card map-toolbar">
+<div aria-label="Ruta territorial" class="map-toolbar__trail" id="drillTrail"></div>
+<div class="map-toolbar__selectors">
+<div class="map-compact-field map-compact-field--scope" id="territorioField">
+<label for="territorioSelect">Ámbito</label>
+<select id="territorioSelect">
+<option value="VRAEM">VRAEM</option>
+<option value="NORVRAEM">NORVRAEM</option>
+<option value="AMUVRAEM">AMUVRAE</option>
+</select>
+</div>
+<div class="map-compact-field" id="departamentoField">
+<label for="departamentoSelect">Departamento</label>
+<select id="departamentoSelect"><option value="">Todos</option></select>
+</div>
+<div class="map-compact-field" hidden="" id="provinciaField">
+<label for="provinciaSelect">Provincia</label>
+<select id="provinciaSelect"><option value="">Todas</option></select>
+</div>
+<div class="map-compact-field" hidden="" id="distritoField">
+<label for="distritoSelect">Distrito</label>
+<select id="distritoSelect"><option value="">Todos</option></select>
+</div>
+<div class="map-cui-search" id="cuiSearchField">
+<label for="cuiSearchInput">Buscar CUI</label>
+<div class="map-cui-search__control">
+<input aria-autocomplete="list" aria-controls="cuiSuggestions" aria-label="Buscar inversión por CUI" autocomplete="off" id="cuiSearchInput" inputmode="numeric" placeholder="Buscar o seleccionar CUI" type="search"/>
+<button aria-label="Buscar CUI" id="cuiSearchButton" title="Buscar CUI" type="button"><i class="bi bi-search"></i></button>
+<div class="map-cui-suggestions" hidden="" id="cuiSuggestions" role="listbox"></div>
+</div>
+</div>
+<button aria-label="Restablecer filtros" class="map-toolbar__reset" id="resetMapFilters" title="Restablecer filtros" type="button">
+<i class="bi bi-arrow-counterclockwise"></i><span>Restablecer</span>
+</button>
+</div>
+<div aria-live="polite" class="map-toolbar__stats">
+<div class="map-stat map-stat--wine">
+<span class="map-stat__icon"><i class="bi bi-bank"></i></span>
+<div><small>Inversiones IOARR</small><strong id="visibleInvestments">0</strong></div>
+</div>
+<div class="map-stat map-stat--blue">
+<span class="map-stat__icon"><i class="bi bi-bezier2"></i></span>
+<div><small>Puentes</small><strong id="visibleBridges">0</strong></div>
+</div>
+<div class="map-stat map-stat--green">
+<span class="map-stat__icon"><i class="bi bi-geo-alt-fill"></i></span>
+<div><small>Distritos</small><strong id="visibleDistricts">0</strong></div>
+</div>
+</div>
+</section>
+<section class="map-layout">
+<article class="card map-card">
+<div class="map-card__head">
+<div class="map-card__identity">
+<span class="map-card__head-icon"><i class="bi bi-map-fill"></i></span>
+<div>
+<p class="map-card__eyebrow">Cobertura territorial</p>
+<h2 id="mapContextTitle">Cartera georreferenciada</h2>
+</div>
+</div>
+<div class="map-head-actions">
+<button class="map-frame-btn" id="fitScopeButton" title="Reencuadrar el ámbito visible" type="button">
+<i class="bi bi-arrows-fullscreen"></i><span>Reencuadrar</span>
+</button>
+<div aria-label="Mapa base" class="map-view-switch" role="group">
+<button class="map-view-switch__btn" data-mode="cartographic" type="button"><i class="bi bi-map"></i> Cartográfico</button>
+<button class="map-view-switch__btn is-active" data-mode="detailed" type="button"><i class="bi bi-signpost-split"></i> Detallado</button>
+<button class="map-view-switch__btn" data-mode="satellite" type="button"><i class="bi bi-globe-americas"></i> Satelital</button>
+</div>
+</div>
+</div>
+<div class="map-canvas-wrap">
+<div aria-label="Mapa interactivo del ámbito" class="map-canvas map-leaflet-shell" id="mainMap">
+<div aria-label="Mapa navegable con límites territoriales y puentes" class="map-leaflet" id="leafletMap"></div>
+<div aria-live="polite" class="map-area-hover" hidden="" id="mapAreaHover">
+<span id="mapAreaHoverLevel">Distrito</span>
+<strong id="mapAreaHoverName">Ubicación</strong>
+<small id="mapAreaHoverPath"></small>
+</div>
+
+
+
+
+<div class="map-basemap-credit" id="mapBasemapCredit">Mapa cartográfico detallado</div>
+</div>
+<div class="map-overlay-card map-overlay-card--territory">
+<div class="map-overlay-card__title">
+<span>Capa territorial</span>
+<small id="territoryLegendSubtitle">Ámbito seleccionado</small>
+</div>
+<div class="territory-key">
+<span><i class="territory-key__swatch territory-key__swatch--focus"></i>Ámbito visible</span>
+<span><i class="territory-key__swatch territory-key__swatch--context"></i>Límites distritales</span>
+<span><i class="territory-key__dot"></i>Inversión georreferenciada</span>
+</div>
+</div>
+<div class="map-overlay-card map-overlay-card--legend" id="markerLegend">
+<div class="map-overlay-card__title map-overlay-card__title--with-select">
+<div>
+<span>Leyenda de puntos</span>
+<small id="legendModeLabel">Departamento</small>
+</div>
+<button class="map-legend-config" id="legendConfigButton" title="Cambiar criterio de color" type="button">
+<i class="bi bi-sliders"></i>
+</button>
+</div>
+<div class="map-legend-config-panel" hidden="" id="legendConfigPanel">
+<label for="colorSelect">Colorear por</label>
+<select id="colorSelect">
+<option value="departamento">Departamento</option>
+<option value="ambito">Ámbito VRAEM</option>
+<option value="longitud">Longitud del puente</option>
+<option value="recursos">Necesidad de recursos</option>
+<option value="paquete">Paquete</option>
+</select>
+</div>
+<div class="map-legend__items" id="legendItems"></div>
+<div class="map-overlay-card__foot">El tamaño del punto representa la longitud del puente.</div>
+</div>
+<div aria-label="Ubicación del ámbito dentro del Perú" class="peru-locator" id="peruLocator">
+<span class="peru-locator__title">Ubicación en Perú</span>
+<div class="peru-locator__map">
+<img alt="Mapa del Perú" src="img/ui/peru-map.svg"/>
+<i aria-hidden="true" class="peru-locator__point" id="peruLocatorPoint"></i>
+</div>
+</div>
+<div class="map-weather-chip" id="weatherPanel">
+<div class="map-weather-chip__main">
+<span class="map-weather-chip__icon"><i class="bi bi-cloud-rain-heavy"></i></span>
+<div>
+<strong>PRECIPITACIÓN <small>HOY</small></strong>
+<span id="weatherStatus">Preparando pronóstico horario.</span>
+</div>
+</div>
+<div aria-label="Pronóstico horario de precipitación" class="map-weather-chip__timeline">
+<button aria-label="Reproducir pronóstico horario" class="weather-play" id="weatherPlay" title="Reproducir pronóstico horario" type="button">
+<i class="bi bi-play-fill"></i>
+</button>
+<span class="weather-hour" id="weatherTimeLabel">--:--</span>
+<input aria-label="Hora del pronóstico" class="weather-hour-range" id="weatherHourRange" max="23" min="0" step="0.5" type="range" value="0"/>
+<label class="weather-switch" title="Mostrar precipitación pronosticada">
+<input aria-label="Mostrar precipitación pronosticada" id="weatherToggle" type="checkbox"/>
+<span></span>
+</label>
+</div>
+<div aria-label="Intensidad de precipitación" class="weather-daily-legend" id="weatherDailyLegend">
+<span>Ligera</span><i></i><span>Extrema</span>
+</div>
+<div class="weather-source">Pronóstico de precipitación de hoy. Animación horaria. Fuente meteorológica: Open-Meteo.</div>
+</div>
+</div>
+</article>
+<aside class="card investment-panel" id="investmentPanel">
+<div class="investment-panel__empty" id="investmentEmpty">
+<div class="investment-panel__empty-icon"><i class="bi bi-geo-alt"></i></div>
+<h2>Selecciona una inversión</h2>
+<p>Haz clic en uno de los puntos georreferenciados para abrir el detalle.</p>
+</div>
+<div class="investment-panel__content" hidden="" id="investmentContent">
+<div class="investment-panel__hero">
+<div class="investment-panel__header">
+<div class="investment-panel__identity">
+<span class="investment-panel__badge" id="selectedCui">CUI</span>
+<span class="investment-panel__scope" id="selectedScope">Sin dato</span>
+</div>
+<button aria-label="Cerrar detalle" class="icon-btn" id="clearSelection" type="button"><i class="bi bi-x-lg"></i></button>
+</div>
+<p class="investment-panel__eyebrow">Inversión seleccionada</p>
+<h2 id="selectedName">Sin dato</h2>
+<div class="investment-panel__place" id="selectedPlace"><i class="bi bi-pin-map-fill"></i><span>Sin dato</span></div>
+</div>
+<section aria-label="Fotos de la inversión" class="investment-photos" id="investmentPhotos">
+<div class="investment-photos__head">
+<div>
+<strong>Evidencia fotográfica</strong>
+<small id="photoCounter">Preparando imágenes</small>
+</div>
+<a class="investment-photos__folder" href="https://drive.google.com/drive/folders/1gFqqR2MPJox3kbw1spC1KcNAQE4NBhww" id="photoFolderLink" rel="noopener" target="_blank" title="Abrir carpeta de fotos">
+<i class="bi bi-folder2-open"></i>
+</a>
+</div>
+<div class="investment-photos__stage is-loading" id="photoStage">
+<img alt="Foto de la inversión seleccionada" decoding="async" hidden="" id="selectedPhoto"/>
+<div class="investment-photos__empty" id="photoEmpty">
+<span aria-hidden="true" class="investment-photos__loader"></span>
+<span>Preparando evidencia fotográfica.</span>
+</div>
+<button aria-label="Foto anterior" class="investment-photos__nav investment-photos__nav--prev" hidden="" id="photoPrev" type="button"><i class="bi bi-chevron-left"></i></button>
+<button aria-label="Foto siguiente" class="investment-photos__nav investment-photos__nav--next" hidden="" id="photoNext" type="button"><i class="bi bi-chevron-right"></i></button>
+</div>
+<div class="investment-photos__thumbs" id="photoThumbs"></div>
+</section>
+<div class="investment-panel__financial">
+<div class="investment-financial investment-financial--cost"><span><i class="bi bi-cash-stack"></i></span><p><small>Costo actualizado</small><strong id="selectedCost">Sin dato</strong></p></div>
+<div class="investment-financial investment-financial--pim"><span><i class="bi bi-wallet2"></i></span><p><small>PIM 2026</small><strong id="selectedPim">Sin dato</strong></p></div>
+<div class="investment-financial investment-financial--deficit"><span><i class="bi bi-graph-down-arrow"></i></span><p><small>Déficit</small><strong id="selectedDeficit">Sin dato</strong></p></div>
+</div>
+<div class="investment-panel__metrics">
+<div><span>Puentes</span><strong id="selectedBridgeCount">Sin dato</strong></div>
+<div><span>Longitud</span><strong id="selectedLength">Sin dato</strong></div>
+<div><span>Recursos</span><strong id="selectedResources">Sin dato</strong></div>
+</div>
+<div class="investment-panel__status">
+<div><span class="investment-panel__status-icon"><i class="bi bi-box-seam"></i></span><p><small>Gestión por paquete</small><strong id="selectedPackage">Sin dato</strong></p></div>
+<div><span class="investment-panel__status-icon"><i class="bi bi-file-earmark-check"></i></span><p><small>Convenio</small><strong id="selectedAgreement">Sin dato</strong></p></div>
+<div><span class="investment-panel__status-icon"><i class="bi bi-activity"></i></span><p><small>Estado situacional</small><strong id="selectedSituation">Sin dato</strong></p></div>
+</div>
+<div class="investment-panel__utm">
+<div class="investment-panel__utm-title"><i class="bi bi-bounding-box-circles"></i> Coordenadas UTM</div>
+<div class="investment-panel__utm-grid">
+<div><span>Este</span><strong id="selectedUtmEast">Sin dato</strong></div>
+<div><span>Norte</span><strong id="selectedUtmNorth">Sin dato</strong></div>
+</div>
+</div>
+<a class="btn investment-panel__cta" href="puentes.html" id="detailsButton">
+<span>Abrir ficha completa</span><i class="bi bi-arrow-right"></i>
+</a>
+</div>
+</aside>
+</section>
+
+</main>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/senamhi.js?v=20260914-29"></script>
+<script src="js/mapa.js?v=20260914-29"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparativo ejecutivo | Puentes de Menores Luces</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/dashboard.css?v=20260911-5">
+  <link rel="stylesheet" href="css/comparativo.css?v=20260914-17">
+</head>
+<body class="comparativo-page is-loading">
+  <div class="page-accent"></div>
+
+  <div class="app-shell">
+    <div class="dashboard-frame">
+      <div class="dashboard">
+        <aside class="sidebar">
+          <div class="sidebar__brand">
+            <img src="img/logos/logo-pvdes.png" alt="Provías Descentralizado" class="sidebar__logo">
+          </div>
+
+          <nav class="menu">
+            <a class="menu__item" href="inicio.html"><i class="bi bi-house-door"></i><span>Inicio</span></a>
+            <a class="menu__item" href="mapa.html"><i class="bi bi-map"></i><span>Mapa</span></a>
+            <a class="menu__item" href="convenios.html"><i class="bi bi-file-earmark-text"></i><span>Convenios</span></a>
+            <a class="menu__item" href="puentes.html"><i class="bi bi-list-ul"></i><span>Lista de puentes</span></a>
+            <a class="menu__item menu__item--active" href="comparativo.html"><i class="bi bi-bar-chart"></i><span>Comparativo</span></a>
+          </nav>
+
+          <div class="sidebar__footer">
+            <p class="sidebar__footer-label">Unidad responsable</p>
+            <p class="sidebar__footer-title">Gerencia de Monitoreo y Seguimiento</p>
+          </div>
+        </aside>
+
+        <main class="main comparativo-main">
+          <section class="executive-view">
+            <header class="executive-head">
+              <div>
+                <p class="executive-head__eyebrow">Vista ejecutiva consolidada</p>
+                <h1>Comparativo de ámbitos territoriales</h1>
+                <p class="executive-head__subtitle">Lectura conjunta de la cartera VRAEM, NORVRAEM y AMUVRAE. Esta vista no hereda filtros territoriales de navegación.</p>
+              </div>
+              <div class="executive-head__badge">
+                <i class="bi bi-layers"></i>
+                <span>Cartera consolidada</span>
+              </div>
+            </header>
+
+            <section class="executive-summary" aria-label="Resumen general de cartera">
+              <article class="summary-kpi">
+                <span class="summary-kpi__icon"><i class="bi bi-folder2-open"></i></span>
+                <div><strong id="totalInversiones">-</strong><span>Inversiones IOARR</span></div>
+              </article>
+              <article class="summary-kpi">
+                <span class="summary-kpi__icon"><i class="bi bi-signpost-2"></i></span>
+                <div><strong id="totalPuentes">-</strong><span>Puentes</span></div>
+              </article>
+              <article class="summary-kpi">
+                <span class="summary-kpi__icon"><i class="bi bi-file-earmark-check"></i></span>
+                <div><strong id="totalConvenios">-</strong><span>Convenios suscritos</span></div>
+              </article>
+              <article class="summary-kpi summary-kpi--money">
+                <span class="summary-kpi__icon"><i class="bi bi-cash-stack"></i></span>
+                <div><strong id="totalDeficit">-</strong><span>Brecha financiera estimada</span></div>
+              </article>
+            </section>
+
+            <section class="territory-comparison" aria-label="Comparativo territorial">
+              <article class="territory-panel territory-panel--vraem" data-territory="VRAEM">
+                <div class="territory-panel__accent"></div>
+                <header class="territory-panel__head">
+                  <div>
+                    <span class="territory-panel__code">01</span>
+                    <h2>VRAEM</h2>
+                    <p>VRAEM y zonas de influencia</p>
+                  </div>
+                  <div class="territory-panel__headline">
+                    <strong id="vraem-puentes">-</strong>
+                    <span>Puentes</span>
+                  </div>
+                </header>
+
+                <div class="territory-panel__map-wrap">
+                  <svg class="territory-panel__map" data-map="VRAEM" viewBox="0 0 320 230" aria-label="Mapa del VRAEM"></svg>
+                  <div class="territory-panel__map-key">
+                    <span><i class="territory-panel__swatch territory-panel__swatch--selected"></i>Ámbito</span>
+                    <span><i class="territory-panel__swatch territory-panel__swatch--context"></i>Referencia</span>
+                  </div>
+                </div>
+
+                <div class="territory-panel__stats">
+                  <div><strong id="vraem-ioarr">-</strong><span>IOARR</span></div>
+                  <div><strong id="vraem-distritos">-</strong><span>Distritos</span></div>
+                  <div><strong id="vraem-convenios">-</strong><span>Convenios</span></div>
+                  <div><strong id="vraem-recursos">-</strong><span>Req. recursos</span></div>
+                </div>
+                <div class="territory-panel__deficit"><span>Déficit estimado</span><strong id="vraem-deficit">-</strong></div>
+              </article>
+
+              <article class="territory-panel territory-panel--norvraem" data-territory="NORVRAEM">
+                <div class="territory-panel__accent"></div>
+                <header class="territory-panel__head">
+                  <div>
+                    <span class="territory-panel__code">02</span>
+                    <h2>NORVRAEM</h2>
+                    <p>Ámbito territorial del norte</p>
+                  </div>
+                  <div class="territory-panel__headline">
+                    <strong id="norvraem-puentes">-</strong>
+                    <span>Puentes</span>
+                  </div>
+                </header>
+
+                <div class="territory-panel__map-wrap">
+                  <svg class="territory-panel__map" data-map="NORVRAEM" viewBox="0 0 320 230" aria-label="Mapa del NORVRAEM"></svg>
+                  <div class="territory-panel__map-key">
+                    <span><i class="territory-panel__swatch territory-panel__swatch--selected"></i>Ámbito</span>
+                    <span><i class="territory-panel__swatch territory-panel__swatch--context"></i>Referencia</span>
+                  </div>
+                </div>
+
+                <div class="territory-panel__stats">
+                  <div><strong id="norvraem-ioarr">-</strong><span>IOARR</span></div>
+                  <div><strong id="norvraem-distritos">-</strong><span>Distritos</span></div>
+                  <div><strong id="norvraem-convenios">-</strong><span>Convenios</span></div>
+                  <div><strong id="norvraem-recursos">-</strong><span>Req. recursos</span></div>
+                </div>
+                <div class="territory-panel__deficit"><span>Déficit estimado</span><strong id="norvraem-deficit">-</strong></div>
+              </article>
+
+              <article class="territory-panel territory-panel--amuvrae" data-territory="AMUVRAEM">
+                <div class="territory-panel__accent"></div>
+                <header class="territory-panel__head">
+                  <div>
+                    <span class="territory-panel__code">03</span>
+                    <h2>AMUVRAE</h2>
+                    <p>Mancomunidad del VRAEM</p>
+                  </div>
+                  <div class="territory-panel__headline">
+                    <strong id="amuvrae-puentes">-</strong>
+                    <span>Puentes</span>
+                  </div>
+                </header>
+
+                <div class="territory-panel__map-wrap">
+                  <svg class="territory-panel__map" data-map="AMUVRAEM" viewBox="0 0 320 230" aria-label="Mapa del AMUVRAE"></svg>
+                  <div class="territory-panel__map-key">
+                    <span><i class="territory-panel__swatch territory-panel__swatch--selected"></i>Ámbito</span>
+                    <span><i class="territory-panel__swatch territory-panel__swatch--context"></i>Referencia</span>
+                  </div>
+                </div>
+
+                <div class="territory-panel__stats">
+                  <div><strong id="amuvrae-ioarr">-</strong><span>IOARR</span></div>
+                  <div><strong id="amuvrae-distritos">-</strong><span>Distritos</span></div>
+                  <div><strong id="amuvrae-convenios">-</strong><span>Convenios</span></div>
+                  <div><strong id="amuvrae-recursos">-</strong><span>Req. recursos</span></div>
+                </div>
+                <div class="territory-panel__deficit"><span>Déficit estimado</span><strong id="amuvrae-deficit">-</strong></div>
+              </article>
+            </section>
+
+            <section class="executive-bottom">
+              <article class="comparison-chart">
+                <header>
+                  <div>
+                    <span class="comparison-chart__eyebrow">Brecha financiera</span>
+                    <h3>Déficit estimado por ámbito</h3>
+                  </div>
+                  <span class="comparison-chart__note">Los ámbitos pueden superponerse</span>
+                </header>
+                <div class="comparison-bars" id="comparisonBars"></div>
+              </article>
+
+              <article class="executive-insight">
+                <span class="executive-insight__icon"><i class="bi bi-activity"></i></span>
+                <div>
+                  <span class="executive-insight__eyebrow">Lectura ejecutiva</span>
+                  <h3 id="insightTitle">Procesando cartera…</h3>
+                  <p id="insightText">Cargando indicadores comparativos.</p>
+                </div>
+              </article>
+            </section>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/comparativo.js?v=20260914-17"></script>
+</body>
+</html>
