@@ -1,0 +1,1045 @@
+/* =========================================================
+   TERRITORIO V0.1
+   Vista 02 - Selección de territorio
+   ========================================================= */
+
+:root {
+  --territory-vraem: #991735;
+  --territory-vraem-rgb: 153, 23, 53;
+
+  --territory-nor: #153f5b;
+  --territory-nor-rgb: 21, 63, 91;
+
+  --territory-amu: #0c8a60;
+  --territory-amu-rgb: 12, 138, 96;
+
+  --territory-ink: #1d2e43;
+  --territory-muted: #6f7d8e;
+  --territory-line: #e5eaf0;
+  --territory-bg: #eef1f4;
+}
+
+html,
+body.territory-page {
+  min-height: 100%;
+}
+
+body.territory-page {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--territory-bg);
+  color: var(--territory-ink);
+}
+
+.territory-top-accent {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 0;
+  height: 66px;
+  background:
+    linear-gradient(90deg, #741027 0%, #981936 52%, #781129 100%);
+}
+
+.territory-shell {
+  position: relative;
+  z-index: 1;
+
+  width: min(100% - 18px, 1600px);
+  margin: 12px auto 22px;
+
+  opacity: 1;
+  transform: none;
+}
+
+.territory-frame {
+  min-height: calc(100vh - 34px);
+  overflow: hidden;
+  border: 1px solid rgba(220,226,233,.92);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow:
+    0 18px 42px rgba(24, 34, 48, .13),
+    0 2px 8px rgba(24, 34, 48, .05);
+}
+
+/* =========================================================
+   CABECERA: comparte foto con la portada
+   ========================================================= */
+
+.territory-hero {
+  min-height: 245px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  overflow: hidden;
+  background: #fff;
+  border-bottom: 1px solid var(--territory-line);
+}
+
+.territory-hero__copy {
+  position: relative;
+  z-index: 3;
+  padding: 24px 28px 25px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.territory-logo {
+  view-transition-name: shared-brand-logo;
+
+  width: min(100%, 390px);
+  max-height: 56px;
+  object-fit: contain;
+  object-position: left center;
+  margin-bottom: 17px;
+}
+
+
+.territory-hero h1 {
+  max-width: 660px;
+  margin: 0;
+  color: #1d2f44;
+  font-size: clamp(34px, 3vw, 50px);
+  line-height: .98;
+  font-weight: 950;
+  letter-spacing: -.045em;
+}
+
+.territory-hero__copy > p {
+  max-width: 610px;
+  margin: 11px 0 20px;
+  color: #667486;
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.territory-total {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 15px;
+  border: 1px solid #e5eaf0;
+  border-radius: 15px;
+  background: rgba(255,255,255,.92);
+  box-shadow:
+    0 10px 24px rgba(26,40,58,.06),
+    inset 0 1px 0 rgba(255,255,255,.75);
+}
+
+.territory-total > div {
+  min-width: 82px;
+  display: grid;
+  gap: 4px;
+}
+
+.territory-total strong {
+  color: var(--territory-vraem);
+  font-size: 33px;
+  line-height: .88;
+  font-weight: 950;
+  letter-spacing: -.045em;
+  text-shadow: 0 5px 14px rgba(153,23,53,.07);
+}
+
+.territory-total span {
+  color: #687789;
+  font-size: 9px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .055em;
+}
+
+.territory-total span small {
+  display: block;
+  margin-top: 2px;
+  color: #9a2744;
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.territory-total i {
+  width: 1px;
+  height: 34px;
+  background: #dfe5eb;
+}
+
+.territory-hero__visual {
+  position: relative;
+  min-height: 245px;
+  overflow: hidden;
+}
+
+.territory-hero__photo {
+  view-transition-name: shared-bridge-photo;
+
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/portada/puente-vraem-fondo.png");
+  background-size: cover;
+  background-position: center 52%;
+  transform: none;
+  animation: none;
+}
+
+.territory-hero__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #fff 0%, rgba(255,255,255,.82) 12%, rgba(255,255,255,.08) 43%, rgba(20,34,47,.05) 100%),
+    linear-gradient(180deg, rgba(22,34,48,.04), rgba(22,34,48,.16));
+}
+
+.territory-hero__line {
+  position: absolute;
+  left: 15%;
+  bottom: 20px;
+  width: 64%;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.78), transparent);
+  opacity: .7;
+}
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+
+.territory-content {
+  padding: 22px 28px 27px;
+  background:
+    radial-gradient(circle at 85% 10%, rgba(153,23,53,.035), transparent 280px),
+    #f7f8fa;
+}
+
+.territory-content__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 17px;
+}
+
+.territory-content__heading h2 {
+  margin: 0;
+  color: #8f1733;
+  font-size: clamp(27px, 2.2vw, 35px);
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: -.035em;
+}
+
+.territory-content__heading > p {
+  max-width: 430px;
+  margin: 0;
+  color: #788596;
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: right;
+  font-weight: 600;
+}
+
+/* =========================================================
+   TARJETAS
+   ========================================================= */
+
+.territory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.territory-card {
+  --card-color: var(--territory-vraem);
+  --card-rgb: var(--territory-vraem-rgb);
+
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  padding: 18px;
+
+  border: 1px solid #e2e8ef;
+  border-radius: 17px;
+  outline: none;
+
+  background:
+    linear-gradient(180deg, #fff 0%, #fcfdff 100%);
+
+  box-shadow:
+    0 6px 16px rgba(24,36,52,.055),
+    0 1px 2px rgba(24,36,52,.03);
+
+  cursor: pointer;
+
+  transition:
+    transform .24s ease,
+    box-shadow .24s ease,
+    border-color .24s ease;
+}
+
+.territory-card--norvraem {
+  --card-color: var(--territory-nor);
+  --card-rgb: var(--territory-nor-rgb);
+}
+
+.territory-card--amuvraem {
+  --card-color: var(--territory-amu);
+  --card-rgb: var(--territory-amu-rgb);
+}
+
+.territory-card:hover,
+.territory-card:focus-visible {
+  transform: translateY(-7px) scale(1.018);
+  z-index: 5;
+  border-color: rgba(var(--card-rgb), .30);
+  box-shadow:
+    0 18px 34px rgba(24,36,52,.11),
+    0 4px 12px rgba(var(--card-rgb), .07);
+}
+
+.territory-card.is-selected {
+  transform: translateY(-8px) scale(1.012);
+  border-color: rgba(var(--card-rgb), .58);
+  box-shadow:
+    0 22px 38px rgba(var(--card-rgb), .19);
+}
+
+.territory-card__accent {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: var(--card-color);
+}
+
+.territory-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 3px;
+  margin-bottom: 9px;
+}
+
+.territory-card__code {
+  display: block;
+  margin-bottom: 4px;
+  color: rgba(var(--card-rgb), .68);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.territory-card h3 {
+  margin: 0;
+  color: var(--card-color);
+  font-size: 25px;
+  line-height: .95;
+  font-weight: 950;
+  letter-spacing: -.035em;
+}
+
+.territory-card__header p {
+  margin: 7px 0 0;
+  color: #738093;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.territory-card__count {
+  flex: 0 0 auto;
+  min-width: 154px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+
+  text-align: right;
+}
+
+.territory-card__count > i {
+  width: 1px;
+  height: 34px;
+  background: rgba(var(--card-rgb), .18);
+}
+
+.territory-card__count-item {
+  display: grid;
+  gap: 4px;
+}
+
+.territory-card__count strong {
+  display: block;
+  color: var(--card-color);
+  font-size: 26px;
+  line-height: .9;
+  font-weight: 900;
+  letter-spacing: -.035em;
+  text-shadow: 0 5px 14px rgba(var(--card-rgb), .08);
+}
+
+.territory-card__count span {
+  display: block;
+  color: #6d7b8e;
+  font-size: 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+}
+
+/* =========================================================
+   MINI MAPA
+   ========================================================= */
+
+.territory-card__map-wrap {
+  min-height: 235px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  margin: 7px 0 10px;
+  border-radius: 13px;
+  border: 1px solid rgba(var(--card-rgb), .09);
+  background:
+    radial-gradient(circle at 52% 45%, rgba(var(--card-rgb), .11), transparent 50%),
+    linear-gradient(180deg, #fbfcfd 0%, #eef3f6 100%);
+}
+
+.territory-card__map-wrap::after {
+  content: "";
+  position: absolute;
+  inset: auto -18% -46% auto;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: rgba(var(--card-rgb), .035);
+}
+
+.territory-card__map {
+  width: 106%;
+  height: 230px;
+  overflow: visible;
+  filter: drop-shadow(0 8px 14px rgba(var(--card-rgb), .08));
+}
+
+/*
+  Cartografía de una sola geometría simplificada:
+  - contexto tenue;
+  - ámbito activo con color principal;
+  - no se vuelve a dibujar una segunda capa provincial encima.
+*/
+.territory-map__district--context {
+  fill: rgba(var(--card-rgb), .045);
+  stroke: rgba(var(--card-rgb), .10);
+  stroke-width: .52;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.territory-map__district--selected {
+  fill: rgba(var(--card-rgb), .80);
+  stroke: rgba(255,255,255,.94);
+  stroke-width: .80;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 3px 5px rgba(var(--card-rgb), .12));
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    fill .18s ease,
+    filter .20s ease,
+    transform .20s cubic-bezier(.2,.8,.2,1),
+    opacity .18s ease;
+}
+
+.territory-map__district--interactive {
+  cursor: default;
+  pointer-events: visiblePainted;
+}
+
+.territory-map__district--selected.is-hovered {
+  fill: rgba(var(--card-rgb), .96);
+  filter: drop-shadow(0 7px 9px rgba(var(--card-rgb), .22));
+  transform: scale(1.028);
+  stroke-width: 1.18;
+}
+
+.territory-map__district--selected.is-dimmed {
+  opacity: .36;
+}
+
+.territory-card:hover .territory-map__district--selected:not(.is-dimmed) {
+  fill: rgba(var(--card-rgb), .88);
+}
+
+/* Se conservan por compatibilidad, pero esta versión no los dibuja. */
+.territory-map__silhouette,
+.territory-map__province-halo,
+.territory-map__province,
+.territory-map__point,
+.territory-map__missing-ring {
+  display: none;
+}
+
+.territory-map-tooltip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 8;
+  min-width: 158px;
+  max-width: 205px;
+  padding: 10px 11px 9px;
+  border: 1px solid rgba(var(--card-rgb), .16);
+  border-radius: 12px;
+  background: rgba(255,255,255,.96);
+  box-shadow:
+    0 12px 28px rgba(24,38,54,.15),
+    0 2px 7px rgba(24,38,54,.06);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(0,0,0);
+  scale: .96;
+  transform-origin: left top;
+  transition: opacity .16s ease, visibility .16s ease, scale .16s ease;
+}
+
+.territory-map-tooltip.is-visible {
+  opacity: 1;
+  visibility: visible;
+  scale: 1;
+}
+
+.territory-map-tooltip__name {
+  color: var(--card-color);
+  font-size: 12px;
+  line-height: 1.1;
+  font-weight: 950;
+  letter-spacing: -.015em;
+}
+
+.territory-map-tooltip__place {
+  margin-top: 3px;
+  color: #7b8796;
+  font-size: 8px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: .035em;
+}
+
+.territory-map-tooltip__metrics {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #edf1f4;
+}
+
+.territory-map-tooltip__metrics > div {
+  display: grid;
+  gap: 2px;
+}
+
+.territory-map-tooltip__metrics strong {
+  color: #21374e;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 950;
+}
+
+.territory-map-tooltip__metrics span {
+  color: #7a8796;
+  font-size: 7px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.territory-map-tooltip__metrics > i {
+  width: 1px;
+  height: 23px;
+  background: #e4e9ee;
+}
+
+.territory-card__map-key {
+  position: absolute;
+  left: 10px;
+  bottom: 9px;
+  z-index: 3;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 6px 8px;
+  border-radius: 8px;
+
+  background: rgba(255,255,255,.92);
+  border: 1px solid #e5ebf0;
+
+  color: #647286;
+  font-size: 8px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .055em;
+
+  backdrop-filter: blur(7px);
+  box-shadow: 0 4px 12px rgba(25,38,55,.05);
+}
+
+.territory-card__map-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.territory-card__swatch {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.territory-card__swatch--selected {
+  background: rgba(var(--card-rgb), .72);
+}
+
+.territory-card__swatch--context {
+  background: rgba(var(--card-rgb), .12);
+  border: 1px solid rgba(var(--card-rgb), .22);
+}
+
+/* =========================================================
+   ESTADÍSTICAS + ACCIÓN
+   ========================================================= */
+
+.territory-card__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 7px;
+}
+
+.territory-card__stats > div {
+  padding: 11px 8px 10px;
+  border-radius: 11px;
+  background:
+    linear-gradient(180deg, rgba(var(--card-rgb), .075), rgba(var(--card-rgb), .045));
+  text-align: center;
+  border: 1px solid rgba(var(--card-rgb), .045);
+}
+
+.territory-card__stats strong {
+  display: block;
+  color: var(--card-color);
+  font-size: 23px;
+  line-height: .95;
+  font-weight: 950;
+  letter-spacing: -.03em;
+}
+
+.territory-card__stats span {
+  display: block;
+  margin-top: 6px;
+  color: #738093;
+  font-size: 9px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .045em;
+}
+
+.territory-card__action {
+  width: 100%;
+  min-height: 38px;
+  margin-top: 11px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(var(--card-rgb), .075);
+  color: var(--card-color);
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: background-color .18s ease, color .18s ease;
+}
+
+.territory-card:hover .territory-card__action,
+.territory-card.is-selected .territory-card__action {
+  background: var(--card-color);
+  color: #fff;
+}
+
+.territory-card__action i {
+  transition: transform .18s ease;
+}
+
+.territory-card:hover .territory-card__action i {
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   NOTA
+   ========================================================= */
+
+.territory-note {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #6f7d8e;
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.territory-note i {
+  color: var(--territory-vraem);
+}
+
+/* =========================================================
+   TRANSICIÓN DE SALIDA
+   ========================================================= */
+
+/* La salida se gestiona con View Transitions; no se oculta el frame manualmente. */
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1080px) {
+  .territory-hero {
+    grid-template-columns: 1fr .85fr;
+  }
+
+  .territory-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .territory-card {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 12px;
+  }
+
+  .territory-card__header,
+  .territory-card__stats,
+  .territory-card__action {
+    grid-column: 1;
+  }
+
+  .territory-card__map-wrap {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    margin: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .territory-shell {
+    width: 100%;
+    margin: 0;
+  }
+
+  .territory-frame {
+    border-radius: 0;
+    border: 0;
+  }
+
+  .territory-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .territory-hero__visual {
+    min-height: 180px;
+  }
+
+  .territory-hero__copy {
+    padding: 22px 20px;
+  }
+
+  .territory-logo {
+    max-width: 330px;
+  }
+
+  .territory-content {
+    padding: 20px;
+  }
+
+  .territory-content__heading {
+    display: block;
+  }
+
+  .territory-content__heading > p {
+    margin-top: 7px;
+    text-align: left;
+  }
+
+  .territory-card {
+    display: block;
+  }
+
+  .territory-card__map-wrap {
+    margin: 8px 0 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  .territory-shell {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   ANIMACIÓN DE ENTRADA Y DATOS
+   Mantiene la vista visible aunque JS falle; las animaciones
+   son progresivas, no bloquean el contenido.
+   ========================================================= */
+
+.territory-total {
+  animation: territoryKpiGroupIn .55s cubic-bezier(.2,.8,.2,1) .18s both;
+}
+
+.territory-total > div {
+  animation: territoryKpiItemIn .52s cubic-bezier(.2,.82,.2,1) both;
+}
+
+.territory-total > div:nth-of-type(1) { animation-delay: .28s; }
+.territory-total > div:nth-of-type(2) { animation-delay: .36s; }
+.territory-total > div:nth-of-type(3) { animation-delay: .44s; }
+.territory-total > div:nth-of-type(4) { animation-delay: .52s; }
+
+.territory-card {
+  animation: territoryCardIn .66s cubic-bezier(.18,.82,.22,1) both;
+}
+
+.territory-card:nth-child(1) { animation-delay: .28s; }
+.territory-card:nth-child(2) { animation-delay: .40s; }
+.territory-card:nth-child(3) { animation-delay: .52s; }
+
+.territory-card__count-item,
+.territory-card__stats > div {
+  transform-origin: center;
+}
+
+.territory-card.is-data-ready .territory-card__count-item {
+  animation: territoryMetricPop .48s cubic-bezier(.18,.9,.28,1) both;
+}
+
+.territory-card.is-data-ready .territory-card__count-item:nth-of-type(1) { animation-delay: .05s; }
+.territory-card.is-data-ready .territory-card__count-item:nth-of-type(2) { animation-delay: .13s; }
+
+.territory-card.is-data-ready .territory-card__stats > div {
+  animation: territoryMetricPop .48s cubic-bezier(.18,.9,.28,1) both;
+}
+
+.territory-card.is-data-ready .territory-card__stats > div:nth-child(1) { animation-delay: .18s; }
+.territory-card.is-data-ready .territory-card__stats > div:nth-child(2) { animation-delay: .26s; }
+.territory-card.is-data-ready .territory-card__stats > div:nth-child(3) { animation-delay: .34s; }
+
+.territory-map__district--context,
+.territory-map__district--selected {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: territoryMapPieceIn .58s cubic-bezier(.18,.82,.22,1) both;
+  animation-delay: var(--map-delay, 0ms);
+}
+
+
+@keyframes territoryKpiGroupIn {
+  from { opacity: .15; transform: translateY(12px) scale(.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes territoryKpiItemIn {
+  from { opacity: 0; transform: translateY(9px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes territoryCardIn {
+  from { opacity: 0; transform: translateY(24px) scale(.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes territoryMetricPop {
+  0%   { opacity: .25; transform: translateY(8px) scale(.94); }
+  72%  { opacity: 1; transform: translateY(-2px) scale(1.025); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes territoryMapPieceIn {
+  from { opacity: 0; transform: scale(.90); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes territoryMapLineIn {
+  from { opacity: 0; transform: scale(.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* =========================================================
+   TRANSICIONES ENTRE DOCUMENTOS
+   Coincide con portada.css y permite continuidad al navegar.
+   ========================================================= */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-old(shared-bridge-photo),
+::view-transition-new(shared-bridge-photo),
+::view-transition-old(shared-brand-logo),
+::view-transition-new(shared-brand-logo) {
+  mix-blend-mode: normal;
+}
+
+::view-transition-group(root) {
+  animation-duration: .58s;
+  animation-timing-function: cubic-bezier(.22,.78,.22,1);
+}
+
+::view-transition-old(root) {
+  animation: territoryRootOut .52s ease both;
+}
+
+::view-transition-new(root) {
+  animation: territoryRootIn .58s ease both;
+}
+
+::view-transition-group(shared-bridge-photo) {
+  z-index: 100;
+  animation-duration: 1.32s;
+  animation-timing-function: cubic-bezier(.16,.84,.18,1);
+  overflow: clip;
+}
+
+::view-transition-image-pair(shared-bridge-photo) {
+  isolation: isolate;
+}
+
+::view-transition-old(shared-bridge-photo),
+::view-transition-new(shared-bridge-photo) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  backface-visibility: hidden;
+}
+
+::view-transition-group(shared-brand-logo) {
+  z-index: 110;
+  animation-duration: .92s;
+  animation-timing-function: cubic-bezier(.18,.82,.22,1);
+}
+
+@keyframes territoryRootOut {
+  from { opacity: 1; }
+  to   { opacity: .34; }
+}
+
+@keyframes territoryRootIn {
+  from { opacity: .22; }
+  to   { opacity: 1; }
+}
+
+
+/* =========================================================
+   LEYENDA DE DEPARTAMENTOS EN CADA MINI MAPA
+   ========================================================= */
+
+.territory-department-legend {
+  position: absolute;
+  top: 50%;
+  z-index: 7;
+  width: 98px;
+  padding: 9px 9px 8px;
+  border: 1px solid rgba(var(--card-rgb), .13);
+  border-radius: 12px;
+  background: rgba(255,255,255,.90);
+  box-shadow:
+    0 9px 22px rgba(24,38,54,.09),
+    0 1px 4px rgba(24,38,54,.04);
+  backdrop-filter: blur(7px);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.territory-department-legend--left {
+  left: 9px;
+}
+
+.territory-department-legend--right {
+  right: 9px;
+}
+
+.territory-department-legend__title {
+  display: block;
+  margin-bottom: 6px;
+  color: #6d7c8d;
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: .085em;
+  text-transform: uppercase;
+}
+
+.territory-department-legend__items {
+  display: grid;
+  gap: 5px;
+}
+
+.territory-department-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  color: #31465d;
+  font-size: 8px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.territory-department-legend__item i {
+  width: 10px;
+  height: 3px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--card-color);
+  opacity: .78;
+}
+
+.territory-card:hover .territory-department-legend {
+  border-color: rgba(var(--card-rgb), .22);
+  box-shadow:
+    0 11px 25px rgba(24,38,54,.11),
+    0 2px 6px rgba(var(--card-rgb), .05);
+}
+
+/* Entrada inmediatamente posterior al morph manual de la portada. */
+body.territory-page.is-photo-arrival .territory-frame {
+  animation: territoryPhotoArrival .24s ease both;
+}
+
+@keyframes territoryPhotoArrival {
+  from { opacity: .94; }
+  to   { opacity: 1; }
+}

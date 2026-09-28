@@ -1,0 +1,3779 @@
+:root{
+  --scope-color:#8f2641;
+  --scope-rgb:143,38,65;
+
+  --wine:#9a1838;
+  --wine-dark:#7f142d;
+  --wine-mid:#bb4e68;
+  --wine-soft:#fbf0f4;
+
+  --blue:#2f78a1;
+  --blue-dark:#245d7e;
+  --blue-soft:#eef6fb;
+
+  --green:#1f9a6e;
+  --green-dark:#167a58;
+  --green-soft:#edf8f4;
+
+  --ochre:#d49632;
+  --ochre-dark:#a8721e;
+  --ochre-soft:#fbf3e6;
+
+  --rose:#c85f76;
+  --rose-soft:#fbf0f3;
+
+  --slate:#94a4b2;
+  --slate-soft:#f0f3f6;
+
+  --ink:#203b54;
+  --ink-2:#345168;
+  --muted:#6f8294;
+  --line:#dde6ed;
+  --panel:#ffffff;
+  --page:#f4f7fa;
+
+  --shadow:0 10px 26px rgba(30,55,80,.09),0 3px 10px rgba(30,55,80,.04);
+  --shadow-raised:0 16px 36px rgba(30,55,80,.12),0 5px 14px rgba(30,55,80,.05);
+}
+
+html,body.inicio-page{min-height:100%}
+body.inicio-page{
+  overflow-x:hidden;
+  color:var(--ink);
+  background:#f3f6f9;
+}
+.inicio-main{
+  padding:10px 12px 12px!important;
+  overflow:visible!important;
+}
+.inicio-stage{
+  min-width:0;
+  display:grid;
+  grid-template-rows:140px 60px 82px minmax(308px,1fr) 196px;
+  gap:8px;
+}
+.reveal{
+  opacity:0;
+  transform:translateY(9px);
+  animation:inicioReveal .46s ease forwards;
+}
+.reveal--1{animation-delay:.02s}
+.reveal--2{animation-delay:.06s}
+.reveal--3{animation-delay:.10s}
+.reveal--4{animation-delay:.14s}
+.reveal--5{animation-delay:.18s}
+@keyframes inicioReveal{to{opacity:1;transform:translateY(0)}}
+
+/* HERO */
+.inicio-hero{
+  position:relative;
+  display:grid;
+  grid-template-columns:45% 55%;
+  min-height:142px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+.inicio-hero::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5px;
+  z-index:5;
+  background:var(--scope-color);
+}
+.inicio-hero__copy{
+  position:relative;
+  z-index:3;
+  padding:14px 16px 11px 18px;
+  background:linear-gradient(90deg,#fff 0%,#fff 88%,rgba(255,255,255,.88) 96%,rgba(255,255,255,0) 100%);
+}
+.inicio-hero__heading{
+  display:flex;
+  align-items:flex-start;
+  gap:15px;
+}
+.inicio-hero__heading h1{
+  margin:0;
+  color:#203b55;
+  font-size:33px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:-.045em;
+}
+.territory-chip{
+  margin-top:5px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:7px 14px;
+  border:1px solid rgba(var(--scope-rgb),.18);
+  border-radius:999px;
+  background:rgba(var(--scope-rgb),.06);
+  color:var(--scope-color);
+  font-size:10px;
+  font-weight:950;
+}
+.inicio-hero__subtitle{
+  margin:7px 0 0;
+  color:#60768b;
+  font-size:13.8px;
+  font-weight:700;
+}
+.geo-kpis{
+  display:flex;
+  gap:7px;
+  margin-top:9px;
+}
+.geo-kpi{
+  min-width:116px;
+  display:grid;
+  grid-template-columns:28px auto;
+  grid-template-rows:auto auto;
+  column-gap:7px;
+  padding:8px 10px;
+  border:1px solid #e1e8ee;
+  border-radius:10px;
+  background:linear-gradient(180deg,#fff,#f8fafc);
+  box-shadow:0 4px 12px rgba(26,50,73,.035);
+}
+.geo-kpi__icon{
+  grid-row:1/3;
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  align-self:center;
+  border-radius:8px;
+  background:var(--wine-soft);
+  color:var(--wine);
+  font-size:18px;
+}
+.geo-kpi strong{
+  color:var(--wine-dark);
+  font-size:22px;
+  line-height:1;
+  font-weight:950;
+}
+.geo-kpi small{
+  color:#6c7e90;
+  font-size:9.6px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.inicio-hero__visual{
+  position:relative;
+  overflow:hidden;
+}
+.inicio-hero__photo{
+  position:absolute;
+  inset:0;
+  background:url('../img/portada/puente-vraem-fondo.png') center 58%/cover no-repeat;
+  transform:scale(1.02);
+}
+.inicio-hero__shade{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,#fff 0%,rgba(255,255,255,.72) 18%,rgba(255,255,255,.08) 55%,rgba(18,39,57,.14) 100%);
+}
+.hero-back{
+  position:absolute;
+  top:11px;
+  right:12px;
+  z-index:4;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-height:34px;
+  padding:0 12px;
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:9px;
+  background:rgba(255,255,255,.96);
+  color:#25445d;
+  font-size:10px;
+  font-weight:900;
+  box-shadow:0 7px 18px rgba(23,46,67,.13);
+  transition:.2s ease;
+}
+.hero-back:hover{
+  transform:translateY(-2px);
+}
+.hero-slogan{
+  position:absolute;
+  z-index:3;
+  right:18px;
+  bottom:10px;
+  display:none;
+}
+
+/* FILTROS */
+.filter-bar{
+  display:grid;
+  grid-template-columns:205px repeat(4,minmax(0,1fr)) 120px;
+  gap:8px;
+  align-items:center;
+  min-height:60px;
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+.filter-bar__lead{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.filter-bar__lead>span{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:var(--wine-soft);
+  color:var(--wine);
+  font-size:18px;
+}
+.filter-bar__lead strong{
+  display:block;
+  color:#29455d;
+  font-size:18px;
+  font-weight:950;
+}
+.filter-bar__lead small{
+  display:block;
+  margin-top:2px;
+  color:#7b8b9a;
+  font-size:9.6px;
+  font-weight:700;
+}
+.filter-field{
+  display:grid;
+  gap:3px;
+}
+.filter-field>span{
+  color:#607588;
+  font-size:8.4px;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.filter-field select{
+  width:100%;
+  height:40px;
+  padding:0 11px;
+  border:1px solid #dbe4eb;
+  border-radius:8px;
+  background:#fff;
+  color:#26435a;
+  font-size:11.4px;
+  font-weight:850;
+  outline:none;
+}
+.filter-field select:focus{
+  border-color:rgba(var(--scope-rgb),.38);
+  box-shadow:0 0 0 3px rgba(var(--scope-rgb),.06);
+}
+.filter-reset{
+  min-height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  border:1px solid #dbe4eb;
+  border-radius:9px;
+  background:#fff;
+  color:#607487;
+  font-size:10px;
+  font-weight:900;
+}
+
+/* KPI */
+.kpi-row{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px;
+}
+.kpi-card{
+  position:relative;
+  min-width:0;
+  display:grid;
+  grid-template-columns:48px minmax(0,1fr) 40px;
+  align-items:center;
+  gap:9px;
+  min-height:82px;
+  padding:10px 12px 10px 14px;
+  overflow:hidden;
+  border:1px solid #dfe7ed;
+  border-radius:13px;
+  background:linear-gradient(180deg,#fff 0%,#fbfdff 100%);
+  box-shadow:var(--shadow);
+}
+.kpi-card__stripe{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:4px;
+  background:currentColor;
+}
+.kpi-card__icon{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:10px;
+  background:#f5f7f9;
+  font-size:22px;
+}
+.kpi-card__icon--bridge svg{
+  width:27px;
+  height:27px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.kpi-card__text{
+  min-width:0;
+}
+.kpi-card__text small{
+  display:block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#49657c;
+  font-size:9.6px;
+  font-weight:950;
+}
+.kpi-card__text>div{
+  display:flex;
+  align-items:flex-end;
+  gap:7px;
+  min-width:0;
+}
+.kpi-card__text strong{
+  color:var(--wine-dark);
+  font-size:30px;
+  line-height:.95;
+  font-weight:950;
+  letter-spacing:-.035em;
+  white-space:nowrap;
+}
+.kpi-card__text em{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#748594;
+  font-size:8.4px;
+  font-style:normal;
+  font-weight:800;
+}
+.kpi-card__text--money strong{
+  font-size:24px;
+}
+.kpi-card__bars{
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-end;
+  gap:3px;
+  height:32px;
+}
+.kpi-card__bars i{
+  width:4px;
+  border-radius:4px 4px 1px 1px;
+  opacity:.58;
+  background:currentColor;
+  animation:kpiPulse 2.2s ease-in-out infinite;
+}
+.kpi-card__bars i:nth-child(1){height:9px}
+.kpi-card__bars i:nth-child(2){height:17px;animation-delay:.1s}
+.kpi-card__bars i:nth-child(3){height:24px;animation-delay:.2s}
+.kpi-card__bars i:nth-child(4){height:32px;animation-delay:.3s}
+@keyframes kpiPulse{50%{transform:scaleY(.84);opacity:.78}}
+
+.kpi-card--wine{color:var(--wine)}
+.kpi-card--wine .kpi-card__icon{background:var(--wine-soft);color:var(--wine)}
+.kpi-card--blue{color:var(--blue)}
+.kpi-card--blue .kpi-card__icon{background:var(--blue-soft);color:var(--blue)}
+.kpi-card--green{color:var(--green)}
+.kpi-card--green .kpi-card__icon{background:var(--green-soft);color:var(--green)}
+.kpi-card--ochre{color:var(--ochre)}
+.kpi-card--ochre .kpi-card__icon{background:var(--ochre-soft);color:var(--ochre)}
+
+/* MAIN ROW */
+.main-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(205px,.7fr) minmax(0,1.05fr) minmax(260px,.95fr);
+  gap:10px;
+  min-height:0;
+}
+.exec-card,
+.analytics-card{
+  min-width:0;
+  min-height:0;
+  overflow:hidden;
+  border:1px solid #dce5ec;
+  border-radius:16px;
+  background:linear-gradient(180deg,#fff 0%,#fbfdff 100%);
+  box-shadow:var(--shadow-raised);
+}
+.exec-card{
+  display:flex;
+  flex-direction:column;
+}
+.card-portfolio{border-top:3px solid var(--wine)}
+.card-stage{border-top:3px solid var(--blue)}
+.card-agreements{border-top:3px solid var(--blue)}
+.card-resource-route{border-top:3px solid var(--ochre)}
+
+.exec-card__head{
+  display:grid;
+  grid-template-columns:34px minmax(0,1fr) auto;
+  gap:8px;
+  align-items:center;
+  min-height:56px;
+  padding:8px 10px;
+  border-bottom:1px solid #e8edf2;
+}
+.exec-card__head-icon{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  font-size:17px;
+}
+.exec-card__head-icon--wine{background:var(--wine-soft);color:var(--wine)}
+.exec-card__head-icon--blue{background:var(--blue-soft);color:var(--blue)}
+.exec-card__head-icon--ochre{background:var(--ochre-soft);color:var(--ochre)}
+.exec-card__titles h2{
+  margin:0;
+  color:#27435a;
+  font-size:13.8px;
+  line-height:1.05;
+  font-weight:950;
+}
+.exec-card__titles p{
+  margin:3px 0 0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#718396;
+  font-size:8.2px;
+  font-weight:700;
+}
+.card-action{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  min-height:34px;
+  padding:0 8px;
+  border:1px solid #dfe7ed;
+  border-radius:8px;
+  background:#fff;
+  color:#607588;
+  font-size:8.4px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+/* CARTERA */
+.portfolio-content{
+  flex:1;
+  min-height:0;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  padding:10px 11px 11px;
+}
+.portfolio-content h3{
+  margin:0 0 7px;
+  color:#456279;
+  font-size:10.6px;
+  font-weight:950;
+}
+.portfolio-content h3 i{
+  color:var(--wine);
+  margin-right:5px;
+}
+.portfolio-resource{
+  min-height:0;
+  display:grid;
+  grid-template-columns:156px minmax(0,1fr);
+  gap:10px;
+  align-items:center;
+}
+.donut{
+  position:relative;
+  display:grid;
+  place-items:center;
+}
+.donut svg{
+  width:100%;
+  height:100%;
+  transform:rotate(-90deg);
+  overflow:visible;
+}
+.donut-track,.donut-seg{
+  fill:none;
+  stroke-width:20;
+}
+.donut-track{stroke:#e9eef2}
+.donut-seg{
+  stroke-linecap:butt;
+  transition:stroke-dasharray .82s cubic-bezier(.2,.82,.2,1),stroke-dashoffset .82s cubic-bezier(.2,.82,.2,1);
+}
+.donut-seg--wine{stroke:var(--wine)}
+.donut-seg--good{stroke:var(--green)}
+.donut-seg--blue{stroke:var(--blue)}
+.donut-seg--ochre{stroke:var(--ochre)}
+.donut-seg--rose{stroke:var(--rose)}
+.donut-center{
+  position:absolute;
+  display:grid;
+  place-items:center;
+  text-align:center;
+}
+.donut-center strong{
+  color:#203d55;
+  font-size:34px;
+  line-height:.9;
+  font-weight:950;
+}
+.donut-center span{
+  color:#6f8192;
+  font-size:9.6px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.donut--resource,.donut--resource svg{
+  width:148px;
+  height:148px;
+}
+.resource-legend{
+  display:grid;
+  gap:8px;
+}
+.resource-item{
+  display:grid;
+  grid-template-columns:10px minmax(0,1fr) auto;
+  align-items:center;
+  gap:8px;
+  min-height:58px;
+  padding:8px 10px;
+  border:1px solid #e3e9ee;
+  border-radius:10px;
+  background:#fff;
+}
+.resource-item>i{
+  width:10px;
+  height:11px;
+  border-radius:999px;
+}
+.resource-item--good>i{background:var(--green)}
+.resource-item--risk>i{background:var(--wine)}
+.resource-item span{
+  color:#456179;
+  font-size:10px;
+  line-height:1.12;
+  font-weight:850;
+}
+.resource-item strong{
+  color:#263f55;
+  font-size:18px;
+  font-weight:950;
+}
+.investment-strip{
+  display:grid;
+  grid-template-columns:182px minmax(0,1fr);
+  gap:12px;
+  align-items:center;
+  margin-top:8px;
+  padding-top:7px;
+  border-top:1px solid #e9eef2;
+}
+.investment-total{
+  display:grid;
+  gap:2px;
+}
+.investment-total span{
+  color:#5e7286;
+  font-size:8.8px;
+  font-weight:850;
+}
+.investment-total span i{
+  color:var(--wine);
+  margin-right:4px;
+}
+.investment-total strong{
+  color:#223e56;
+  font-size:22px;
+  line-height:1;
+  font-weight:950;
+}
+.investment-total small{
+  color:#7a8998;
+  font-size:7.4px;
+}
+.investment-progress{
+  display:grid;
+  gap:5px;
+}
+.investment-progress__bar{
+  display:flex;
+  height:14px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#e9eef2;
+}
+.investment-progress__bar i{
+  width:0;
+  transition:width .8s cubic-bezier(.2,.82,.2,1);
+}
+.investment-progress__funded{background:linear-gradient(90deg,#18895e,#2eab7c)}
+.investment-progress__deficit{background:linear-gradient(90deg,#a91b3d,#c04c67)}
+.investment-progress__legend{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.investment-progress__legend div{
+  display:grid;
+  grid-template-columns:1fr auto;
+  column-gap:4px;
+}
+.investment-progress__legend strong{
+  color:#264258;
+  font-size:11.4px;
+  font-weight:950;
+}
+.investment-progress__legend span{
+  color:#718394;
+  font-size:7.4px;
+  font-weight:750;
+}
+.investment-progress__legend em{
+  grid-row:1/3;
+  grid-column:2;
+  align-self:center;
+  color:#667a8d;
+  font-size:9.6px;
+  font-style:normal;
+  font-weight:900;
+}
+
+/* ESTADO */
+.stage-content{
+  flex:1;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  padding:11px 11px 11px;
+}
+.stage-total{
+  display:flex;
+  align-items:flex-end;
+  gap:5px;
+}
+.stage-total strong{
+  color:#203d55;
+  font-size:34px;
+  line-height:.92;
+  font-weight:950;
+}
+.stage-total span{
+  color:#718394;
+  font-size:9.6px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.stage-stack{
+  display:flex;
+  width:100%;
+  height:20px;
+  overflow:hidden;
+  margin-top:9px;
+  border-radius:6px;
+  background:#e8edf2;
+}
+.stage-stack__seg{
+  display:block;
+  width:0;
+  transition:width .8s cubic-bezier(.2,.82,.2,1);
+}
+.stage-stack__seg--selection{background:var(--blue)}
+.stage-stack__seg--eett{background:var(--ochre)}
+.stage-stack__seg--other{background:var(--slate)}
+.stage-values{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  margin:5px 0 8px;
+}
+.stage-values span{
+  color:#607487;
+  font-size:9.6px;
+  font-weight:900;
+  text-align:center;
+}
+.stage-legend{
+  display:grid;
+  gap:10px;
+  margin-top:6px;
+}
+.stage-legend>div{
+  display:grid;
+  grid-template-columns:9px minmax(0,1fr) auto;
+  gap:6px;
+  align-items:center;
+}
+.legend-dot{
+  width:8px;
+  height:8px;
+  border-radius:2px;
+}
+.legend-dot--selection{background:var(--blue)}
+.legend-dot--eett{background:var(--ochre)}
+.legend-dot--other{background:var(--slate)}
+.stage-legend span{
+  color:#4f687d;
+  font-size:9.4px;
+  line-height:1.1;
+  font-weight:850;
+}
+.stage-legend strong{
+  color:#274158;
+  font-size:17px;
+  font-weight:950;
+}
+
+/* CONVENIOS */
+.agreements-content{
+  flex:1;
+  min-height:0;
+  display:grid;
+  grid-template-columns:150px minmax(0,1fr);
+  gap:10px;
+  align-items:center;
+  padding:10px 11px 8px;
+}
+.donut--agreement,.donut--agreement svg{
+  width:148px;
+  height:148px;
+}
+.agreement-list{
+  display:grid;
+  gap:7px;
+}
+.agreement-list>div{
+  display:grid;
+  grid-template-columns:32px minmax(0,1fr) auto;
+  gap:8px;
+  align-items:center;
+  min-height:56px;
+  padding:8px 10px;
+  border:1px solid #e2e8ed;
+  border-radius:10px;
+  background:#fff;
+}
+.agreement-list__icon{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  font-size:18px;
+}
+.agreement-list__icon--green{background:var(--green-soft);color:var(--green)}
+.agreement-list__icon--ochre{background:var(--ochre-soft);color:var(--ochre)}
+.agreement-list__icon--rose{background:var(--rose-soft);color:var(--rose)}
+.agreement-list p{
+  margin:0;
+  display:grid;
+  gap:1px;
+}
+.agreement-list small{
+  color:#5c7185;
+  font-size:8.4px;
+  line-height:1.05;
+  font-weight:850;
+}
+.agreement-list strong{
+  color:#294158;
+  font-size:18px;
+  line-height:1;
+  font-weight:950;
+}
+.agreement-list em{
+  color:#6f8091;
+  font-size:9.6px;
+  font-style:normal;
+  font-weight:900;
+}
+.agreement-summary{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin:0 10px 9px;
+  padding:7px 8px;
+  border-top:1px solid #e9eef2;
+  color:#708193;
+  font-size:9.6px;
+  font-weight:750;
+}
+.agreement-summary i{color:var(--wine)}
+.agreement-summary strong{
+  color:#274158;
+  font-size:12px;
+  font-weight:950;
+}
+
+/* GESTIÓN DE RECURSOS */
+.resource-route-content{
+  flex:1;
+  min-height:0;
+  display:grid;
+  grid-template-rows:auto auto auto;
+  gap:7px;
+  padding:10px;
+}
+.route-top{
+  display:grid;
+  grid-template-columns:1fr 22px 1fr;
+  gap:6px;
+  align-items:center;
+}
+.route-arrow{
+  display:grid;
+  place-items:center;
+  width:22px;
+  height:22px;
+  border-radius:999px;
+  background:#f2f5f7;
+  color:#8a99a6;
+  font-size:10px;
+}
+.route-node{
+  min-height:66px;
+  display:grid;
+  grid-template-columns:31px minmax(0,1fr);
+  gap:7px;
+  align-items:center;
+  padding:8px;
+  border:1px solid #e2e8ed;
+  border-radius:10px;
+  background:#fff;
+}
+.route-node>span{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  font-size:18px;
+}
+.route-node--risk>span{background:var(--wine-soft);color:var(--wine)}
+.route-node--blue>span{background:var(--blue-soft);color:var(--blue)}
+.route-node p{
+  margin:0;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:end;
+  column-gap:5px;
+}
+.route-node small{
+  grid-column:1/-1;
+  color:#5b7185;
+  font-size:9.6px;
+  line-height:1.05;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.route-node strong{
+  color:#263f55;
+  font-size:22px;
+  line-height:1;
+  font-weight:950;
+}
+.route-node em{
+  color:#798897;
+  font-size:7.8px;
+  font-style:normal;
+  font-weight:800;
+}
+.route-middle{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+.route-option{
+  min-height:80px;
+  display:grid;
+  grid-template-columns:30px minmax(0,1fr);
+  gap:7px;
+  align-items:center;
+  padding:8px;
+  border:1px solid #e2e8ed;
+  border-radius:10px;
+  background:#fff;
+}
+.route-option>span{
+  width:29px;
+  height:29px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  font-size:18px;
+}
+.route-option--package>span{background:var(--ochre-soft);color:var(--ochre)}
+.route-option--pending>span{background:var(--blue-soft);color:var(--blue)}
+.route-option p{
+  margin:0;
+  display:grid;
+  gap:1px;
+}
+.route-option small{
+  color:#5b7185;
+  font-size:8.4px;
+  line-height:1.05;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.route-option strong{
+  color:#2a4258;
+  font-size:22px;
+  line-height:1;
+  font-weight:950;
+}
+.route-option em{
+  color:#7a8998;
+  font-size:7.4px;
+  line-height:1.1;
+  font-style:normal;
+  font-weight:750;
+}
+.route-bottom{
+  display:grid;
+  grid-template-columns:30px minmax(0,1fr) auto;
+  gap:7px;
+  align-items:center;
+  min-height:56px;
+  padding:8px;
+  border:1px solid #dde5ec;
+  border-radius:10px;
+  background:#f7f9fb;
+}
+.route-bottom>span{
+  width:29px;
+  height:29px;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  background:#eef2f5;
+  color:#748797;
+  font-size:18px;
+}
+.route-bottom p{
+  margin:0;
+  display:grid;
+  gap:1px;
+}
+.route-bottom small{
+  color:#5b7185;
+  font-size:8.4px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.route-bottom em{
+  color:#7b8b99;
+  font-size:7.4px;
+  line-height:1.08;
+  font-style:normal;
+  font-weight:750;
+}
+.route-bottom strong{
+  color:#294158;
+  font-size:22px;
+  font-weight:950;
+}
+
+/* BOTTOM */
+.bottom-grid{
+  display:grid;
+  grid-template-columns:1.18fr 1fr .95fr;
+  gap:10px;
+  min-height:0;
+}
+.analytics-card{
+  display:flex;
+  flex-direction:column;
+}
+.analytics-card--province{border-top:2px solid #93a8b8}
+.analytics-card--map{border-top:2px solid #7f9bb0}
+.analytics-card--prep{border-top:2px solid #c16477}
+.analytics-card__head{
+  display:grid;
+  grid-template-columns:32px minmax(0,1fr) auto;
+  gap:8px;
+  align-items:center;
+  min-height:56px;
+  padding:8px 10px;
+  border-bottom:1px solid #e9eef2;
+}
+.analytics-card__icon{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  background:var(--blue-soft);
+  color:var(--blue);
+  font-size:18px;
+}
+.analytics-card__icon--wine{background:var(--wine-soft);color:var(--wine)}
+.analytics-card__head h3{
+  margin:0;
+  color:#274158;
+  font-size:13.8px;
+  font-weight:950;
+}
+.analytics-card__head p{
+  margin:2px 0 0;
+  color:#788998;
+  font-size:7.8px;
+  font-weight:700;
+}
+.analytics-card__head>a{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  min-height:27px;
+  padding:0 8px;
+  border:1px solid #dfe6ec;
+  border-radius:8px;
+  background:#fff;
+  color:#607488;
+  font-size:7.5px;
+  font-weight:900;
+}
+.analytics-card__badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:25px;
+  padding:0 8px;
+  border-radius:7px;
+  background:#f4f7f9;
+  color:#617587;
+  font-size:7.4px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+/* Brecha provincia */
+.province-table-head{
+  display:grid;
+  grid-template-columns:84px minmax(0,1fr) 82px;
+  gap:8px;
+  padding:6px 10px 3px;
+  color:#6c7f91;
+  font-size:7.8px;
+  font-weight:850;
+}
+.province-bars{
+  display:grid;
+  gap:5px;
+  padding:2px 10px 8px;
+}
+.province-row{
+  display:grid;
+  grid-template-columns:80px minmax(0,1fr) 74px;
+  gap:8px;
+  align-items:center;
+}
+.province-row__name{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#334f66;
+  font-size:9.4px;
+  font-weight:900;
+}
+.province-row__track{
+  display:block;
+  height:11px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#e7edf2;
+}
+.province-row__fill{
+  display:block;
+  width:0;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,#9a1838,#cd667d);
+  transition:width .8s cubic-bezier(.2,.82,.2,1);
+}
+.province-row__value{
+  display:grid;
+  grid-template-columns:1fr 24px;
+  column-gap:4px;
+  color:#7f142d;
+  font-size:8.8px;
+  font-weight:950;
+  text-align:right;
+}
+.province-row__pct{
+  color:#536c80;
+}
+
+/* Mapa */
+.territory-map-content{
+  flex:1;
+  min-height:0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 150px;
+  gap:8px;
+  align-items:center;
+  padding:5px 9px 2px;
+}
+.scope-map{
+  width:100%;
+  height:128px;
+  filter:drop-shadow(0 5px 8px rgba(25,47,68,.06));
+}
+.scope-map__context{
+  fill:#dde4ea;
+  stroke:#fff;
+  stroke-width:.8;
+}
+.scope-map__active{
+  fill:rgba(154,24,56,.72);
+  stroke:#fff;
+  stroke-width:1;
+  transition:fill .2s ease,transform .2s ease;
+  transform-box:fill-box;
+  transform-origin:center;
+}
+.scope-map__active:nth-of-type(3n){fill:#c65d75}
+.scope-map__active:nth-of-type(3n+1){fill:#ad2f50}
+.scope-map__active:nth-of-type(3n+2){fill:#d98ca0}
+.scope-map__active:hover{
+  fill:#8f1734;
+  transform:scale(1.03);
+}
+.scope-map-legend{
+  display:grid;
+  gap:5px;
+}
+.scope-map-legend>div{
+  display:grid;
+  grid-template-columns:8px minmax(0,1fr) auto;
+  gap:5px;
+  align-items:center;
+}
+.scope-map-legend i{
+  width:7px;
+  height:7px;
+  border-radius:999px;
+  background:var(--wine);
+}
+.scope-map-legend span{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#536b80;
+  font-size:8.2px;
+  font-weight:850;
+}
+.scope-map-legend strong{
+  color:#294158;
+  font-size:10px;
+  font-weight:950;
+}
+.map-geo-footer{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:5px;
+  margin:0 9px 8px;
+  padding:5px 7px;
+  border-top:1px solid #e8edf2;
+  background:#f8fafc;
+  border-radius:8px;
+}
+.map-geo-footer>div{
+  display:grid;
+  grid-template-columns:17px auto;
+  grid-template-rows:auto auto;
+  column-gap:5px;
+}
+.map-geo-footer i{
+  grid-row:1/3;
+  align-self:center;
+  color:#3d607a;
+  font-size:12px;
+}
+.map-geo-footer strong{
+  color:#263f55;
+  font-size:12px;
+  line-height:1;
+  font-weight:950;
+}
+.map-geo-footer span{
+  color:#7a8998;
+  font-size:6.6px;
+  font-weight:800;
+}
+
+/* Preparación */
+.prep-chart{
+  flex:1;
+  min-height:0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  align-items:end;
+  padding:8px 12px 5px;
+}
+.prep-item{
+  min-width:0;
+  display:grid;
+  justify-items:center;
+  grid-template-rows:18px 72px auto auto;
+  gap:2px;
+}
+.prep-item>strong{
+  color:#294158;
+  font-size:18px;
+  line-height:1;
+  font-weight:950;
+}
+.prep-bar{
+  position:relative;
+  width:42px;
+  height:72px;
+  overflow:hidden;
+  border-radius:7px 7px 3px 3px;
+  background:#e8edf2;
+}
+.prep-bar>i{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:0;
+  transition:height .8s cubic-bezier(.2,.82,.2,1);
+}
+.prep-bar>span{
+  position:absolute;
+  left:0;right:0;bottom:4px;
+  z-index:2;
+  text-align:center;
+  color:#fff;
+  font-size:7.5px;
+  font-weight:950;
+  text-shadow:0 1px 2px rgba(0,0,0,.18);
+}
+.prep-item--package .prep-bar>i{background:linear-gradient(180deg,#d4a258,#b7833e)}
+.prep-item--pending .prep-bar>i{background:linear-gradient(180deg,#7aaac4,#4e7d98)}
+.prep-item--conditioned .prep-bar>i{background:linear-gradient(180deg,#a8b6c1,#8597a5)}
+.prep-item small{
+  color:#50697e;
+  font-size:7.4px;
+  line-height:1.02;
+  font-weight:950;
+  text-align:center;
+  text-transform:uppercase;
+}
+.prep-item em{
+  color:#7b8a98;
+  font-size:6.7px;
+  line-height:1.05;
+  font-style:normal;
+  font-weight:750;
+  text-align:center;
+}
+.prep-note{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-height:34px;
+  margin:0 9px 8px;
+  padding:5px 7px;
+  border:1px solid #e6ebef;
+  border-radius:8px;
+  background:#fbfcfd;
+  color:#6c7e90;
+  font-size:7.8px;
+  font-weight:750;
+}
+.prep-note i{
+  color:var(--ochre);
+  font-size:12px;
+}
+.prep-note strong{color:var(--wine)}
+
+/* Animaciones */
+body.is-loading .donut-seg{stroke-dasharray:0 999!important}
+@keyframes mapPiece{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+
+/* desktop target */
+@media (min-width:1280px) and (min-height:820px){
+  body.inicio-page{overflow-y:hidden}
+  .dashboard{
+    min-height:calc(100vh - 60px);
+    height:calc(100vh - 60px);
+  }
+  .inicio-main{height:100%}
+  .inicio-stage{height:100%}
+}
+
+@media (max-width:1500px){
+  .inicio-hero__heading h1{font-size:36px}
+  .geo-kpi{min-width:112px}
+  .filter-bar{grid-template-columns:180px repeat(4,minmax(0,1fr)) 105px}
+  .kpi-card__text strong{font-size:26px}
+  .kpi-card__text--money strong{font-size:21px}
+  .main-grid{grid-template-columns:minmax(0,1.32fr) minmax(180px,.62fr) minmax(0,1.02fr) minmax(230px,.88fr)}
+  .portfolio-resource{grid-template-columns:128px minmax(0,1fr)}
+  .donut--resource,.donut--resource svg{width:126px;height:126px}
+  .agreements-content{grid-template-columns:120px minmax(0,1fr)}
+  .donut--agreement,.donut--agreement svg{width:118px;height:118px}
+  .resource-item span{font-size:8.4px}
+}
+
+@media (max-width:1260px){
+  body.inicio-page{overflow-y:auto}
+  .dashboard{height:auto}
+  .inicio-stage{
+    height:auto;
+    grid-template-rows:auto;
+  }
+  .inicio-hero{grid-template-columns:1fr}
+  .inicio-hero__visual{min-height:122px}
+  .filter-bar{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .filter-bar__lead{grid-column:1/-1}
+  .kpi-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .main-grid,.bottom-grid{grid-template-columns:1fr}
+  .portfolio-resource{grid-template-columns:150px minmax(0,1fr)}
+}
+
+
+.hero-slogan{display:none!important}
+.inicio-hero__copy{display:flex;flex-direction:column;justify-content:center}
+.kpi-card,.exec-card,.analytics-card{position:relative}
+.kpi-card::after,.exec-card::after,.analytics-card::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.85);
+}
+.kpi-card__icon,.exec-card__head-icon,.analytics-card__icon,.geo-kpi__icon,.route-node>span,.route-option>span,.route-bottom>span,.agreement-list__icon{
+  box-shadow:0 6px 16px rgba(31,53,75,.08), inset 0 1px 0 rgba(255,255,255,.8);
+}
+.kpi-card__text strong,.stage-total strong,.donut-center strong{letter-spacing:-.04em}
+.card-portfolio .portfolio-resource,.card-agreements .agreements-content{padding-top:2px}
+.card-stage .stage-content,.card-agreements .agreements-content,.card-resource-route .resource-route-content{justify-content:start}
+.resource-item,.agreement-list>div,.route-node,.route-option,.route-bottom{box-shadow:0 6px 16px rgba(33,55,77,.04)}
+.exec-card__head,.analytics-card__head{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(247,250,252,.86))}
+.portfolio-content{row-gap:4px}
+.investment-strip{margin-top:6px}
+.bottom-grid .analytics-card{min-height:196px}
+.prep-chart{padding-top:12px}
+.prep-item small{font-size:7.2px}
+.prep-item em{display:none}
+.analytics-card--prep .prep-note{margin-top:auto}
+.scope-map{background:radial-gradient(circle at 50% 48%, #fff 0%, #f4f7fa 68%, #eef3f6 100%);border-radius:10px}
+.stage-legend span,.agreement-list small,.route-option small,.route-bottom small,.route-node small{letter-spacing:.01em}
+.province-empty{padding:18px 12px;color:#718394;font-size:12px;font-weight:700}
+.province-bars{align-content:start}
+.province-row{min-height:22px}
+.province-row__track{box-shadow:inset 0 2px 5px rgba(38,60,82,.08)}
+.prep-bar{box-shadow:inset 0 3px 8px rgba(50,72,94,.12),0 4px 10px rgba(42,64,87,.05)}
+.donut svg{filter:drop-shadow(0 4px 8px rgba(33,55,77,.06))}
+.filter-field select,.filter-reset,.card-action,.analytics-card__head>a{box-shadow:0 3px 8px rgba(31,53,75,.03)}
+.kpi-card__bars i{filter:drop-shadow(0 1px 1px rgba(0,0,0,.08))}
+.analytics-card--prep .analytics-card__head{padding-bottom:5px}
+@media (min-width:1500px){
+  .main-grid{grid-template-columns:minmax(0,1.48fr) minmax(218px,.72fr) minmax(0,1.08fr) minmax(270px,.98fr)}
+  .bottom-grid{grid-template-columns:1.17fr 1fr .97fr}
+}
+
+/* =========================================================
+   INICIO 2026-09-13 · Ajuste visual según mockup ejecutivo
+   Alcance local: solo inicio.html
+   ========================================================= */
+
+/* Composición general */
+.inicio-stage{
+  grid-template-rows:140px 60px 82px minmax(300px,1fr) 220px;
+}
+.inicio-hero{grid-template-columns:43% 57%}
+.inicio-hero__heading h1{font-size:38px}
+.geo-kpi{min-width:145px}
+.filter-bar{grid-template-columns:245px repeat(4,minmax(0,1fr)) 145px}
+
+/* Fila ejecutiva: cartera / brecha financiera / convenios */
+.main-grid{
+  grid-template-columns:minmax(0,1.08fr) minmax(0,1.12fr) minmax(0,1fr);
+  gap:10px;
+}
+.card-portfolio,
+.card-financial-gap,
+.card-agreements{border-top:3px solid var(--wine)}
+
+/* Cartera */
+.card-portfolio .portfolio-content{
+  grid-template-rows:1fr auto;
+  row-gap:6px;
+  padding:8px 11px 10px;
+}
+.card-portfolio .portfolio-resource{
+  grid-template-columns:170px minmax(0,1fr);
+  gap:12px;
+}
+.card-portfolio .donut--resource,
+.card-portfolio .donut--resource svg{width:164px;height:164px}
+.resource-item{
+  grid-template-columns:10px minmax(0,1fr) auto 34px;
+  min-height:62px;
+  padding:8px 10px;
+}
+.resource-item em{
+  color:#536c80;
+  font-size:10px;
+  font-style:normal;
+  font-weight:950;
+  text-align:right;
+}
+.resource-item--good em{color:var(--green-dark)}
+.resource-item--risk em{color:var(--wine)}
+.investment-strip{
+  grid-template-columns:190px minmax(0,1fr);
+  gap:14px;
+  margin-top:0;
+}
+.investment-progress__bar{height:14px}
+
+/* Etiquetas dentro de donuts */
+.donut-label{
+  position:absolute;
+  z-index:3;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  color:#fff;
+  font-size:10px;
+  line-height:1;
+  font-weight:950;
+  text-shadow:0 1px 2px rgba(0,0,0,.25);
+  transition:left .55s ease,top .55s ease,opacity .2s ease;
+}
+
+/* Brecha financiera */
+.card-financial-gap{min-width:0}
+.financial-table-wrap{
+  flex:1;
+  min-height:0;
+  padding:8px 9px 10px;
+}
+.financial-table{
+  height:100%;
+  min-height:0;
+  overflow:hidden;
+  border:1px solid #dfe7ed;
+  border-radius:10px;
+  background:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+}
+.financial-table__head,
+.financial-row{
+  display:grid;
+  grid-template-columns:64px 1.12fr 1.05fr .95fr .92fr;
+  align-items:stretch;
+}
+.financial-table__head{
+  min-height:42px;
+  border-bottom:1px solid #d8e2e9;
+  background:linear-gradient(180deg,#f1f6fa,#eaf1f6);
+}
+.financial-table__head span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 5px;
+  border-right:1px solid #d8e2e9;
+  color:#36566f;
+  font-size:8px;
+  line-height:1.08;
+  font-weight:900;
+  text-align:center;
+}
+.financial-table__head span:last-child{
+  border-right:0;
+  color:var(--wine);
+}
+.financial-table__body{
+  height:calc(100% - 42px);
+  overflow-y:auto;
+  scrollbar-width:thin;
+  scrollbar-color:#9eb1c0 #eef3f6;
+}
+.financial-table__body::-webkit-scrollbar{width:7px}
+.financial-table__body::-webkit-scrollbar-track{background:#eef3f6;border-radius:7px}
+.financial-table__body::-webkit-scrollbar-thumb{background:#9eb1c0;border-radius:7px}
+.financial-row{
+  min-height:30px;
+  border-bottom:1px solid #e6edf2;
+  background:#fff;
+}
+.financial-row:nth-child(even){background:#fbfdff}
+.financial-row:last-child{border-bottom:0}
+.financial-row span{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding:4px 6px;
+  border-right:1px solid #e6edf2;
+  color:#416078;
+  font-size:9px;
+  line-height:1;
+  font-weight:800;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+.financial-row span:first-child{
+  justify-content:flex-start;
+  color:#345b78;
+  font-weight:950;
+}
+.financial-row span:last-child{
+  border-right:0;
+  color:var(--wine);
+  font-weight:950;
+}
+.financial-empty{
+  display:grid;
+  place-items:center;
+  height:100%;
+  padding:24px;
+  color:#718394;
+  font-size:11px;
+  font-weight:750;
+  text-align:center;
+}
+
+/* Convenios */
+.card-agreements .agreements-content{
+  grid-template-columns:160px minmax(0,1fr);
+  gap:12px;
+  padding:8px 10px 6px;
+}
+.card-agreements .donut--agreement,
+.card-agreements .donut--agreement svg{width:156px;height:156px}
+.agreement-list>div{min-height:58px}
+.agreement-list__icon--blue{background:var(--blue-soft);color:var(--blue)}
+.agreement-summary{
+  min-height:34px;
+  margin:0 10px 9px;
+  padding:6px 8px;
+  border:1px solid #e4eaf0;
+  border-radius:8px;
+  background:#fbfcfd;
+}
+
+/* Fila inferior: gestión / brecha provincia / distribución territorial */
+.bottom-grid{
+  grid-template-columns:.94fr 1fr 1.14fr;
+  gap:10px;
+}
+.analytics-card--management{border-top:2px solid #d8832d}
+.analytics-card__icon--ochre{background:var(--ochre-soft);color:#d97718}
+.management-kicker{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 12px 0;
+  color:#2e4a62;
+  font-size:11px;
+  font-weight:950;
+}
+.management-kicker i{
+  width:4px;
+  height:18px;
+  border-radius:4px;
+  background:var(--wine);
+}
+.prep-chart--management{
+  padding:4px 14px 8px;
+  gap:18px;
+}
+.prep-chart--management .prep-item{
+  grid-template-rows:22px 82px auto auto;
+  gap:3px;
+}
+.prep-chart--management .prep-item>strong{font-size:22px}
+.prep-chart--management .prep-bar{width:56px;height:82px}
+.prep-chart--management .prep-bar>span{font-size:10px;bottom:6px}
+.prep-chart--management .prep-item small{
+  font-size:8.6px;
+  text-transform:none;
+}
+.prep-chart--management .prep-item em{
+  display:block;
+  font-size:7.5px;
+  line-height:1.12;
+}
+
+/* Brecha por provincia, alineada al mockup */
+.analytics-card--province{border-top:2px solid var(--wine)}
+.analytics-card--province .province-table-head{
+  grid-template-columns:94px minmax(0,1fr) 78px;
+  padding-top:7px;
+}
+.analytics-card--province .province-row{
+  grid-template-columns:90px minmax(0,1fr) 72px;
+  min-height:20px;
+}
+.analytics-card--province .province-row__track{height:10px}
+
+/* Responsive local de la nueva composición */
+@media (max-width:1500px){
+  .filter-bar{grid-template-columns:210px repeat(4,minmax(0,1fr)) 120px}
+  .geo-kpi{min-width:128px}
+  .main-grid{grid-template-columns:minmax(0,1.06fr) minmax(0,1.12fr) minmax(0,.98fr)}
+  .bottom-grid{grid-template-columns:.92fr 1fr 1.08fr}
+  .card-portfolio .portfolio-resource{grid-template-columns:145px minmax(0,1fr)}
+  .card-portfolio .donut--resource,
+  .card-portfolio .donut--resource svg{width:142px;height:142px}
+  .card-agreements .agreements-content{grid-template-columns:138px minmax(0,1fr)}
+  .card-agreements .donut--agreement,
+  .card-agreements .donut--agreement svg{width:136px;height:136px}
+  .resource-item{grid-template-columns:9px minmax(0,1fr) auto 30px}
+}
+
+@media (max-width:1260px){
+  .inicio-stage{grid-template-rows:auto}
+  .filter-bar{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .main-grid,.bottom-grid{grid-template-columns:1fr}
+  .card-portfolio .portfolio-resource{grid-template-columns:150px minmax(0,1fr)}
+  .financial-table-wrap{min-height:290px}
+}
+
+/* Corrección de contención: la tabla central nunca expande la fila principal */
+.financial-table-wrap{display:flex;overflow:hidden}
+.financial-table{display:flex;flex:1;flex-direction:column;height:auto;min-height:0}
+.financial-table__body{flex:1;height:auto;min-height:0}
+
+@media (min-width:1280px) and (min-height:820px){
+  .inicio-main{min-height:0;height:100%;overflow:hidden!important}
+  .inicio-stage{min-height:0;height:100%}
+  .main-grid,.bottom-grid{min-height:0}
+}
+
+/* Encuadre de inicio a pantalla completa, sin alterar las demás vistas */
+.territory-chip{display:none}
+@media (min-width:1280px) and (min-height:820px){
+  body.inicio-page .page-accent{height:18px}
+  body.inicio-page .app-shell{margin-top:-12px;padding-bottom:8px}
+  body.inicio-page .dashboard{
+    min-height:calc(100vh - 18px);
+    height:calc(100vh - 18px);
+  }
+  .inicio-stage{
+    grid-template-rows:150px 60px 82px minmax(300px,1fr) 245px;
+  }
+}
+
+.financial-row{min-height:26px}
+.analytics-card--province .province-bars{gap:2px;padding-top:1px}
+.analytics-card--province .province-row{min-height:17px}
+.analytics-card--province .province-row__track{height:9px}
+
+/* =========================================================
+   INICIO 2026-09-13 · Ajustes ejecutivos v2
+   Alcance local: únicamente la vista Inicio
+   ========================================================= */
+
+/* 1. Encuadre del hero: mostrar la superestructura del puente */
+.inicio-hero__photo{
+  background-position:center 34%;
+}
+
+/* 2. Filtros contenidos dentro de su barra */
+.filter-bar{
+  min-height:58px;
+  padding:5px 10px;
+  box-sizing:border-box;
+  align-items:center;
+}
+.filter-bar__lead{min-width:0;gap:8px}
+.filter-bar__lead>span{width:32px;height:32px;font-size:16px}
+.filter-bar__lead strong{font-size:15px;line-height:1.05}
+.filter-bar__lead small{font-size:8.8px;line-height:1.05}
+.filter-field{min-width:0;gap:2px;align-self:center}
+.filter-field>span{font-size:7.8px;line-height:1}
+.filter-field select{
+  height:32px;
+  min-height:32px;
+  padding:0 9px;
+  font-size:10.4px;
+  box-sizing:border-box;
+}
+.filter-reset{
+  min-height:32px;
+  height:32px;
+  padding:0 9px;
+  box-sizing:border-box;
+}
+
+/* 18-20. KPI generales: lectura directa e iconografía más sólida */
+.kpi-card{
+  grid-template-columns:46px minmax(0,1fr) 34px;
+  gap:8px;
+  min-height:76px;
+  padding-top:8px;
+  padding-bottom:8px;
+}
+.kpi-card__icon{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  font-size:21px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.65),0 5px 12px rgba(32,57,81,.06);
+}
+.kpi-card__icon .fa-solid{line-height:1}
+.kpi-card__text small{
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
+  line-height:1.08;
+  font-size:9px;
+  min-height:19px;
+}
+.kpi-card__text>div{margin-top:2px;gap:0}
+.kpi-card__text strong{font-size:29px}
+.kpi-card__text--money strong{font-size:23px}
+.kpi-card__bars{width:28px}
+
+/* Fila principal: más espacio para el cálculo financiero */
+.main-grid{
+  grid-template-columns:minmax(0,1.08fr) minmax(0,1.28fr) minmax(0,.84fr);
+  gap:9px;
+}
+
+/* 3-5. Cartera y monto actualizado */
+.resource-item span{font-size:9.4px;line-height:1.1}
+.resource-item--good span{color:#356856}
+.investment-total{gap:3px}
+.investment-total span{font-size:9px;font-weight:900}
+.investment-total strong{font-size:23px}
+.investment-progress__legend div:last-child span{font-weight:900;color:#7f142d}
+
+/* 6-9. Cálculo del déficit financiero */
+.card-action--expand{
+  cursor:pointer;
+  color:#315f78;
+  background:#f8fbfd;
+}
+.card-action--expand:hover{
+  border-color:#9db8ca;
+  background:#eef6fb;
+}
+.financial-summary-kpis{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:6px;
+  padding:6px 8px 2px;
+}
+.financial-summary-kpi{
+  min-width:0;
+  display:grid;
+  grid-template-columns:27px minmax(0,1fr);
+  align-items:center;
+  gap:5px;
+  min-height:45px;
+  padding:5px 7px;
+  border:1px solid #e2e9ef;
+  border-radius:9px;
+  background:linear-gradient(180deg,#fff,#f8fbfd);
+  box-shadow:0 4px 10px rgba(33,55,77,.035);
+}
+.financial-summary-kpi>span{
+  width:25px;
+  height:25px;
+  display:grid;
+  place-items:center;
+  border-radius:7px;
+  font-size:12px;
+}
+.financial-summary-kpi p{margin:0;min-width:0;display:grid;gap:2px}
+.financial-summary-kpi small{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#6b7f91;
+  font-size:7px;
+  line-height:1;
+  font-weight:850;
+}
+.financial-summary-kpi strong{
+  color:#29465d;
+  font-size:11.4px;
+  line-height:1;
+  font-weight:950;
+  white-space:nowrap;
+}
+.financial-summary-kpi--cost>span{background:var(--wine-soft);color:var(--wine)}
+.financial-summary-kpi--accrued>span{background:var(--blue-soft);color:var(--blue)}
+.financial-summary-kpi--pim>span{background:var(--green-soft);color:var(--green)}
+
+.card-financial-gap .financial-table-wrap{padding:4px 8px 8px}
+.financial-table__head,
+.financial-row{
+  grid-template-columns:52px minmax(96px,1.28fr) repeat(4,minmax(61px,.78fr));
+}
+.financial-table__head{min-height:39px}
+.financial-table__head span{
+  padding:4px 3px;
+  font-size:7.1px;
+  line-height:1.06;
+}
+.financial-table__body{height:calc(100% - 39px)}
+.financial-row{min-height:24px}
+.financial-row span{
+  padding:3px 4px;
+  font-size:8.1px;
+}
+.financial-row span:nth-child(2){
+  justify-content:flex-start;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#36566f;
+  font-weight:850;
+}
+
+/* Tabla financiera expandida */
+body.modal-open{overflow:hidden!important}
+.financial-modal{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:grid;
+  place-items:center;
+  padding:28px;
+  visibility:hidden;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s ease,visibility .2s ease;
+}
+.financial-modal.is-open{
+  visibility:visible;
+  opacity:1;
+  pointer-events:auto;
+}
+.financial-modal__backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(20,35,49,.56);
+  backdrop-filter:blur(4px);
+}
+.financial-modal__panel{
+  position:relative;
+  z-index:1;
+  width:min(1180px,94vw);
+  height:min(720px,88vh);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border:1px solid #d7e1e8;
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 28px 70px rgba(12,28,43,.28);
+  transform:translateY(10px) scale(.985);
+  transition:transform .22s ease;
+}
+.financial-modal.is-open .financial-modal__panel{transform:translateY(0) scale(1)}
+.financial-modal__head{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:13px 16px;
+  border-bottom:1px solid #e2e9ef;
+  background:linear-gradient(180deg,#fff,#f7fafc);
+}
+.financial-modal__eyebrow{
+  color:var(--wine);
+  font-size:8px;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.financial-modal__head h2{margin:3px 0 0;color:#233f57;font-size:20px;font-weight:950}
+.financial-modal__head p{margin:3px 0 0;color:#708294;font-size:9px;font-weight:700}
+.financial-modal__close{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  border:1px solid #dbe4eb;
+  border-radius:10px;
+  background:#fff;
+  color:#4d6579;
+  cursor:pointer;
+  font-size:17px;
+}
+.financial-modal__table{
+  flex:1;
+  min-height:0;
+  margin:12px 14px 14px;
+}
+.financial-modal__table .financial-table__head,
+.financial-modal__table .financial-row{
+  grid-template-columns:90px minmax(210px,1.45fr) repeat(4,minmax(125px,1fr));
+}
+.financial-modal__table .financial-table__head{min-height:48px}
+.financial-modal__table .financial-table__head span{font-size:9.2px;padding:6px}
+.financial-modal__table .financial-row{min-height:34px}
+.financial-modal__table .financial-row span{font-size:10px;padding:6px 8px}
+.financial-modal__table .financial-table__body{height:auto;flex:1;overflow-y:auto}
+
+/* 10-11. Convenios: compactar leyenda y eliminar espacio residual */
+.card-agreements .agreements-content{
+  grid-template-columns:126px minmax(0,1fr);
+  gap:6px;
+  padding:8px 8px 9px;
+}
+.card-agreements .donut--agreement,
+.card-agreements .donut--agreement svg{width:126px;height:126px}
+.card-agreements .donut-center strong{font-size:30px}
+.agreement-list{gap:5px}
+.agreement-list>div{
+  grid-template-columns:28px minmax(0,1fr) 28px;
+  gap:4px;
+  min-height:47px;
+  padding:5px 6px;
+}
+.agreement-list__icon{width:27px;height:27px;border-radius:8px;font-size:14px}
+.agreement-list p{gap:1px}
+.agreement-list small{font-size:7.6px;line-height:1.05}
+.agreement-list strong{font-size:16px}
+.agreement-list em{font-size:8.5px;text-align:right}
+
+/* 12-17. Fila analítica: cuatro módulos compactos y comparables */
+.bottom-grid{
+  grid-template-columns:.88fr .74fr 1.08fr .94fr;
+  gap:8px;
+}
+.analytics-card--stage{border-top:2px solid var(--blue)}
+.analytics-card__icon--blue{background:var(--blue-soft);color:var(--blue)}
+.stage-content--compact{padding:7px 9px 8px}
+.stage-content--compact .stage-total strong{font-size:27px}
+.stage-content--compact .stage-total span{font-size:8px}
+.stage-content--compact .stage-stack{height:14px;margin-top:6px}
+.stage-content--compact .stage-values{margin:3px 0 4px}
+.stage-content--compact .stage-values span{font-size:8px}
+.stage-content--compact .stage-legend{gap:5px;margin-top:2px}
+.stage-content--compact .stage-legend>div{grid-template-columns:8px minmax(0,1fr) auto;gap:4px}
+.stage-content--compact .stage-legend span{font-size:7.6px}
+.stage-content--compact .stage-legend strong{font-size:14px}
+
+.prep-chart--management{
+  padding:4px 8px 8px;
+  gap:6px;
+}
+.prep-chart--management .prep-item{
+  grid-template-rows:20px 78px auto auto;
+  gap:2px;
+}
+.prep-chart--management .prep-item>strong{font-size:20px}
+.prep-chart--management .prep-bar{width:44px;height:78px}
+.prep-chart--management .prep-item small{font-size:8px;text-align:center;line-height:1.05}
+.prep-chart--management .prep-item em{
+  max-width:76px;
+  min-height:17px;
+  font-size:7px;
+  line-height:1.08;
+  text-align:center;
+}
+.management-kicker{padding-left:9px;padding-right:9px;font-size:9.5px}
+
+.analytics-card--province .province-table-head{
+  grid-template-columns:78px minmax(0,1fr) 70px;
+  gap:5px;
+  padding-left:8px;
+  padding-right:8px;
+}
+.analytics-card--province .province-row{
+  grid-template-columns:76px minmax(0,1fr) 68px;
+  gap:5px;
+  min-height:18px;
+}
+.analytics-card--province .province-bars{padding-left:8px;padding-right:8px}
+.analytics-card--province .province-row__name{font-size:8.2px}
+.analytics-card--province .province-row__value{font-size:7.8px}
+.analytics-card--province .province-row__track{height:8px}
+
+/* El mapa mantiene su lenguaje visual, pero pierde ancho vacío lateral */
+.territory-map-content{
+  grid-template-columns:minmax(0,1fr) 108px;
+  gap:4px;
+  padding:4px 5px 1px;
+}
+.scope-map{
+  width:100%;
+  max-width:238px;
+  height:120px;
+  justify-self:center;
+}
+.scope-map-legend{gap:4px}
+.scope-map-legend>div{grid-template-columns:7px minmax(0,1fr) auto;gap:4px}
+.scope-map-legend span{font-size:7.4px}
+.scope-map-legend strong{font-size:9px}
+.map-geo-footer--context{
+  gap:3px;
+  margin:0 5px 7px;
+  padding:5px;
+}
+.map-geo-footer--context>div{
+  grid-template-columns:15px auto;
+  column-gap:4px;
+  min-width:0;
+}
+.map-geo-footer--context i{font-size:10px}
+.map-geo-footer--context strong{font-size:11px}
+.map-geo-footer--context span{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:5.9px;
+}
+
+/* 21. Alineación del frame con las demás vistas */
+body.inicio-page .page-accent{
+  height:52px!important;
+}
+body.inicio-page .app-shell{
+  margin-top:-18px!important;
+  padding-bottom:16px!important;
+}
+body.inicio-page .dashboard{
+  min-height:calc(100vh - 60px)!important;
+  height:auto!important;
+}
+body.inicio-page .inicio-main{
+  height:auto!important;
+  overflow:visible!important;
+}
+
+/* Alturas equilibradas en escritorio */
+@media (min-width:1280px) and (min-height:820px){
+  .inicio-stage{
+    grid-template-rows:136px 58px 76px minmax(304px,1fr) 224px;
+  }
+}
+
+@media (max-width:1500px){
+  .main-grid{grid-template-columns:minmax(0,1.02fr) minmax(0,1.25fr) minmax(0,.82fr)}
+  .bottom-grid{grid-template-columns:.9fr .76fr 1.08fr .94fr}
+  .card-agreements .agreements-content{grid-template-columns:116px minmax(0,1fr)}
+  .card-agreements .donut--agreement,
+  .card-agreements .donut--agreement svg{width:114px;height:114px}
+  .financial-summary-kpi{grid-template-columns:23px minmax(0,1fr);padding:4px 5px}
+  .financial-summary-kpi>span{width:22px;height:22px;font-size:10px}
+  .financial-summary-kpi small{font-size:6.6px}
+  .financial-summary-kpi strong{font-size:10.4px}
+}
+
+@media (max-width:1260px){
+  .bottom-grid{grid-template-columns:1fr 1fr}
+  .financial-modal{padding:14px}
+  .financial-modal__panel{width:96vw}
+}
+
+/* Afinado final del mini mapa: proporción vertical real del ámbito, sin franjas laterales */
+.territory-map-content{
+  grid-template-columns:118px minmax(90px,108px);
+  justify-content:center;
+  column-gap:6px;
+}
+.scope-map{
+  width:112px;
+  height:126px;
+  max-width:none;
+}
+
+
+/* =========================================================
+   INICIO · Corrección 2026-09-13 B
+   Déficit financiero: scroll + ecuación + línea territorial
+   Alcance local: solo vista Inicio
+   ========================================================= */
+
+:root{
+  --territory-line-color:#991735;
+  --territory-line-rgb:153,23,53;
+}
+
+/* La línea superior de los contenedores analíticos sigue el ámbito activo.
+   No se alteran colores ni estilos de los KPI generales. */
+body.inicio-page .exec-card,
+body.inicio-page .analytics-card{
+  border-top-color:var(--territory-line-color)!important;
+}
+body.inicio-page .exec-card{border-top-width:3px}
+body.inicio-page .analytics-card{border-top-width:2px}
+
+/* Ecuación visual: Costo - Devengado - PIM = Déficit */
+.financial-summary-kpis{
+  flex:0 0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 12px minmax(0,1fr) 12px minmax(0,1fr) 14px minmax(0,1fr);
+  align-items:center;
+  gap:3px;
+  padding:6px 7px 4px;
+}
+.financial-summary-kpi{
+  min-height:43px;
+  padding:5px 5px;
+  grid-template-columns:24px minmax(0,1fr);
+  gap:4px;
+}
+.financial-summary-kpi>span{
+  width:23px;
+  height:23px;
+  font-size:10.5px;
+}
+.financial-summary-kpi small{
+  font-size:6.45px;
+  letter-spacing:-.01em;
+}
+.financial-summary-kpi strong{
+  font-size:10.5px;
+}
+.financial-summary-kpi--deficit{
+  border-color:rgba(153,23,53,.18);
+  background:linear-gradient(180deg,#fff,#fff7f9);
+}
+.financial-summary-kpi--deficit>span{
+  background:var(--wine-soft);
+  color:var(--wine);
+}
+.financial-summary-kpi--deficit strong{color:var(--wine-dark)}
+.financial-summary-operator{
+  display:grid;
+  place-items:center;
+  align-self:center;
+  color:#718395;
+  font-size:15px;
+  line-height:1;
+  font-weight:950;
+  user-select:none;
+}
+.financial-summary-operator--equals{
+  color:var(--territory-line-color);
+  font-size:16px;
+}
+
+/* Contención real del panel central: la tabla no vuelve a agrandar la fila.
+   El body de la tabla toma el espacio restante y siempre conserva scroll vertical. */
+.card-financial-gap{
+  min-height:0!important;
+  height:100%;
+  overflow:hidden!important;
+}
+.card-financial-gap .exec-card__head{flex:0 0 auto}
+.card-financial-gap .financial-table-wrap{
+  flex:1 1 0!important;
+  height:0!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  display:flex!important;
+  padding:3px 7px 7px;
+}
+.card-financial-gap .financial-table{
+  flex:1 1 0!important;
+  min-height:0!important;
+  height:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+}
+.card-financial-gap .financial-table__head{
+  flex:0 0 39px;
+  min-height:39px;
+}
+.card-financial-gap .financial-table__body{
+  flex:1 1 0!important;
+  height:0!important;
+  min-height:0!important;
+  overflow-y:scroll!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+  -webkit-overflow-scrolling:touch;
+}
+
+/* En escritorio la fila ejecutiva queda acotada; así el scroll pertenece a la tabla
+   y no a todo el card. Con los 4 KPI se muestran menos filas, como se solicitó. */
+@media (min-width:1261px){
+  .main-grid{
+    height:318px;
+    min-height:318px;
+    max-height:318px;
+  }
+}
+
+@media (max-width:1500px){
+  .financial-summary-kpis{
+    grid-template-columns:minmax(0,1fr) 9px minmax(0,1fr) 9px minmax(0,1fr) 10px minmax(0,1fr);
+    gap:2px;
+    padding-left:5px;
+    padding-right:5px;
+  }
+  .financial-summary-kpi{
+    grid-template-columns:20px minmax(0,1fr);
+    min-height:40px;
+    padding:4px;
+    gap:3px;
+  }
+  .financial-summary-kpi>span{width:20px;height:20px;font-size:9px}
+  .financial-summary-kpi small{font-size:5.7px}
+  .financial-summary-kpi strong{font-size:9.3px}
+  .financial-summary-operator{font-size:13px}
+  .financial-summary-operator--equals{font-size:14px}
+}
+
+@media (max-width:1260px){
+  .financial-summary-kpis{
+    grid-template-columns:minmax(0,1fr) 12px minmax(0,1fr);
+    gap:5px;
+  }
+  .financial-summary-operator{display:none}
+  .card-financial-gap .financial-table-wrap{
+    height:300px!important;
+    flex:0 0 300px!important;
+  }
+}
+
+/* =========================================================
+   INICIO · Ajuste 2026-09-14 C
+   Legibilidad financiera · convenios · estado · mapa Territorio
+   Alcance local: solo vista Inicio
+   ========================================================= */
+
+/* 1-3. La ecuación financiera conserva tamaño y permite títulos a dos líneas. */
+.card-financial-gap > .financial-summary-kpis{
+  flex:0 0 64px;
+  min-height:64px;
+  padding-top:7px;
+  padding-bottom:6px;
+}
+.financial-summary-kpi{
+  min-height:50px;
+}
+.financial-summary-kpi p{
+  align-content:center;
+  min-width:0;
+}
+.financial-summary-kpi small{
+  display:block;
+  min-height:15px;
+  overflow:visible;
+  text-overflow:clip;
+  white-space:normal;
+  line-height:1.08;
+  font-size:6.7px;
+}
+.financial-summary-kpi strong{
+  margin-top:2px;
+}
+
+/* En la vista expandida se replica la ecuación completa con mayor escala. */
+.financial-summary-kpis--modal{
+  flex:0 0 auto;
+  min-height:76px;
+  margin:10px 14px 0;
+  padding:0;
+  grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr) 18px minmax(0,1fr) 20px minmax(0,1fr);
+  gap:7px;
+}
+.financial-summary-kpis--modal .financial-summary-kpi{
+  min-height:62px;
+  grid-template-columns:34px minmax(0,1fr);
+  gap:8px;
+  padding:8px 10px;
+  border-radius:11px;
+}
+.financial-summary-kpis--modal .financial-summary-kpi>span{
+  width:32px;
+  height:32px;
+  border-radius:9px;
+  font-size:14px;
+}
+.financial-summary-kpis--modal .financial-summary-kpi small{
+  min-height:0;
+  font-size:8.5px;
+  line-height:1.12;
+}
+.financial-summary-kpis--modal .financial-summary-kpi strong{
+  font-size:14px;
+}
+.financial-summary-kpis--modal .financial-summary-operator{
+  display:grid;
+  font-size:19px;
+}
+.financial-summary-kpis--modal .financial-summary-operator--equals{
+  font-size:21px;
+}
+.financial-modal__table{
+  margin-top:10px;
+}
+
+/* La tabla principal conserva un viewport contenido: menos CUI visibles y scroll interno. */
+.card-financial-gap .financial-table__body{
+  min-height:0!important;
+  overflow-y:auto!important;
+}
+.card-financial-gap .financial-row{
+  min-height:25px;
+}
+
+/* 4-5. Convenios: donut dominante y leyenda más compacta. */
+.card-agreements .agreements-content{
+  grid-template-columns:154px minmax(0,1fr);
+  gap:3px;
+  padding:7px 7px 8px;
+}
+.card-agreements .donut--agreement,
+.card-agreements .donut--agreement svg{
+  width:154px;
+  height:154px;
+}
+.card-agreements .donut-center strong{
+  font-size:32px;
+}
+.card-agreements .agreement-list{
+  gap:5px;
+}
+.card-agreements .agreement-list>div{
+  grid-template-columns:25px minmax(0,1fr) auto;
+  gap:3px;
+  min-height:47px;
+  padding:5px 5px;
+}
+.card-agreements .agreement-list__icon{
+  width:25px;
+  height:25px;
+  border-radius:7px;
+  font-size:13px;
+}
+.card-agreements .agreement-list small{
+  font-size:8.5px;
+  line-height:1.08;
+}
+.card-agreements .agreement-list strong{
+  font-size:17px;
+}
+.card-agreements .agreement-list em{
+  min-width:27px;
+  font-size:9px;
+  text-align:right;
+  white-space:nowrap;
+}
+.agreement-list__icon--wine{
+  background:var(--wine-soft);
+  color:var(--wine);
+}
+.card-agreements .agreement-list>div:last-child small,
+.card-agreements .agreement-list>div:last-child strong,
+.card-agreements .agreement-list>div:last-child em{
+  color:var(--wine);
+}
+
+/* 7. Los porcentajes del estado usan el mismo código cromático que el gráfico. */
+.stage-content--compact .stage-values{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:4px;
+  margin:5px 0 5px;
+}
+.stage-content--compact .stage-value{
+  min-height:20px;
+  display:grid;
+  place-items:center;
+  border:1px solid transparent;
+  border-radius:6px;
+  font-size:8.4px;
+  line-height:1;
+  font-weight:950;
+}
+.stage-content--compact .stage-value--selection{
+  color:#245d81;
+  border-color:rgba(47,134,190,.22);
+  background:rgba(47,134,190,.10);
+}
+.stage-content--compact .stage-value--eett{
+  color:#9a5c08;
+  border-color:rgba(222,143,35,.25);
+  background:rgba(222,143,35,.12);
+}
+.stage-content--compact .stage-value--other{
+  color:#5f7181;
+  border-color:rgba(111,129,146,.22);
+  background:rgba(111,129,146,.11);
+}
+
+/* 11. Se reduce el CONTENEDOR territorial completo, no solo el SVG. */
+.bottom-grid{
+  grid-template-columns:1fr .82fr 1.22fr .72fr;
+  gap:8px;
+}
+.analytics-card--map{
+  min-width:0;
+}
+.territory-map-content{
+  grid-template-columns:minmax(0,1fr) 78px;
+  justify-content:stretch;
+  gap:4px;
+  padding:4px 5px 1px;
+}
+.scope-map{
+  width:100%;
+  max-width:none;
+  height:124px;
+  justify-self:stretch;
+}
+.scope-map-legend{
+  min-width:0;
+  gap:3px;
+}
+.scope-map-legend>div{
+  grid-template-columns:6px minmax(0,1fr) auto;
+  gap:3px;
+}
+.scope-map-legend span{
+  font-size:6.9px;
+}
+.scope-map-legend strong{
+  font-size:8.6px;
+}
+
+/* 12. Figuras y lenguaje cartográfico derivados de territorio.css/territorio.js. */
+.scope-map__context,
+.territory-map__district--context{
+  fill:rgba(var(--territory-line-rgb),.045)!important;
+  stroke:rgba(var(--territory-line-rgb),.12)!important;
+  stroke-width:.52!important;
+  stroke-linejoin:round;
+  stroke-linecap:round;
+  vector-effect:non-scaling-stroke;
+}
+.scope-map__active,
+.territory-map__district--selected{
+  fill:rgba(var(--territory-line-rgb),.82)!important;
+  stroke:rgba(255,255,255,.95)!important;
+  stroke-width:.80!important;
+  stroke-linejoin:round;
+  stroke-linecap:round;
+  vector-effect:non-scaling-stroke;
+  filter:drop-shadow(0 3px 5px rgba(var(--territory-line-rgb),.12));
+}
+.scope-map__active:hover,
+.territory-map__district--selected:hover{
+  fill:rgba(var(--territory-line-rgb),.96)!important;
+}
+.scope-map__empty{
+  fill:#788b9c;
+  font-size:11px;
+  font-weight:800;
+}
+
+/* 13. Más ancho útil para el monto y barra más corta. */
+.analytics-card--province .province-table-head{
+  grid-template-columns:72px minmax(44px,.72fr) 94px;
+  gap:4px;
+}
+.analytics-card--province .province-row{
+  grid-template-columns:70px minmax(44px,.72fr) 94px;
+  gap:4px;
+}
+.analytics-card--province .province-row__value{
+  grid-template-columns:minmax(62px,1fr) 24px;
+  column-gap:3px;
+  white-space:nowrap;
+  font-size:8px;
+}
+.analytics-card--province .province-row__value>span:first-child{
+  white-space:nowrap;
+}
+.analytics-card--province .province-row__track{
+  max-width:100%;
+}
+
+@media (max-width:1500px){
+  .bottom-grid{
+    grid-template-columns:.96fr .80fr 1.20fr .70fr;
+  }
+  .card-financial-gap > .financial-summary-kpis{
+    flex-basis:64px;
+    min-height:64px;
+  }
+  .financial-summary-kpi{
+    min-height:48px;
+  }
+  .financial-summary-kpi small{
+    min-height:14px;
+    font-size:6.15px;
+    line-height:1.08;
+  }
+  .financial-summary-kpi strong{
+    font-size:9.7px;
+  }
+  .card-agreements .agreements-content{
+    grid-template-columns:142px minmax(0,1fr);
+  }
+  .card-agreements .donut--agreement,
+  .card-agreements .donut--agreement svg{
+    width:142px;
+    height:142px;
+  }
+  .territory-map-content{
+    grid-template-columns:minmax(0,1fr) 70px;
+  }
+  .scope-map-legend span{font-size:6.4px}
+  .analytics-card--province .province-table-head{
+    grid-template-columns:68px minmax(40px,.68fr) 90px;
+  }
+  .analytics-card--province .province-row{
+    grid-template-columns:66px minmax(40px,.68fr) 90px;
+  }
+}
+
+@media (max-width:1260px){
+  .bottom-grid{grid-template-columns:1fr 1fr}
+  .financial-summary-kpis--modal{
+    grid-template-columns:minmax(0,1fr) 12px minmax(0,1fr);
+    min-height:auto;
+  }
+  .financial-summary-kpis--modal .financial-summary-operator{
+    display:none;
+  }
+}
+
+@media (max-width:1500px){
+  .financial-summary-kpis--modal .financial-summary-kpi{
+    min-height:62px;
+    grid-template-columns:32px minmax(0,1fr);
+    padding:8px 9px;
+  }
+  .financial-summary-kpis--modal .financial-summary-kpi>span{
+    width:30px;
+    height:30px;
+    font-size:13px;
+  }
+  .financial-summary-kpis--modal .financial-summary-kpi small{
+    min-height:0;
+    font-size:8.2px;
+    line-height:1.12;
+  }
+  .financial-summary-kpis--modal .financial-summary-kpi strong{
+    font-size:13.5px;
+  }
+}
+
+@media (max-width:1260px){
+  .card-financial-gap > .financial-summary-kpis{
+    flex:0 0 auto;
+    min-height:auto;
+    padding:7px;
+  }
+}
+
+/* =========================================================
+   INICIO · Ajuste 2026-09-14 D
+   Compactación fila ejecutiva + redistribución fila analítica
+   Alcance local: solo vista Inicio
+   ========================================================= */
+
+/* 1. La primera fila ejecutiva se compacta: el panel financiero muestra
+   cuatro CUI antes del scroll y los KPI ganan presencia visual. */
+@media (min-width:1261px){
+  .main-grid{
+    height:278px;
+    min-height:278px;
+    max-height:278px;
+  }
+
+  .card-financial-gap > .financial-summary-kpis{
+    flex:0 0 72px;
+    min-height:72px;
+    padding:7px 8px 6px;
+  }
+
+  .card-financial-gap .financial-summary-kpi{
+    min-height:56px;
+    padding:6px 7px;
+    grid-template-columns:28px minmax(0,1fr);
+    gap:6px;
+  }
+
+  .card-financial-gap .financial-summary-kpi > span{
+    width:28px;
+    height:28px;
+    border-radius:8px;
+    font-size:12px;
+  }
+
+  .card-financial-gap .financial-summary-kpi small{
+    min-height:17px;
+    font-size:7.25px;
+    line-height:1.12;
+  }
+
+  .card-financial-gap .financial-summary-kpi strong{
+    margin-top:2px;
+    font-size:12.2px;
+    line-height:1;
+  }
+
+  .card-financial-gap .financial-summary-operator{
+    font-size:16px;
+  }
+
+  .card-financial-gap .financial-summary-operator--equals{
+    font-size:18px;
+  }
+
+  .card-financial-gap .financial-table-wrap{
+    flex:0 0 auto!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:3px 7px 7px;
+  }
+
+  .card-financial-gap .financial-table{
+    height:auto!important;
+    min-height:0!important;
+  }
+
+  .card-financial-gap .financial-table__head{
+    flex:0 0 37px;
+    min-height:37px;
+  }
+
+  .card-financial-gap .financial-table__body{
+    flex:0 0 100px!important;
+    height:100px!important;
+    max-height:100px!important;
+    min-height:100px!important;
+    overflow-y:auto!important;
+  }
+
+  .card-financial-gap .financial-row{
+    min-height:25px;
+    height:25px;
+  }
+}
+
+/* El resto de los cards de la fila aprovecha la menor altura sin dejar
+   colchones verticales innecesarios. */
+@media (min-width:1261px){
+  .card-portfolio .portfolio-content{
+    padding-top:5px;
+    padding-bottom:6px;
+    row-gap:3px;
+  }
+
+  .card-portfolio .portfolio-resource{
+    align-items:center;
+  }
+
+  .card-agreements .agreements-content{
+    align-items:center;
+    padding-top:5px;
+    padding-bottom:5px;
+  }
+}
+
+/* 2. La brecha territorial ocupa menos ancho y se entrega ese espacio al
+   módulo de distribución territorial. El monto conserva una sola línea. */
+.bottom-grid{
+  grid-template-columns:.96fr .80fr .96fr 1.04fr;
+  gap:8px;
+}
+
+.analytics-card--province .province-table-head{
+  grid-template-columns:66px minmax(30px,.48fr) 84px;
+  gap:3px;
+  padding-left:7px;
+  padding-right:7px;
+}
+
+.analytics-card--province .province-row{
+  grid-template-columns:64px minmax(30px,.48fr) 84px;
+  gap:3px;
+}
+
+.analytics-card--province .province-bars{
+  padding-left:7px;
+  padding-right:7px;
+}
+
+.analytics-card--province .province-row__value{
+  grid-template-columns:minmax(57px,1fr) 23px;
+  column-gap:2px;
+  font-size:7.9px;
+  white-space:nowrap;
+}
+
+.analytics-card--province .province-row__value > span:first-child{
+  white-space:nowrap;
+}
+
+.analytics-card--province .province-row__track{
+  min-width:30px;
+  max-width:100%;
+}
+
+/* El mapa crece con el ancho recuperado; no se altera la geometría ni sus colores. */
+.analytics-card--map .territory-map-content{
+  grid-template-columns:minmax(0,1fr) 88px;
+  gap:5px;
+  padding-left:6px;
+  padding-right:6px;
+}
+
+.analytics-card--map .scope-map{
+  width:100%;
+  max-width:none;
+  height:128px;
+}
+
+@media (max-width:1500px) and (min-width:1261px){
+  .main-grid{
+    height:274px;
+    min-height:274px;
+    max-height:274px;
+  }
+
+  .card-financial-gap > .financial-summary-kpis{
+    flex-basis:70px;
+    min-height:70px;
+    padding-left:6px;
+    padding-right:6px;
+  }
+
+  .card-financial-gap .financial-summary-kpi{
+    min-height:54px;
+    grid-template-columns:25px minmax(0,1fr);
+    gap:4px;
+    padding:5px;
+  }
+
+  .card-financial-gap .financial-summary-kpi > span{
+    width:25px;
+    height:25px;
+    font-size:10.5px;
+  }
+
+  .card-financial-gap .financial-summary-kpi small{
+    min-height:16px;
+    font-size:6.7px;
+  }
+
+  .card-financial-gap .financial-summary-kpi strong{
+    font-size:11px;
+  }
+
+  .card-financial-gap .financial-table__body{
+    flex-basis:96px!important;
+    height:96px!important;
+    max-height:96px!important;
+    min-height:96px!important;
+  }
+
+  .card-financial-gap .financial-row{
+    min-height:24px;
+    height:24px;
+  }
+
+  .bottom-grid{
+    grid-template-columns:.94fr .78fr .94fr 1.08fr;
+  }
+
+  .analytics-card--province .province-table-head{
+    grid-template-columns:62px minmax(28px,.44fr) 82px;
+  }
+
+  .analytics-card--province .province-row{
+    grid-template-columns:60px minmax(28px,.44fr) 82px;
+  }
+
+  .analytics-card--province .province-row__value{
+    grid-template-columns:minmax(55px,1fr) 22px;
+    font-size:7.6px;
+  }
+
+  .analytics-card--map .territory-map-content{
+    grid-template-columns:minmax(0,1fr) 82px;
+  }
+}
+
+/* La grilla vertical también reconoce la nueva altura de la fila principal. */
+@media (min-width:1280px) and (min-height:820px){
+  .inicio-stage{
+    grid-template-rows:136px 58px 76px 278px 224px;
+  }
+}
+
+@media (max-width:1500px) and (min-width:1280px) and (min-height:820px){
+  .inicio-stage{
+    grid-template-rows:136px 58px 76px 274px 224px;
+  }
+}
+
+/* =========================================================
+   INICIO · Ajuste de jerarquía visual 2026-09-14 E
+   Objetivo: jerarquía financiera, brecha compacta y mapa dominante.
+   Alcance local: solo vista Inicio.
+   ========================================================= */
+
+/* Fila ejecutiva: mantener altura compacta, pero devolver jerarquía a la ecuación. */
+@media (min-width:1261px){
+  .card-financial-gap > .financial-summary-kpis{
+    flex:0 0 80px;
+    min-height:80px;
+    padding:7px 8px 5px;
+    gap:4px;
+  }
+
+  .card-financial-gap .financial-summary-kpi{
+    position:relative;
+    min-height:66px;
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-rows:25px auto;
+    justify-items:center;
+    align-content:center;
+    gap:2px;
+    padding:5px 5px 6px;
+    border-radius:10px;
+    text-align:center;
+  }
+
+  .card-financial-gap .financial-summary-kpi > span{
+    width:25px;
+    height:25px;
+    border-radius:7px;
+    font-size:11px;
+  }
+
+  .card-financial-gap .financial-summary-kpi p{
+    width:100%;
+    display:grid;
+    justify-items:center;
+    align-content:center;
+    gap:2px;
+    text-align:center;
+  }
+
+  .card-financial-gap .financial-summary-kpi small{
+    width:100%;
+    min-height:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:visible;
+    white-space:normal;
+    text-overflow:clip;
+    color:#5f7488;
+    font-size:7.35px;
+    line-height:1.04;
+    font-weight:900;
+    letter-spacing:-.01em;
+    text-align:center;
+  }
+
+  .card-financial-gap .financial-summary-kpi strong{
+    margin:0;
+    color:#203f58;
+    font-size:13.6px;
+    line-height:1;
+    font-weight:950;
+    letter-spacing:-.025em;
+    text-align:center;
+  }
+
+  .card-financial-gap .financial-summary-kpi--deficit strong{
+    color:var(--wine-dark);
+  }
+
+  .card-financial-gap .financial-summary-operator{
+    font-size:17px;
+    line-height:1;
+  }
+  .card-financial-gap .financial-summary-operator--equals{
+    font-size:19px;
+  }
+
+  /* Cuatro registros visibles antes del scroll. */
+  .card-financial-gap .financial-table-wrap{
+    padding:3px 7px 7px;
+  }
+  .card-financial-gap .financial-table__head{
+    flex:0 0 36px;
+    min-height:36px;
+  }
+  .card-financial-gap .financial-table__body{
+    flex:0 0 92px!important;
+    height:92px!important;
+    min-height:92px!important;
+    max-height:92px!important;
+    overflow-y:auto!important;
+  }
+  .card-financial-gap .financial-row{
+    min-height:23px;
+    height:23px;
+  }
+}
+
+/* En pantallas tipo 1366-1500 se conserva la misma jerarquía sin desbordar. */
+@media (max-width:1500px) and (min-width:1261px){
+  .card-financial-gap > .financial-summary-kpis{
+    flex-basis:76px;
+    min-height:76px;
+    padding-left:6px;
+    padding-right:6px;
+  }
+  .card-financial-gap .financial-summary-kpi{
+    min-height:62px;
+    grid-template-rows:23px auto;
+    padding:4px 4px 5px;
+  }
+  .card-financial-gap .financial-summary-kpi > span{
+    width:23px;
+    height:23px;
+    font-size:10px;
+  }
+  .card-financial-gap .financial-summary-kpi small{
+    min-height:14px;
+    font-size:6.75px;
+  }
+  .card-financial-gap .financial-summary-kpi strong{
+    font-size:12.1px;
+  }
+  .card-financial-gap .financial-table__body{
+    flex-basis:88px!important;
+    height:88px!important;
+    min-height:88px!important;
+    max-height:88px!important;
+  }
+  .card-financial-gap .financial-row{
+    min-height:22px;
+    height:22px;
+  }
+}
+
+/* Fila analítica: la brecha territorial deja de consumir ancho vacío y el mapa
+   vuelve a ser el elemento visual dominante de la zona inferior. */
+.bottom-grid{
+  grid-template-columns:1fr .83fr .76fr 1.20fr;
+  gap:8px;
+}
+
+.analytics-card__head{
+  min-height:50px;
+  padding:6px 9px;
+}
+.analytics-card__head h3{
+  font-size:14.1px;
+  line-height:1.04;
+}
+.analytics-card__head p{
+  margin-top:2px;
+  font-size:7.9px;
+  line-height:1.08;
+}
+.analytics-card__head>a{
+  min-height:27px;
+  padding:0 8px;
+  white-space:nowrap;
+}
+
+/* Brecha por provincia/distrito: columnas más compactas, monto siempre en una línea. */
+.analytics-card--province .province-table-head{
+  grid-template-columns:64px minmax(38px,.54fr) 96px;
+  gap:3px;
+  padding:7px 7px 3px;
+  font-size:7.25px;
+}
+.analytics-card--province .province-row{
+  grid-template-columns:62px minmax(38px,.54fr) 96px;
+  gap:3px;
+  min-height:20px;
+}
+.analytics-card--province .province-bars{
+  gap:4px;
+  padding:3px 7px 8px;
+}
+.analytics-card--province .province-row__name{
+  font-size:8.45px;
+}
+.analytics-card--province .province-row__track{
+  height:8px;
+  min-width:38px;
+  max-width:100%;
+}
+.analytics-card--province .province-row__value{
+  display:grid;
+  grid-template-columns:minmax(67px,1fr) 24px;
+  column-gap:3px;
+  font-size:8.05px;
+  line-height:1;
+  white-space:nowrap;
+}
+.analytics-card--province .province-row__value > span:first-child,
+.analytics-card--province .province-row__pct{
+  white-space:nowrap;
+}
+
+/* Distribución territorial: mayor área útil, botón restituido y pie legible. */
+.analytics-card--map .territory-map-content{
+  grid-template-columns:minmax(0,1fr) 86px;
+  gap:6px;
+  padding:4px 7px 2px;
+  align-items:center;
+}
+.analytics-card--map .scope-map{
+  width:100%;
+  max-width:none;
+  height:130px;
+}
+.analytics-card--map .scope-map-legend{
+  gap:4px;
+}
+.analytics-card--map .scope-map-legend>div{
+  grid-template-columns:7px minmax(0,1fr) auto;
+  gap:4px;
+}
+.analytics-card--map .scope-map-legend span{
+  font-size:7.2px;
+  line-height:1.05;
+}
+.analytics-card--map .scope-map-legend strong{
+  font-size:9.5px;
+}
+
+.map-geo-footer--context{
+  min-height:38px;
+  margin:0 7px 7px;
+  padding:5px 7px;
+  gap:6px;
+  border:1px solid #e6edf2;
+  border-top:1px solid #e1e8ee;
+  background:linear-gradient(180deg,#fbfdff,#f5f8fb);
+}
+.map-geo-footer--context>div{
+  min-width:0;
+  grid-template-columns:18px auto;
+  grid-template-rows:15px auto;
+  column-gap:5px;
+  align-items:center;
+}
+.map-geo-footer--context i{
+  grid-row:1/3;
+  font-size:11.5px;
+}
+.map-geo-footer--context strong{
+  font-size:13px;
+  line-height:1;
+}
+.map-geo-footer--context span{
+  display:block;
+  overflow:visible;
+  text-overflow:clip;
+  white-space:normal;
+  color:#667b8e;
+  font-size:7.25px;
+  line-height:1.02;
+  font-weight:850;
+}
+
+@media (max-width:1500px) and (min-width:1261px){
+  .bottom-grid{
+    grid-template-columns:.98fr .80fr .73fr 1.24fr;
+  }
+  .analytics-card--province .province-table-head{
+    grid-template-columns:58px minmax(34px,.48fr) 91px;
+    font-size:6.8px;
+  }
+  .analytics-card--province .province-row{
+    grid-template-columns:56px minmax(34px,.48fr) 91px;
+  }
+  .analytics-card--province .province-row__name{
+    font-size:7.9px;
+  }
+  .analytics-card--province .province-row__value{
+    grid-template-columns:minmax(63px,1fr) 22px;
+    font-size:7.55px;
+  }
+  .analytics-card--map .territory-map-content{
+    grid-template-columns:minmax(0,1fr) 80px;
+  }
+  .analytics-card--map .scope-map{
+    height:128px;
+  }
+  .map-geo-footer--context span{
+    font-size:6.85px;
+  }
+}
+
+/* La altura de la fila inferior se mantiene definida y los cards estiran por igual. */
+@media (min-width:1280px) and (min-height:820px){
+  .inicio-stage{
+    grid-template-rows:136px 58px 76px 274px 226px;
+  }
+  .bottom-grid,
+  .bottom-grid > .analytics-card{
+    min-height:0;
+    height:100%;
+  }
+}
+
+/* Ajuste fino final de alturas y legibilidad del pie territorial. */
+.map-geo-footer--context strong{font-size:14px}
+.map-geo-footer--context span{font-size:8px;line-height:1.04}
+.map-geo-footer--context i{font-size:12px}
+.analytics-card--map .scope-map{height:122px}
+
+@media (min-width:1501px) and (min-height:820px){
+  .inicio-stage{grid-template-rows:136px 58px 76px 278px 226px}
+  .main-grid{height:278px;min-height:278px;max-height:278px}
+}
+@media (max-width:1500px) and (min-width:1280px) and (min-height:820px){
+  .inicio-stage{grid-template-rows:136px 58px 76px 274px 226px}
+  .main-grid{height:274px;min-height:274px;max-height:274px}
+  .map-geo-footer--context span{font-size:7.35px}
+  .analytics-card--map .scope-map{height:118px}
+}
+
+/* =========================================================
+   INICIO · Ajuste fino de jerarquía 2026-09-14 F
+   1) Brecha territorial: evitar área muerta cuando hay pocas categorías.
+   2) Ecuación financiera: títulos y valores con mayor jerarquía.
+   Alcance local: solo vista Inicio.
+   ========================================================= */
+
+/* --- Cálculo del déficit: KPI más legibles y centrados --- */
+@media (min-width:1261px){
+  .card-financial-gap > .financial-summary-kpis{
+    flex-basis:84px;
+    min-height:84px;
+    padding:7px 8px 6px;
+    gap:5px;
+  }
+
+  .card-financial-gap .financial-summary-kpi{
+    min-height:70px;
+    grid-template-rows:27px auto;
+    padding:6px 6px 7px;
+    gap:3px;
+  }
+
+  .card-financial-gap .financial-summary-kpi > span{
+    width:27px;
+    height:27px;
+    font-size:11.5px;
+  }
+
+  .card-financial-gap .financial-summary-kpi p{
+    width:100%;
+    gap:3px;
+    text-align:center;
+  }
+
+  .card-financial-gap .financial-summary-kpi small{
+    min-height:20px;
+    font-size:8.55px;
+    line-height:1.06;
+    letter-spacing:-.012em;
+    text-align:center;
+  }
+
+  .card-financial-gap .financial-summary-kpi strong{
+    font-size:14.4px;
+    line-height:1;
+    letter-spacing:-.025em;
+  }
+
+  .card-financial-gap .financial-summary-operator{
+    font-size:18px;
+  }
+  .card-financial-gap .financial-summary-operator--equals{
+    font-size:20px;
+  }
+}
+
+@media (max-width:1500px) and (min-width:1261px){
+  .card-financial-gap > .financial-summary-kpis{
+    flex-basis:82px;
+    min-height:82px;
+    padding-left:6px;
+    padding-right:6px;
+    gap:4px;
+  }
+
+  .card-financial-gap .financial-summary-kpi{
+    min-height:68px;
+    grid-template-rows:25px auto;
+    padding:5px 5px 6px;
+  }
+
+  .card-financial-gap .financial-summary-kpi > span{
+    width:25px;
+    height:25px;
+    font-size:10.8px;
+  }
+
+  .card-financial-gap .financial-summary-kpi small{
+    min-height:19px;
+    font-size:8px;
+    line-height:1.05;
+  }
+
+  .card-financial-gap .financial-summary-kpi strong{
+    font-size:13.6px;
+  }
+
+  .card-financial-gap .financial-summary-operator{font-size:17px}
+  .card-financial-gap .financial-summary-operator--equals{font-size:19px}
+}
+
+/* --- Brecha por provincia/distrito: comportamiento adaptativo por cantidad de filas --- */
+.analytics-card--province .province-bars{
+  flex:1;
+  min-height:0;
+}
+
+/* Una categoría: se presenta como una fila protagonista, centrada verticalmente. */
+.analytics-card--province .province-bars:not(:has(.province-row:nth-child(2))){
+  display:grid;
+  grid-template-rows:64px;
+  align-content:center;
+  gap:0;
+  padding:3px 1px 10px;
+}
+
+/* Dos categorías: elimina el gran vacío inferior y convierte cada fila en una banda legible. */
+.analytics-card--province .province-bars:has(.province-row:nth-child(2)):not(:has(.province-row:nth-child(3))){
+  display:grid;
+  grid-template-rows:repeat(2,58px);
+  align-content:center;
+  gap:10px;
+  padding:8px 10px 12px;
+}
+
+/* Tres categorías: mismo principio, con una escala ligeramente más compacta. */
+.analytics-card--province .province-bars:has(.province-row:nth-child(3)):not(:has(.province-row:nth-child(4))){
+  display:grid;
+  grid-template-rows:repeat(3,43px);
+  align-content:center;
+  gap:6px;
+  padding:7px 9px 10px;
+}
+
+/* Superficie visual para escenarios con 1-3 categorías. */
+.analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row{
+  min-height:0;
+  height:100%;
+  padding:6px 3px 6px 8px;
+  border:1px solid #edf2f5;
+  border-radius:9px;
+  background:linear-gradient(180deg,#ffffff 0%,#f9fbfc 100%);
+  box-shadow:0 2px 7px rgba(30,53,74,.035);
+}
+
+.analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row__name{
+  font-size:9.4px;
+}
+.analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row__track{
+  height:11px;
+}
+.analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row__value{
+  font-size:8.55px;
+}
+.analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row__value > span:first-child{
+  font-size:8.85px;
+}
+
+@media (max-width:1500px) and (min-width:1261px){
+  .analytics-card--province .province-bars:has(.province-row:nth-child(2)):not(:has(.province-row:nth-child(3))){
+    grid-template-rows:repeat(2,54px);
+    gap:8px;
+    padding:7px 8px 10px;
+  }
+
+  .analytics-card--province .province-bars:has(.province-row:nth-child(3)):not(:has(.province-row:nth-child(4))){
+    grid-template-rows:repeat(3,40px);
+    gap:5px;
+    padding:6px 8px 9px;
+  }
+
+  .analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row{
+    padding:5px 7px;
+  }
+
+  .analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row__name{
+    font-size:8.9px;
+  }
+  .analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row__value{
+    font-size:8.15px;
+  }
+  .analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row__value > span:first-child{
+    font-size:8.45px;
+  }
+}
+
+/* =========================================================
+   INICIO · Ajuste de jerarquía visual 2026-09-14 G
+   - Aprovecha el espacio vertical disponible del dashboard.
+   - Da respiración al bloque de Cálculo del Déficit Financiero.
+   - Elimina el vacío derecho de Brecha por provincia/distrito.
+   Alcance local: solo vista Inicio.
+   ========================================================= */
+
+@media (min-width:1261px){
+  /* Se recuperan márgenes/gaps antes de seguir comprimiendo contenido. */
+  .inicio-main{
+    padding:8px 10px 7px!important;
+  }
+
+  .inicio-stage{
+    gap:7px;
+  }
+
+  /* La fila ejecutiva gana altura real y el panel financiero gana algo de ancho. */
+  .main-grid{
+    grid-template-columns:minmax(0,1.04fr) minmax(0,1.34fr) minmax(0,.82fr);
+    gap:9px;
+    height:290px;
+    min-height:290px;
+    max-height:290px;
+  }
+
+  /* El espacio adicional se asigna a la ecuación financiera, no a más filas. */
+  .card-financial-gap > .financial-summary-kpis{
+    flex:0 0 94px;
+    min-height:94px;
+    grid-template-columns:minmax(0,1fr) 11px minmax(0,1fr) 11px minmax(0,1fr) 13px minmax(0,1fr);
+    gap:4px;
+    padding:8px 8px 6px;
+  }
+
+  .card-financial-gap .financial-summary-kpi{
+    min-height:80px;
+    grid-template-rows:30px auto;
+    align-content:center;
+    gap:4px;
+    padding:7px 7px 8px;
+    border-radius:11px;
+  }
+
+  .card-financial-gap .financial-summary-kpi > span{
+    width:30px;
+    height:30px;
+    border-radius:8px;
+    font-size:12.5px;
+  }
+
+  .card-financial-gap .financial-summary-kpi p{
+    gap:4px;
+  }
+
+  .card-financial-gap .financial-summary-kpi small{
+    min-height:21px;
+    font-size:9.1px;
+    line-height:1.07;
+    letter-spacing:-.012em;
+  }
+
+  .card-financial-gap .financial-summary-kpi strong{
+    font-size:15.8px;
+    line-height:1;
+  }
+
+  .card-financial-gap .financial-summary-operator{
+    font-size:18px;
+  }
+
+  .card-financial-gap .financial-summary-operator--equals{
+    font-size:20px;
+  }
+
+  /* Se mantienen cuatro CUI visibles: el crecimiento queda arriba, en los KPI. */
+  .card-financial-gap .financial-table__body{
+    flex:0 0 92px!important;
+    height:92px!important;
+    min-height:92px!important;
+    max-height:92px!important;
+  }
+
+  .card-financial-gap .financial-row{
+    min-height:23px;
+    height:23px;
+  }
+
+  /* Fila inferior: se reparte mejor el ancho, sin castigar el mapa. */
+  .bottom-grid{
+    grid-template-columns:.98fr .80fr .84fr 1.22fr;
+    gap:8px;
+  }
+
+  /* Con 4+ categorías, el gráfico ocupa toda su superficie útil. */
+  .analytics-card--province .province-bars:has(.province-row:nth-child(4)){
+    display:grid;
+    grid-auto-rows:minmax(20px,1fr);
+    align-content:stretch;
+    gap:5px;
+    width:100%;
+    box-sizing:border-box;
+    padding:4px 6px 8px 8px;
+  }
+
+  .analytics-card--province .province-table-head{
+    grid-template-columns:72px minmax(0,1fr) 108px;
+    gap:5px;
+    padding:8px 6px 4px 8px;
+    font-size:7.55px;
+    line-height:1.08;
+  }
+
+  .analytics-card--province .province-row{
+    width:100%;
+    grid-template-columns:72px minmax(0,1fr) 108px;
+    gap:5px;
+    min-height:21px;
+  }
+
+  .analytics-card--province .province-row__name{
+    font-size:8.75px;
+    line-height:1;
+  }
+
+  .analytics-card--province .province-row__track{
+    width:100%;
+    min-width:0;
+    max-width:none;
+    height:9px;
+  }
+
+  .analytics-card--province .province-row__value{
+    width:100%;
+    grid-template-columns:minmax(72px,1fr) 26px;
+    column-gap:4px;
+    justify-self:stretch;
+    font-size:8.5px;
+    line-height:1;
+    white-space:nowrap;
+  }
+
+  .analytics-card--province .province-row__value > span:first-child{
+    min-width:0;
+    white-space:nowrap;
+  }
+
+  .analytics-card--province .province-row__pct{
+    min-width:26px;
+    white-space:nowrap;
+  }
+
+  /* La fila analítica también aprovecha parte del margen inferior disponible. */
+  .bottom-grid{
+    min-height:232px;
+  }
+}
+
+/* Ajuste específico para el rango de ancho de laptops / navegador no maximizado. */
+@media (max-width:1500px) and (min-width:1261px){
+  .main-grid{
+    grid-template-columns:minmax(0,1.01fr) minmax(0,1.36fr) minmax(0,.80fr);
+    height:286px;
+    min-height:286px;
+    max-height:286px;
+  }
+
+  .card-financial-gap > .financial-summary-kpis{
+    flex-basis:90px;
+    min-height:90px;
+    padding-left:6px;
+    padding-right:6px;
+  }
+
+  .card-financial-gap .financial-summary-kpi{
+    min-height:76px;
+    grid-template-rows:28px auto;
+    padding:6px 5px 7px;
+  }
+
+  .card-financial-gap .financial-summary-kpi > span{
+    width:28px;
+    height:28px;
+    font-size:11.5px;
+  }
+
+  .card-financial-gap .financial-summary-kpi small{
+    min-height:20px;
+    font-size:8.45px;
+  }
+
+  .card-financial-gap .financial-summary-kpi strong{
+    font-size:14.6px;
+  }
+
+  .bottom-grid{
+    grid-template-columns:.96fr .78fr .86fr 1.22fr;
+  }
+
+  .analytics-card--province .province-table-head{
+    grid-template-columns:62px minmax(0,1fr) 98px;
+    gap:4px;
+    padding-left:6px;
+    padding-right:5px;
+    font-size:7px;
+  }
+
+  .analytics-card--province .province-row{
+    grid-template-columns:62px minmax(0,1fr) 98px;
+    gap:4px;
+  }
+
+  .analytics-card--province .province-bars:has(.province-row:nth-child(4)){
+    padding-left:6px;
+    padding-right:5px;
+    gap:4px;
+  }
+
+  .analytics-card--province .province-row__name{
+    font-size:8.15px;
+  }
+
+  .analytics-card--province .province-row__value{
+    grid-template-columns:minmax(65px,1fr) 24px;
+    column-gap:3px;
+    font-size:7.85px;
+  }
+}
+
+/* Alturas de escena: se usa el espacio inferior que antes quedaba sin función. */
+@media (min-width:1501px) and (min-height:820px){
+  .inicio-stage{
+    grid-template-rows:136px 58px 76px 290px minmax(232px,1fr);
+  }
+}
+
+@media (max-width:1500px) and (min-width:1280px) and (min-height:820px){
+  .inicio-stage{
+    grid-template-rows:136px 58px 76px 286px minmax(228px,1fr);
+  }
+}
+
+/* =========================================================
+   INICIO · Consistencia territorial 2026-09-14 H
+   - VRAEM, NORVRAEM y AMUVRAE conservan exactamente la misma
+     altura en la fila analítica.
+   - Brecha territorial muestra todas las provincias/distritos.
+   - Si exceden el espacio disponible, usa scroll interno; nunca
+     cambia el alto del dashboard ni agrupa como "OTROS".
+   ========================================================= */
+
+@media (min-width:1261px){
+  /* Altura contractual de la segunda fila: independiente del filtro activo. */
+  .bottom-grid{
+    height:232px!important;
+    min-height:232px!important;
+    max-height:232px!important;
+    align-items:stretch;
+  }
+
+  .bottom-grid > .analytics-card{
+    height:232px!important;
+    min-height:0!important;
+    max-height:232px!important;
+    overflow:hidden;
+  }
+
+  .analytics-card--province{
+    min-height:0!important;
+    overflow:hidden;
+  }
+
+  /* Cabecera estable: no participa del scroll. */
+  .analytics-card--province .province-table-head{
+    flex:0 0 auto;
+  }
+
+  /* Un único comportamiento para 1, 2, 3 o muchas categorías. */
+  .analytics-card--province .province-bars,
+  .analytics-card--province .province-bars:not(:has(.province-row:nth-child(2))),
+  .analytics-card--province .province-bars:has(.province-row:nth-child(2)):not(:has(.province-row:nth-child(3))),
+  .analytics-card--province .province-bars:has(.province-row:nth-child(3)):not(:has(.province-row:nth-child(4))),
+  .analytics-card--province .province-bars:has(.province-row:nth-child(4)){
+    display:flex!important;
+    flex:1 1 auto!important;
+    flex-direction:column!important;
+    justify-content:flex-start!important;
+    align-content:initial!important;
+    grid-template-rows:none!important;
+    grid-auto-rows:unset!important;
+    min-height:0!important;
+    height:auto!important;
+    max-height:none!important;
+    width:100%!important;
+    gap:5px!important;
+    padding:4px 5px 8px 8px!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    overscroll-behavior:contain;
+    scrollbar-gutter:stable;
+    box-sizing:border-box;
+  }
+
+  /* Las filas nunca crecen para rellenar vacío ni encogen por exceso de datos. */
+  .analytics-card--province .province-bars .province-row,
+  .analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row{
+    flex:0 0 22px!important;
+    width:100%!important;
+    height:22px!important;
+    min-height:22px!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+
+  .analytics-card--province .province-bars .province-row__name,
+  .analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row__name{
+    font-size:8.75px!important;
+  }
+
+  .analytics-card--province .province-bars .province-row__track,
+  .analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row__track{
+    height:9px!important;
+  }
+
+  .analytics-card--province .province-bars .province-row__value,
+  .analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row__value{
+    font-size:8.5px!important;
+  }
+
+  .analytics-card--province .province-bars .province-row__value > span:first-child,
+  .analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row__value > span:first-child{
+    font-size:8.5px!important;
+  }
+
+  /* Scroll sobrio e integrado al dashboard. */
+  .analytics-card--province .province-bars{
+    scrollbar-width:thin;
+    scrollbar-color:#b7c5d0 transparent;
+  }
+  .analytics-card--province .province-bars::-webkit-scrollbar{width:5px}
+  .analytics-card--province .province-bars::-webkit-scrollbar-track{background:transparent}
+  .analytics-card--province .province-bars::-webkit-scrollbar-thumb{
+    background:#b7c5d0;
+    border-radius:999px;
+  }
+  .analytics-card--province .province-bars::-webkit-scrollbar-thumb:hover{background:#91a5b5}
+}
+
+@media (max-width:1500px) and (min-width:1261px){
+  .analytics-card--province .province-bars,
+  .analytics-card--province .province-bars:not(:has(.province-row:nth-child(2))),
+  .analytics-card--province .province-bars:has(.province-row:nth-child(2)):not(:has(.province-row:nth-child(3))),
+  .analytics-card--province .province-bars:has(.province-row:nth-child(3)):not(:has(.province-row:nth-child(4))),
+  .analytics-card--province .province-bars:has(.province-row:nth-child(4)){
+    gap:4px!important;
+    padding:4px 4px 7px 6px!important;
+  }
+
+  .analytics-card--province .province-bars .province-row,
+  .analytics-card--province .province-bars:not(:has(.province-row:nth-child(4))) .province-row{
+    flex-basis:21px!important;
+    height:21px!important;
+    min-height:21px!important;
+  }
+}
+
+/* =========================================================
+   V17 - FILTROS CRUZADOS Y BOTON RESTABLECER COMO MAPA
+   ========================================================= */
+
+.filter-reset{
+  border:1px solid var(--territory-line-color,#991735)!important;
+  border-radius:8px!important;
+  background:var(--territory-line-color,#991735)!important;
+  color:#fff!important;
+  font-weight:900!important;
+  box-shadow:0 5px 12px color-mix(in srgb,var(--territory-line-color,#991735) 18%,transparent)!important;
+  transition:transform .14s ease,filter .14s ease!important;
+}
+.filter-reset:hover{
+  filter:brightness(.95);
+  transform:translateY(-1px);
+}
+.filter-reset i{color:#fff!important}
+
+.crossfilter-target{
+  cursor:pointer;
+  transition:transform .14s ease,box-shadow .14s ease,filter .14s ease,opacity .14s ease;
+  outline:none;
+}
+.crossfilter-target:hover{
+  filter:brightness(.985);
+}
+.kpi-card.crossfilter-target:hover,
+.resource-item.crossfilter-target:hover,
+.agreement-list>div.crossfilter-target:hover,
+.prep-item.crossfilter-target:hover,
+.stage-legend>div.crossfilter-target:hover,
+.investment-progress__legend>div.crossfilter-target:hover{
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--territory-line-color,#991735) 16%,transparent),0 8px 18px rgba(28,45,62,.08);
+}
+.crossfilter-target:focus-visible{
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--territory-line-color,#991735) 22%,transparent)!important;
+}
+.crossfilter-target.is-crossfilter-active{
+  box-shadow:0 0 0 2px var(--territory-line-color,#991735),0 9px 22px color-mix(in srgb,var(--territory-line-color,#991735) 14%,transparent)!important;
+}
+.kpi-card.is-crossfilter-active::after{
+  content:"Filtro activo";
+  position:absolute;
+  right:7px;
+  top:5px;
+  padding:2px 5px;
+  border-radius:999px;
+  background:var(--territory-line-color,#991735);
+  color:#fff;
+  font-size:6.8px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+}
+.donut-seg.crossfilter-target{
+  pointer-events:stroke;
+}
+.donut-seg.crossfilter-target:hover{
+  filter:drop-shadow(0 0 2px rgba(23,48,71,.28));
+}
+.stage-stack__seg.crossfilter-target,
+.investment-progress__bar>i.crossfilter-target{
+  pointer-events:auto;
+}
+.province-row--filterable:hover{
+  background:color-mix(in srgb,var(--territory-line-color,#991735) 5%,white)!important;
+}
+.province-row--filterable:hover .province-row__name{
+  color:var(--territory-line-color,#991735);
+  font-weight:950;
+}
+.visual-filter-chip{display:none!important}
