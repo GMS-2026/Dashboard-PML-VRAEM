@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Prueba cartográfica topológica | Puentes de Menores Luces</title>
+
+  <link rel="preload" as="image" href="img/portada/puente-vraem-fondo.png">
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- REUTILIZA TUS ESTILOS EXISTENTES -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/territorio.css">
+
+  <style>
+    /* Solo ajustes de esta vista de prueba. No modifica territorio.css. */
+
+    .territory-test-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      margin-top:10px;
+      padding:6px 10px;
+      border:1px solid #dfe8e5;
+      border-radius:999px;
+      background:#f7fbfa;
+      color:#617168;
+      font-size:10px;
+      font-weight:850;
+      letter-spacing:.045em;
+      text-transform:uppercase;
+    }
+
+    .territory-test-badge i{
+      color:#0c8a60;
+      font-size:12px;
+    }
+
+    .territory-source-status{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      margin:0;
+      color:#758294;
+      font-size:10px;
+      font-weight:750;
+    }
+
+    .territory-source-status::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#d2a32b;
+      box-shadow:0 0 0 3px rgba(210,163,43,.10);
+    }
+
+    .territory-source-status.is-ok::before{
+      background:#0c8a60;
+      box-shadow:0 0 0 3px rgba(12,138,96,.10);
+    }
+
+    .territory-source-status.is-error::before{
+      background:#b43b47;
+      box-shadow:0 0 0 3px rgba(180,59,71,.10);
+    }
+
+    /*
+      Diferencia visual clave:
+      - no dibujamos el límite provincial antiguo;
+      - borde interno más fino;
+      - contexto más neutro;
+      - la geometría proviene de una sola fuente topológica.
+    */
+    .territory-page--topology .territory-map__district--context{
+      fill:rgba(var(--card-rgb), .045);
+      stroke:rgba(var(--card-rgb), .12);
+      stroke-width:.55;
+      stroke-linejoin:round;
+      stroke-linecap:round;
+      vector-effect:non-scaling-stroke;
+    }
+
+    .territory-page--topology .territory-map__district--selected{
+      fill:rgba(var(--card-rgb), .80);
+      stroke:rgba(255,255,255,.94);
+      stroke-width:.80;
+      stroke-linejoin:round;
+      stroke-linecap:round;
+      vector-effect:non-scaling-stroke;
+      filter:drop-shadow(0 3px 5px rgba(var(--card-rgb), .14));
+    }
+
+    .territory-page--topology .territory-card:hover .territory-map__district--selected{
+      fill:rgba(var(--card-rgb), .90);
+    }
+
+    .territory-page--topology .territory-card__map{
+      width:106%;
+      height:230px;
+      filter:drop-shadow(0 8px 14px rgba(var(--card-rgb), .08));
+    }
+
+    .territory-page--topology .territory-card__map-wrap{
+      background:
+        radial-gradient(circle at 52% 45%, rgba(var(--card-rgb), .075), transparent 52%),
+        linear-gradient(180deg,#fcfdfd 0%,#f2f6f7 100%);
+    }
+
+    .territory-page--topology .territory-map__province{
+      display:none;
+    }
+
+    .territory-back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      color:#6f7d8e;
+      text-decoration:none;
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.035em;
+      text-transform:uppercase;
+    }
+
+    .territory-back-link:hover{
+      color:#1d2e43;
+    }
+  </style>
+</head>
+
+<body class="territory-page territory-page--topology">
+
+  <div class="territory-top-accent" aria-hidden="true"></div>
+
+  <main class="territory-shell">
+
+    <section class="territory-frame">
+
+      <header class="territory-hero">
+
+        <div class="territory-hero__copy">
+
+          <img
+            src="img/logos/logo-pvdes.png"
+            alt="Provías Descentralizado"
+            class="territory-logo"
+          >
+
+          <h1>Prueba de cartografía topológica</h1>
+
+          <p>
+            Misma cartera y clasificación territorial; únicamente cambia la geometría distrital.
+          </p>
+
+          <div class="territory-test-badge">
+            <i class="bi bi-bezier2"></i>
+            Geometría pública simplificada para web
+          </div>
+
+          <div class="territory-total" aria-live="polite">
+            <div>
+              <strong id="totalInversiones">—</strong>
+              <span>Inversiones <small>IOARR</small></span>
+            </div>
+            <i></i>
+            <div>
+              <strong id="totalPuentes">—</strong>
+              <span>Puentes</span>
+            </div>
+            <i></i>
+            <div>
+              <strong id="totalDistritos">—</strong>
+              <span>Distritos</span>
+            </div>
+            <i></i>
+            <div>
+              <strong id="totalProvincias">—</strong>
+              <span>Provincias</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="territory-hero__visual" aria-hidden="true">
+          <div class="territory-hero__photo"></div>
+          <div class="territory-hero__shade"></div>
+          <div class="territory-hero__line"></div>
+        </div>
+
+      </header>
+
+      <section class="territory-content">
+
+        <div class="territory-content__heading">
+
+          <div>
+            <h2>Comparación visual con geometría topológica</h2>
+            <a class="territory-back-link" href="territorio.html">
+              <i class="bi bi-arrow-left"></i>
+              Volver a la vista actual
+            </a>
+          </div>
+
+          <p id="sourceStatus" class="territory-source-status">
+            Cargando fuente cartográfica…
+          </p>
+
+        </div>
+
+        <div class="territory-grid">
+
+          <!-- VRAEM -->
+          <article class="territory-card territory-card--vraem" data-territory="VRAEM" tabindex="0">
+
+            <div class="territory-card__accent"></div>
+
+            <div class="territory-card__header">
+              <div>
+                <span class="territory-card__code">01</span>
+                <h3>VRAEM</h3>
+                <p>VRAEM y zonas de influencia</p>
+              </div>
+
+              <div class="territory-card__count">
+                <div class="territory-card__count-item">
+                  <strong data-stat="inversiones">—</strong>
+                  <span>IOARR</span>
+                </div>
+                <i></i>
+                <div class="territory-card__count-item">
+                  <strong data-stat="puentes">—</strong>
+                  <span>Puentes</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="territory-card__map-wrap">
+              <svg class="territory-card__map" data-map="VRAEM" viewBox="0 0 320 230"
+                   aria-label="Mapa topológico del VRAEM"></svg>
+
+              <div class="territory-card__map-key">
+                <span><i class="territory-card__swatch territory-card__swatch--selected"></i>Ámbito</span>
+                <span><i class="territory-card__swatch territory-card__swatch--context"></i>Referencia</span>
+              </div>
+            </div>
+
+            <div class="territory-card__stats">
+              <div><strong data-stat="distritos">—</strong><span>Distritos</span></div>
+              <div><strong data-stat="provincias">—</strong><span>Provincias</span></div>
+              <div><strong data-stat="departamentos">—</strong><span>Departamentos</span></div>
+            </div>
+
+          </article>
+
+          <!-- NORVRAEM -->
+          <article class="territory-card territory-card--norvraem" data-territory="NORVRAEM" tabindex="0">
+
+            <div class="territory-card__accent"></div>
+
+            <div class="territory-card__header">
+              <div>
+                <span class="territory-card__code">02</span>
+                <h3>NORVRAEM</h3>
+                <p>Ámbito territorial del norte</p>
+              </div>
+
+              <div class="territory-card__count">
+                <div class="territory-card__count-item">
+                  <strong data-stat="inversiones">—</strong>
+                  <span>IOARR</span>
+                </div>
+                <i></i>
+                <div class="territory-card__count-item">
+                  <strong data-stat="puentes">—</strong>
+                  <span>Puentes</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="territory-card__map-wrap">
+              <svg class="territory-card__map" data-map="NORVRAEM" viewBox="0 0 320 230"
+                   aria-label="Mapa topológico del NORVRAEM"></svg>
+
+              <div class="territory-card__map-key">
+                <span><i class="territory-card__swatch territory-card__swatch--selected"></i>Ámbito</span>
+                <span><i class="territory-card__swatch territory-card__swatch--context"></i>Referencia</span>
+              </div>
+            </div>
+
+            <div class="territory-card__stats">
+              <div><strong data-stat="distritos">—</strong><span>Distritos</span></div>
+              <div><strong data-stat="provincias">—</strong><span>Provincias</span></div>
+              <div><strong data-stat="departamentos">—</strong><span>Departamentos</span></div>
+            </div>
+
+          </article>
+
+          <!-- AMUVRAEM -->
+          <article class="territory-card territory-card--amuvraem" data-territory="AMUVRAEM" tabindex="0">
+
+            <div class="territory-card__accent"></div>
+
+            <div class="territory-card__header">
+              <div>
+                <span class="territory-card__code">03</span>
+                <h3>AMUVRAEM</h3>
+                <p>Mancomunidad del VRAEM</p>
+              </div>
+
+              <div class="territory-card__count">
+                <div class="territory-card__count-item">
+                  <strong data-stat="inversiones">—</strong>
+                  <span>IOARR</span>
+                </div>
+                <i></i>
+                <div class="territory-card__count-item">
+                  <strong data-stat="puentes">—</strong>
+                  <span>Puentes</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="territory-card__map-wrap">
+              <svg class="territory-card__map" data-map="AMUVRAEM" viewBox="0 0 320 230"
+                   aria-label="Mapa topológico del AMUVRAEM"></svg>
+
+              <div class="territory-card__map-key">
+                <span><i class="territory-card__swatch territory-card__swatch--selected"></i>Ámbito</span>
+                <span><i class="territory-card__swatch territory-card__swatch--context"></i>Referencia</span>
+              </div>
+            </div>
+
+            <div class="territory-card__stats">
+              <div><strong data-stat="distritos">—</strong><span>Distritos</span></div>
+              <div><strong data-stat="provincias">—</strong><span>Provincias</span></div>
+              <div><strong data-stat="departamentos">—</strong><span>Departamentos</span></div>
+            </div>
+
+          </article>
+
+        </div>
+
+        <div class="territory-note">
+          <i class="bi bi-info-circle"></i>
+          <span>
+            Esta página no modifica tus archivos actuales. La clasificación y los conteos salen de
+            <strong>data/puentes.json</strong>; solo las geometrías distritales se sustituyen en memoria
+            por la fuente topológica de prueba.
+          </span>
+        </div>
+
+      </section>
+
+    </section>
+
+  </main>
+
+  <script src="js/territorio-topologico.js"></script>
+</body>
+</html>

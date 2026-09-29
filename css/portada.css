@@ -1,0 +1,950 @@
+/* =========================================================
+   PORTADA V0.8
+   Ajuste principal:
+   - el mapa del Perú deja de ser una aproximación inline
+   - ahora se usa un SVG vectorial aparte: img/ui/peru-map.svg
+   ========================================================= */
+
+:root {
+  --cover-wine: #8e1431;
+  --cover-wine-2: #aa1c40;
+  --cover-red: #ef294b;
+}
+
+html,
+body.cover-page {
+  width: 100%;
+  min-height: 100%;
+}
+
+body.cover-page {
+  margin: 0;
+  overflow-x: hidden;
+  background: #e8ebef;
+  color: #fff;
+}
+
+.cover-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 24%, #aa2045 0%, #87132f 47%, #59091e 100%);
+  transition: opacity .48s ease, visibility .48s ease;
+}
+
+.cover-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cover-loader__content {
+  width: min(420px, calc(100vw - 44px));
+  text-align: center;
+}
+
+.cover-loader__bridge {
+  width: 164px;
+  height: 72px;
+  position: relative;
+  margin: 0 auto 18px;
+}
+
+.cover-loader__deck {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 14px;
+  height: 7px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  animation: loaderDeck 1.05s ease-in-out infinite alternate;
+}
+
+.cover-loader__pillar {
+  position: absolute;
+  top: 20px;
+  width: 9px;
+  height: 48px;
+  border-radius: 0 0 4px 4px;
+  background: rgba(255,255,255,.84);
+}
+
+.cover-loader__pillar--1 { left: 29px; }
+.cover-loader__pillar--2 { left: 77px; }
+.cover-loader__pillar--3 { right: 29px; }
+
+@keyframes loaderDeck {
+  from { transform: scaleX(.84); opacity: .58; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+
+.cover-loader__title {
+  margin: 0 0 20px;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+
+.cover-loader__track {
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255,255,255,.14);
+}
+
+.cover-loader__progress {
+  display: block;
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(255,255,255,.78), #fff, rgba(255,255,255,.78));
+  animation: coverProgress 1.32s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+@keyframes coverProgress {
+  0%   { width: 0%; }
+  30%  { width: 31%; }
+  62%  { width: 68%; }
+  100% { width: 100%; }
+}
+
+.cover {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  background: linear-gradient(180deg, #89132f 0 34px, #eceff2 34px 100%);
+}
+
+.cover__stage {
+  width: min(100%, 1600px);
+  aspect-ratio: 16 / 9;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 4px solid rgba(255,255,255,.92);
+  background: #263744;
+  box-shadow: 0 16px 42px rgba(34,20,26,.22);
+}
+
+.cover-piece { opacity: 0; }
+
+.cover__photo {
+  view-transition-name: shared-bridge-photo;
+
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  background-image: url("../img/portada/puente-vraem-fondo.png");
+  background-size: cover;
+  background-position: center center;
+  transform: scale(1.08);
+}
+
+.cover__stage.is-assembling .cover__photo {
+  animation: assemblePhoto .82s cubic-bezier(.2,.72,.25,1) forwards;
+}
+
+@keyframes assemblePhoto {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+    filter: brightness(.78) saturate(.86);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.02);
+    filter: brightness(1) saturate(1);
+  }
+}
+
+.cover__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(22,30,42,.08), rgba(22,30,42,.16) 100%);
+}
+
+.cover__photo-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 19% 39%, rgba(156,20,56,.22), transparent 35%),
+    linear-gradient(90deg, rgba(17,18,28,.06) 0%, rgba(17,18,28,.02) 36%, rgba(17,18,28,.10) 100%);
+}
+
+.cover__stage.is-assembling .cover__photo-shade {
+  animation: simpleFade .48s ease .48s forwards;
+}
+
+.cover__left-overlay {
+  position: absolute;
+  z-index: 2;
+  inset: 0 auto 0 0;
+  width: 48%;
+  opacity: 0;
+  clip-path: polygon(0 0, 83% 0, 97% 100%, 0 100%);
+  background: linear-gradient(90deg, rgba(112,7,34,.96) 0%, rgba(136,14,45,.88) 62%, rgba(143,19,49,.48) 100%);
+  transform: translateX(-12%);
+}
+
+.cover__stage.is-assembling .cover__left-overlay {
+  animation: assembleLeft .58s cubic-bezier(.18,.78,.25,1) .34s forwards;
+}
+
+@keyframes assembleLeft {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.cover__center-overlay {
+  position: absolute;
+  z-index: 3;
+  left: 41.2%;
+  top: 0;
+  width: 8.2%;
+  height: 100%;
+  opacity: 0;
+  transform: skewX(-8deg) translateY(-8%);
+  background: linear-gradient(180deg, rgba(197,49,83,.18) 0%, rgba(255,255,255,.03) 45%, rgba(173,29,63,.16) 100%);
+  filter: blur(1px);
+}
+
+.cover__stage.is-assembling .cover__center-overlay {
+  animation: assembleCenter .45s ease .62s forwards;
+}
+
+@keyframes assembleCenter {
+  to { opacity: 1; transform: skewX(-8deg) translateY(0); }
+}
+
+.cover__right-overlay {
+  position: absolute;
+  z-index: 4;
+  right: 0;
+  bottom: 0;
+  width: 48%;
+  height: 58%;
+  opacity: 0;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  background: linear-gradient(145deg, rgba(184,31,65,.92) 0%, rgba(145,17,49,.95) 53%, rgba(91,7,29,.98) 100%);
+  transform: translate(8%, 10%);
+}
+
+.cover__stage.is-assembling .cover__right-overlay {
+  animation: assembleRight .6s cubic-bezier(.18,.78,.25,1) .55s forwards;
+}
+
+@keyframes assembleRight {
+  to { opacity: 1; transform: translate(0,0); }
+}
+
+.cover__brand {
+  position: absolute;
+  top: 13.5%;
+  left: 2.5%;
+  z-index: 7;
+  width: min(42%, 520px);
+  transform: translateY(-16px);
+}
+
+.cover__stage.is-assembling .cover__brand {
+  animation: assembleDown .45s ease .74s forwards;
+}
+
+.cover__brand-logo {
+  view-transition-name: shared-brand-logo;
+
+  display: block;
+  max-width: 100%;
+  max-height: 74px;
+  object-fit: contain;
+  padding: 4px 7px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(16,26,38,.16);
+}
+
+.cover__update {
+  position: absolute;
+  top: 0;
+  right: 1.2%;
+  z-index: 7;
+  min-width: 128px;
+  display: grid;
+  gap: 2px;
+  padding: 10px 13px 12px;
+  background: linear-gradient(180deg, rgba(26,41,58,.96), rgba(20,34,48,.98));
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 7px 18px rgba(0,0,0,.18);
+  transform: translateY(-100%);
+}
+
+.cover__stage.is-assembling .cover__update {
+  animation: assembleDown .42s ease .78s forwards;
+}
+
+.cover__update span { font-size: clamp(9px, .85vw, 13px); }
+.cover__update strong { font-size: clamp(11px, 1vw, 15px); }
+.cover__update small { color: rgba(255,255,255,.90); font-size: clamp(10px, .9vw, 14px); }
+
+.cover__copy {
+  position: absolute;
+  z-index: 6;
+  left: 3.7%;
+  top: 29.5%;
+  width: 45%;
+}
+
+.cover__title {
+  margin: 0;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 3px 12px rgba(29,0,11,.20);
+}
+
+.cover__title-kicker {
+  display: block;
+  width: fit-content;
+  margin-bottom: .8%;
+  color: rgba(255,255,255,.82);
+  font-size: clamp(13px, 1.25vw, 22px);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: .18em;
+  padding: 6px 12px 5px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.10);
+  transform: translateX(-20px);
+}
+
+.cover__stage.is-assembling .cover__title-kicker {
+  animation: assembleTextX .4s ease .92s forwards;
+}
+
+.cover__title-mainline {
+  display: block;
+  margin-top: 1.5%;
+  margin-bottom: 2%;
+  color: #fff;
+  font-size: clamp(28px, 3.4vw, 56px);
+  line-height: .94;
+  font-weight: 900;
+  letter-spacing: -.02em;
+  transform: translateX(-22px);
+}
+
+.cover__stage.is-assembling .cover__title-mainline {
+  animation: assembleTextX .46s ease 1.02s forwards;
+}
+
+.cover__title-vraem {
+  display: block;
+  margin: 0 0 1.4%;
+  color: #fff;
+  font-size: clamp(72px, 9.5vw, 154px);
+  line-height: .82;
+  font-weight: 900;
+  letter-spacing: -.045em;
+  transform: translateY(16px) scale(.97);
+  text-shadow: 0 8px 18px rgba(47,0,14,.16);
+}
+
+.cover__stage.is-assembling .cover__title-vraem {
+  animation: assembleVraem .52s cubic-bezier(.2,.8,.2,1) 1.13s forwards;
+}
+
+@keyframes assembleVraem {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cover__title-bottom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,.96);
+  font-size: clamp(17px, 2vw, 34px);
+  line-height: 1.04;
+  font-weight: 500;
+  transform: translateX(-18px);
+}
+
+.cover__title-bottom i {
+  width: clamp(32px, 4vw, 64px);
+  height: 4px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--cover-red);
+}
+
+.cover__stage.is-assembling .cover__title-bottom {
+  animation: assembleTextX .48s ease 1.27s forwards;
+}
+
+.cover__benefits {
+  position: absolute;
+  z-index: 7;
+  left: 3.2%;
+  bottom: 9.8%;
+  width: 43%;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 7%;
+}
+
+.cover-benefit {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  color: #fff;
+  text-align: center;
+  font-size: clamp(11px,1.15vw,19px);
+  font-weight: 700;
+  transform: translateY(14px) scale(.96);
+}
+
+.cover__stage.is-assembling .cover-benefit:nth-child(1) { animation: benefitIn .38s ease 1.38s forwards; }
+.cover__stage.is-assembling .cover-benefit:nth-child(2) { animation: benefitIn .38s ease 1.48s forwards; }
+.cover__stage.is-assembling .cover-benefit:nth-child(3) { animation: benefitIn .38s ease 1.58s forwards; }
+
+@keyframes benefitIn {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cover-benefit__icon {
+  width: clamp(52px,5.4vw,82px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(255,255,255,.94);
+  border-radius: 50%;
+  background: rgba(92,8,32,.22);
+  box-shadow: 0 6px 16px rgba(45,0,13,.16), inset 0 0 0 1px rgba(255,255,255,.08);
+  font-size: clamp(21px,2.25vw,35px);
+  transition: transform .18s ease, background-color .18s ease, box-shadow .18s ease;
+}
+
+.cover-benefit:hover .cover-benefit__icon {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,.12);
+  box-shadow: 0 12px 20px rgba(45,0,13,.22);
+}
+
+.cover__territory {
+  position: absolute;
+  z-index: 7;
+  right: 4.6%;
+  bottom: 16%;
+  width: 25%;
+  height: 36%;
+}
+
+.cover-map {
+  position: absolute;
+  right: -2%;
+  top: -19%;
+  width: 38%;
+  height: 104%;
+  object-fit: contain;
+  transform: translateX(18px) rotate(0deg) scale(.94);
+  filter: drop-shadow(0 8px 14px rgba(39,0,10,.20));
+}
+
+/* Fallback si el SVG no puede incrustarse. */
+img.cover-map {
+  filter: brightness(0) invert(1) drop-shadow(0 8px 14px rgba(39,0,10,.20)) !important;
+}
+
+/* SVG incrustado: departamentos blancos por capas, controlados por CSS. */
+svg.cover-map--inline {
+  overflow: visible;
+  filter: drop-shadow(0 8px 14px rgba(39,0,10,.20));
+}
+
+svg.cover-map--inline path[id^="PE-"] {
+  fill: rgba(255,255,255,.90) !important;
+  stroke: rgba(255,255,255,.98) !important;
+  stroke-width: 1.15 !important;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+svg.cover-map--inline path[id^="PE-"]:nth-of-type(4n + 1) { fill: rgba(255,255,255,.98) !important; }
+svg.cover-map--inline path[id^="PE-"]:nth-of-type(4n + 2) { fill: rgba(255,246,249,.90) !important; }
+svg.cover-map--inline path[id^="PE-"]:nth-of-type(4n + 3) { fill: rgba(244,226,233,.82) !important; }
+svg.cover-map--inline path[id^="PE-"]:nth-of-type(4n)     { fill: rgba(255,255,255,.72) !important; }
+
+svg.cover-map--inline #PE-LKT {
+  fill: rgba(255,255,255,.20) !important;
+  stroke: rgba(255,255,255,.68) !important;
+}
+
+
+.cover__stage.is-assembling .cover-map {
+  animation: mapIn .52s cubic-bezier(.2,.8,.2,1) 1.48s forwards;
+}
+
+@keyframes mapIn {
+  to { opacity: 1; transform: translateX(0) rotate(0) scale(1); }
+}
+
+.cover__territory-message {
+  position: absolute;
+  left: 0;
+  bottom: 9%;
+  margin: 0;
+  color: #fff;
+  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-size: clamp(17px,2.25vw,38px);
+  line-height: 1.03;
+  font-style: italic;
+  font-weight: 600;
+  transform: translateY(14px) rotate(-4deg);
+  text-shadow: 0 3px 10px rgba(61,0,16,.24);
+}
+
+.cover__stage.is-assembling .cover__territory-message {
+  animation: territoryTextIn .45s ease 1.64s forwards;
+}
+
+@keyframes territoryTextIn {
+  to { opacity: 1; transform: translateY(0) rotate(-4deg); }
+}
+
+.cover__territory-stroke {
+  position: absolute;
+  left: 30%;
+  bottom: 3%;
+  width: 0;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--cover-red);
+  transform: rotate(-7deg);
+  opacity: 1;
+}
+
+.cover__stage.is-assembling .cover__territory-stroke {
+  animation: drawTerritoryLine .38s ease 1.82s forwards;
+}
+
+@keyframes drawTerritoryLine {
+  to { width: 48%; }
+}
+
+.cover__start {
+  position: absolute;
+  z-index: 9;
+  right: 3.4%;
+  bottom: 5%;
+  min-width: clamp(160px, 18vw, 220px);
+  min-height: clamp(48px,5vw,66px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0 clamp(18px,2vw,28px);
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
+  color: #243648;
+  font-size: clamp(13px,1.35vw,21px);
+  font-weight: 800;
+  box-shadow: 0 12px 28px rgba(62,0,16,.28), 0 2px 6px rgba(0,0,0,.08);
+  transform: translateY(18px) scale(.97);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.cover__stage.is-assembling .cover__start {
+  animation: startIn .48s cubic-bezier(.2,.82,.2,1) 1.9s forwards;
+}
+
+@keyframes startIn {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cover__start::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -30%;
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.84), transparent);
+  transform: skewX(-20deg);
+}
+
+.cover__stage.is-complete .cover__start::before {
+  animation: startSweep 2.4s ease-in-out 1s infinite;
+}
+
+@keyframes startSweep {
+  0%, 62% { left: -30%; }
+  100%    { left: 118%; }
+}
+
+.cover__start:hover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 18px 34px rgba(62,0,16,.34), 0 4px 10px rgba(0,0,0,.12);
+}
+
+.cover__start-arrow {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(142,20,49,.08);
+  color: var(--cover-wine);
+  font-style: normal;
+  font-size: 1.1em;
+  transition: transform .2s ease, background-color .2s ease, color .2s ease;
+}
+
+.cover__start:hover .cover__start-arrow {
+  transform: translateX(4px);
+  background: var(--cover-wine);
+  color: #fff;
+}
+
+.cover__footer {
+  position: absolute;
+  left: 3.2%;
+  bottom: 2%;
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,.94);
+  font-size: clamp(10px,.95vw,15px);
+  font-weight: 700;
+  transform: translateY(10px);
+}
+
+.cover__stage.is-assembling .cover__footer {
+  animation: assembleUp .4s ease 1.78s forwards;
+}
+
+.cover__footer-line {
+  width: 58px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.92);
+}
+
+.cover__footer p,
+.cover__footer span {
+  margin: 0;
+}
+
+.cover__footer span {
+  font-weight: 500;
+  opacity: .88;
+}
+
+@keyframes simpleFade {
+  to { opacity: 1; }
+}
+
+@keyframes assembleDown {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes assembleUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes assembleTextX {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.cover__stage.is-complete .cover__photo {
+  opacity: 1;
+  transform: scale(1.02);
+  filter: brightness(1) saturate(1);
+  animation: none;
+}
+
+.cover__stage.is-complete .cover__photo-shade,
+.cover__stage.is-complete .cover__left-overlay,
+.cover__stage.is-complete .cover__center-overlay,
+.cover__stage.is-complete .cover__right-overlay {
+  opacity: 1;
+}
+
+
+@media (max-width: 920px) {
+  .cover { padding: 0; }
+
+  .cover__stage {
+    width: 100%;
+    min-height: 100vh;
+    aspect-ratio: auto;
+    border: 0;
+  }
+
+  .cover__left-overlay { width: 74%; }
+  .cover__brand { width: 65%; }
+  .cover__copy { top: 28%; width: 66%; }
+  .cover__benefits { width: 58%; bottom: 14%; }
+  .cover__territory { width: 33%; right: 3%; }
+  .cover__right-overlay { width: 58%; }
+}
+
+@media (max-width: 640px) {
+  .cover__photo { background-position: 62% center; }
+
+  .cover__left-overlay {
+    width: 100%;
+    clip-path: none;
+    background: linear-gradient(90deg, rgba(99,7,31,.94), rgba(122,12,42,.72));
+  }
+
+  .cover__center-overlay { display: none; }
+  .cover__brand { top: 8%; width: 74%; }
+  .cover__copy { top: 25%; left: 5%; width: 90%; }
+  .cover__title-kicker { font-size: clamp(12px,4vw,17px); }
+  .cover__title-mainline { font-size: clamp(23px,7vw,35px); }
+  .cover__title-vraem { font-size: clamp(62px,21vw,102px); }
+  .cover__title-bottom { font-size: clamp(17px,5vw,26px); }
+
+  .cover__benefits {
+    left: 4%;
+    width: 92%;
+    bottom: 16%;
+    gap: 3%;
+  }
+
+  .cover__territory,
+  .cover__footer {
+    display: none;
+  }
+
+  .cover__right-overlay {
+    height: 34%;
+    width: 100%;
+  }
+
+  .cover__start {
+    left: 5%;
+    right: auto;
+    bottom: 5%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  .cover-piece,
+  .cover__photo,
+  .cover__photo-shade,
+  .cover__left-overlay,
+  .cover__center-overlay,
+  .cover__right-overlay {
+    opacity: 1 !important;
+  }
+}
+
+
+/* =========================================================
+   NAVEGACIÓN ESTABLE
+   El botón se habilita solo al terminar el ensamblaje inicial.
+   La navegación sigue siendo un enlace HTML nativo.
+   ========================================================= */
+
+.cover__start {
+  pointer-events: none;
+}
+
+.cover__stage.is-complete .cover__start {
+  pointer-events: auto;
+}
+
+/* =========================================================
+   TRANSICIONES ENTRE DOCUMENTOS
+   Foto: portada completa -> bloque fotográfico de Territorio.
+   ========================================================= */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-old(shared-bridge-photo),
+::view-transition-new(shared-bridge-photo),
+::view-transition-old(shared-brand-logo),
+::view-transition-new(shared-brand-logo) {
+  mix-blend-mode: normal;
+}
+
+/* El documento acompaña suavemente, pero no compite con la foto. */
+::view-transition-group(root) {
+  animation-duration: .58s;
+  animation-timing-function: cubic-bezier(.22,.78,.22,1);
+}
+
+::view-transition-old(root) {
+  animation: coverRootOut .52s ease both;
+}
+
+::view-transition-new(root) {
+  animation: coverRootIn .58s ease both;
+}
+
+/* La fotografía es el elemento protagonista. */
+::view-transition-group(shared-bridge-photo) {
+  z-index: 100;
+  animation-duration: 1.32s;
+  animation-timing-function: cubic-bezier(.16,.84,.18,1);
+  overflow: clip;
+}
+
+::view-transition-image-pair(shared-bridge-photo) {
+  isolation: isolate;
+}
+
+::view-transition-old(shared-bridge-photo),
+::view-transition-new(shared-bridge-photo) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  backface-visibility: hidden;
+}
+
+::view-transition-group(shared-brand-logo) {
+  z-index: 110;
+  animation-duration: .92s;
+  animation-timing-function: cubic-bezier(.18,.82,.22,1);
+}
+
+@keyframes coverRootOut {
+  from { opacity: 1; }
+  to   { opacity: .34; }
+}
+
+@keyframes coverRootIn {
+  from { opacity: .22; }
+  to   { opacity: 1; }
+}
+
+
+/* =========================================================
+   PORTADA → TERRITORIO | MORPH DETERMINISTA EN PRIMER INGRESO
+   El iframe precargado conserva el mismo viewport y entrega las
+   coordenadas finales exactas de la foto de Territorio.
+   ========================================================= */
+
+.cover-prewarm-frame {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -2147483000 !important;
+}
+
+.cover-transition-overlay {
+  position: fixed;
+  pointer-events: none;
+}
+
+.cover-transition-backdrop {
+  inset: 0;
+  z-index: 99990;
+  opacity: 0;
+  background:
+    linear-gradient(180deg, #89132f 0 66px, #eef1f4 66px 100%);
+  transition: opacity .46s ease;
+}
+
+.cover-transition-backdrop.is-active {
+  opacity: 1;
+}
+
+.cover-transition-target-frame {
+  z-index: 99991;
+  opacity: 0;
+  transform: translateY(12px) scale(.995);
+  border: 1px solid rgba(220,226,233,.92);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow:
+    0 18px 42px rgba(24,34,48,.13),
+    0 2px 8px rgba(24,34,48,.05);
+  transition:
+    opacity .50s ease .12s,
+    transform .78s cubic-bezier(.18,.82,.22,1) .04s;
+}
+
+.cover-transition-target-frame.is-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.cover-transition-photo {
+  z-index: 99994;
+  overflow: hidden;
+  opacity: 1;
+  background-image: url("../img/portada/puente-vraem-fondo.png");
+  background-size: cover;
+  background-position: center center;
+  border-radius: 0;
+  box-shadow: 0 16px 42px rgba(34,20,26,.22);
+  transition:
+    left .92s cubic-bezier(.16,.84,.18,1),
+    top .92s cubic-bezier(.16,.84,.18,1),
+    width .92s cubic-bezier(.16,.84,.18,1),
+    height .92s cubic-bezier(.16,.84,.18,1),
+    border-radius .92s cubic-bezier(.16,.84,.18,1),
+    background-position .92s cubic-bezier(.16,.84,.18,1),
+    box-shadow .92s ease;
+}
+
+.cover-transition-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(255,255,255,.04) 100%),
+    linear-gradient(180deg, rgba(22,30,42,.06), rgba(22,30,42,.14));
+  transition: opacity .92s ease;
+}
+
+.cover-transition-photo.is-active::after {
+  opacity: .52;
+}
+
+body.is-photo-morphing .cover__stage > *:not(.cover__photo) {
+  opacity: 0 !important;
+  transition: opacity .30s ease, transform .38s ease !important;
+}
+
+body.is-photo-morphing .cover__stage > .cover__photo {
+  opacity: 0 !important;
+  transition: opacity .12s ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover-transition-target-frame,
+  .cover-transition-photo,
+  .cover-transition-backdrop {
+    transition-duration: .01ms !important;
+  }
+}

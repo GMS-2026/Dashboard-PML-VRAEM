@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convenios | Puentes de Menores Luces</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/dashboard.css?v=20260911-5">
+  <link rel="stylesheet" href="css/convenios.css?v=20260914-8">
+</head>
+
+<body class="convenios-page is-loading">
+  <div class="page-accent"></div>
+
+  <div class="app-shell">
+    <div class="dashboard-frame">
+      <div class="dashboard">
+
+        <aside class="sidebar">
+          <div class="sidebar__brand">
+            <img src="img/logos/logo-pvdes.png" alt="Provías Descentralizado" class="sidebar__logo">
+          </div>
+
+          <nav class="menu">
+            <a class="menu__item" href="inicio.html" data-nav-page="inicio.html"><i class="bi bi-house-door"></i><span>Inicio</span></a>
+            <a class="menu__item" href="mapa.html" data-nav-page="mapa.html"><i class="bi bi-map"></i><span>Mapa</span></a>
+            <a class="menu__item menu__item--active" href="convenios.html" data-nav-page="convenios.html"><i class="bi bi-file-earmark-text"></i><span>Convenios</span></a>
+            <a class="menu__item" href="puentes.html" data-nav-page="puentes.html"><i class="bi bi-list-ul"></i><span>Lista de puentes</span></a>
+            <a class="menu__item" href="comparativo.html" data-nav-page="comparativo.html"><i class="bi bi-bar-chart"></i><span>Comparativo</span></a>
+          </nav>
+
+          <div class="sidebar__footer">
+            <p class="sidebar__footer-label">Unidad responsable</p>
+            <p class="sidebar__footer-title">Gerencia de Monitoreo y Seguimiento</p>
+          </div>
+        </aside>
+
+        <main class="main convenios-main">
+          <section class="convenios-stage">
+
+            <!-- CABECERA -->
+            <header class="conv-header reveal reveal--1">
+              <div class="conv-header__copy">
+                <div class="conv-header__title-row">
+                  <span class="conv-header__icon"><i class="ri-file-list-3-line"></i></span>
+                  <div>
+                    <div class="conv-header__eyebrow">Gestión administrativa</div>
+                    <h1 id="pageTitle">Gestión de convenios - VRAEM</h1>
+                    <p id="pageSubtitle">Seguimiento administrativo, avance del trámite y disponibilidad documental.</p>
+                  </div>
+                </div>
+
+                <span class="territory-chip" id="territoryChip">VRAEM</span>
+              </div>
+
+              <div class="conv-header__actions">
+                <a class="header-action" id="backInicio" href="inicio.html">
+                  <i class="ri-arrow-left-line"></i>
+                  <span>Volver a Inicio</span>
+                </a>
+              </div>
+            </header>
+
+            <!-- FILTROS -->
+            <section class="conv-filters reveal reveal--2" aria-label="Filtros territoriales">
+              <div class="conv-filters__lead">
+                <span><i class="ri-filter-3-line"></i></span>
+                <div>
+                  <strong>Segmentación territorial</strong>
+                  <small>Los filtros se conservan al navegar</small>
+                </div>
+              </div>
+
+              <label class="conv-filter-field">
+                <span>Ámbito</span>
+                <select id="territorioSelect">
+                  <option value="VRAEM">VRAEM</option>
+                  <option value="NORVRAEM">NORVRAEM</option>
+                  <option value="AMUVRAEM">AMUVRAE</option>
+                </select>
+              </label>
+
+              <label class="conv-filter-field">
+                <span>Departamento</span>
+                <select id="departamentoSelect">
+                  <option value="">Todos</option>
+                </select>
+              </label>
+
+              <label class="conv-filter-field">
+                <span>Provincia</span>
+                <select id="provinciaSelect">
+                  <option value="">Todas</option>
+                </select>
+              </label>
+
+              <label class="conv-filter-field">
+                <span>Distrito</span>
+                <select id="distritoSelect">
+                  <option value="">Todos</option>
+                </select>
+              </label>
+
+              <button class="conv-reset" id="resetFilters" type="button">
+                <i class="ri-refresh-line"></i>
+                <span>Restablecer</span>
+              </button>
+            </section>
+
+            <!-- DISTRIBUCIÓN -->
+            <section class="status-overview reveal reveal--3">
+              <article class="distribution-card">
+                <header class="distribution-card__head">
+                  <div>
+                    <span class="section-kicker">Distribución de convenios</span>
+                    <h2>Situación administrativa de la cartera</h2>
+                    <p>La cartera se organiza en tres estados: convenio suscrito, en trámite y no presentado.</p>
+                  </div>
+                  <div class="distribution-card__total">
+                    <strong id="totalConvenios">—</strong>
+                    <span>IOARR</span>
+                  </div>
+                </header>
+
+                <div class="distribution-card__body">
+                  <div class="distribution-donut-wrap">
+                    <div class="distribution-donut">
+                      <svg viewBox="0 0 180 180" aria-hidden="true">
+                        <circle class="distribution-donut__track" cx="90" cy="90" r="66"></circle>
+                        <circle class="distribution-donut__seg distribution-donut__seg--subscribed" id="donutSubscribed" cx="90" cy="90" r="66"></circle>
+                        <circle class="distribution-donut__seg distribution-donut__seg--pending" id="donutPending" cx="90" cy="90" r="66"></circle>
+                        <circle class="distribution-donut__seg distribution-donut__seg--none" id="donutNone" cx="90" cy="90" r="66"></circle>
+                      </svg>
+                      <div class="distribution-donut__center">
+                        <strong id="donutTotal">—</strong>
+                        <span>IOARR</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="distribution-bars">
+                    <div class="distribution-stacked" aria-label="Distribución porcentual">
+                      <i class="distribution-stacked__seg distribution-stacked__seg--subscribed" id="stackSubscribed"></i>
+                      <i class="distribution-stacked__seg distribution-stacked__seg--pending" id="stackPending"></i>
+                      <i class="distribution-stacked__seg distribution-stacked__seg--none" id="stackNone"></i>
+                    </div>
+
+                    <div class="distribution-legend">
+                      <button type="button" class="distribution-legend__item is-active" data-status-filter="TODOS">
+                        <span class="legend-dot legend-dot--all"><i class="ri-apps-2-line"></i></span>
+                        <div>
+                          <small>Total</small>
+                          <strong id="legendTotal">—</strong>
+                        </div>
+                        <em>100%</em>
+                      </button>
+
+                      <button type="button" class="distribution-legend__item" data-status-filter="SUSCRITO">
+                        <span class="legend-dot legend-dot--subscribed"><i class="ri-checkbox-circle-fill"></i></span>
+                        <div>
+                          <small>Convenio suscrito</small>
+                          <strong id="legendSubscribed">—</strong>
+                        </div>
+                        <em id="legendSubscribedPct">—</em>
+                      </button>
+
+                      <button type="button" class="distribution-legend__item" data-status-filter="EN TRÁMITE">
+                        <span class="legend-dot legend-dot--pending"><i class="ri-time-line"></i></span>
+                        <div>
+                          <small>En trámite</small>
+                          <strong id="legendPending">—</strong>
+                        </div>
+                        <em id="legendPendingPct">—</em>
+                      </button>
+
+                      <button type="button" class="distribution-legend__item" data-status-filter="NO PRESENTADO">
+                        <span class="legend-dot legend-dot--none"><i class="ri-file-warning-line"></i></span>
+                        <div>
+                          <small>No presentado</small>
+                          <strong id="legendNone">—</strong>
+                        </div>
+                        <em id="legendNonePct">—</em>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="progress-card">
+                <header class="progress-card__head">
+                  <div class="progress-card__title">
+                    <span><i class="ri-route-line"></i></span>
+                    <div>
+                      <span class="section-kicker">Trámites en curso</span>
+                      <h2>Avance administrativo</h2>
+                      <p>Etapa registrada dentro del proceso de suscripción.</p>
+                    </div>
+                  </div>
+
+                  <button class="flow-detail-btn" id="openFlowDetail" type="button">
+                    <span>Ver flujo</span>
+                    <i class="ri-arrow-right-line"></i>
+                  </button>
+                </header>
+
+                <div class="progress-card__content" id="stageSummary"></div>
+
+                <div class="progress-card__foot">
+                  <span><i class="ri-information-line"></i></span>
+                  <p>Selecciona una inversión en trámite para ubicarla dentro del flujo administrativo.</p>
+                </div>
+              </article>
+            </section>
+
+            <!-- TABLA -->
+            <section class="table-card reveal reveal--4">
+              <header class="table-card__head">
+                <div>
+                  <span class="section-kicker">Detalle de la cartera</span>
+                  <h2>Convenios por inversión</h2>
+                  <p id="tableSummary">—</p>
+                </div>
+
+                <div class="table-card__actions">
+                  <div class="search-box">
+                    <i class="ri-search-line"></i>
+                    <input id="searchInput" type="search" placeholder="Buscar CUI, municipio, provincia o distrito">
+                  </div>
+
+                  <button class="export-btn" id="exportCsv" type="button">
+                    <i class="ri-file-excel-2-line"></i>
+                    <span>Exportar</span>
+                  </button>
+                </div>
+              </header>
+
+              <div class="table-wrap">
+                <table class="agreement-table">
+                  <thead>
+                    <tr>
+                      <th class="col-index">N°</th>
+                      <th>CUI</th>
+                      <th>Entidad / Pliego</th>
+                      <th>Ubicación</th>
+                      <th>Estado</th>
+                      <th>Etapa / avance</th>
+                      <th>N° de convenio</th>
+                      <th class="col-doc">Documento</th>
+                    </tr>
+                  </thead>
+                  <tbody id="agreementTableBody"></tbody>
+                </table>
+              </div>
+
+              <footer class="table-card__footer">
+                <div class="table-counter" id="tableCounter">—</div>
+                <div class="pagination">
+                  <button id="prevPage" type="button" aria-label="Página anterior">
+                    <i class="ri-arrow-left-s-line"></i>
+                  </button>
+                  <span id="pageIndicator">1 / 1</span>
+                  <button id="nextPage" type="button" aria-label="Página siguiente">
+                    <i class="ri-arrow-right-s-line"></i>
+                  </button>
+                </div>
+              </footer>
+            </section>
+
+          </section>
+        </main>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-modal" id="flowModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="flowModalTitle">
+    <div class="flow-modal__backdrop" data-close-flow-modal></div>
+
+    <section class="flow-modal__panel">
+      <header class="flow-modal__head">
+        <div>
+          <span class="flow-modal__eyebrow">Detalle del flujo</span>
+          <h2 id="flowModalTitle">Proceso de suscripción de convenios</h2>
+          <p id="flowModalSubtitle">Desde la solicitud del pliego hasta la enumeración y notificación.</p>
+        </div>
+
+        <button class="flow-modal__close" id="closeFlowModal" type="button" data-close-flow-modal aria-label="Cerrar detalle del flujo">
+          <i class="ri-close-line"></i>
+        </button>
+      </header>
+
+      <div class="flow-modal__context" id="flowModalContext" hidden>
+        <div class="flow-context__identity">
+          <span class="flow-context__cui" id="flowContextCui">CUI —</span>
+          <strong id="flowContextEntity">—</strong>
+          <small id="flowContextLocation">—</small>
+        </div>
+        <div class="flow-context__stage">
+          <span>Etapa registrada</span>
+          <strong id="flowContextStage">—</strong>
+          <small id="flowContextHint">—</small>
+        </div>
+      </div>
+
+      <div class="flow-modal__body">
+        <div class="flow-track" id="flowTrack" aria-label="Flujo de suscripción de convenios">
+          <article class="flow-step" data-flow-step="1">
+            <span class="flow-step__badge">1</span>
+            <div class="flow-step__copy"><strong>Solicitud del pliego</strong><small>Ingreso de la solicitud y documentación.</small></div>
+            <span class="flow-step__current"><i class="ri-map-pin-fill"></i> Inicio del flujo</span>
+          </article>
+          <article class="flow-step" data-flow-step="2">
+            <span class="flow-step__badge">2</span>
+            <div class="flow-step__copy"><strong>Evaluación PVD</strong><small>Revisión inicial por Provías Descentralizado.</small></div>
+            <span class="flow-step__current"><i class="ri-map-pin-fill"></i> Etapa actual</span>
+          </article>
+          <article class="flow-step" data-flow-step="3">
+            <span class="flow-step__badge">3</span>
+            <div class="flow-step__copy"><strong>Opinión OPP</strong><small>Evaluación y opinión de la OPP.</small></div>
+            <span class="flow-step__current"><i class="ri-map-pin-fill"></i> Etapa actual</span>
+          </article>
+          <article class="flow-step" data-flow-step="4">
+            <span class="flow-step__badge">4</span>
+            <div class="flow-step__copy"><strong>Elaboración de convenio</strong><small>Retorno de OPP y elaboración del proyecto.</small></div>
+            <span class="flow-step__current"><i class="ri-map-pin-fill"></i> Etapa actual</span>
+          </article>
+          <article class="flow-step" data-flow-step="5">
+            <span class="flow-step__badge">5</span>
+            <div class="flow-step__copy"><strong>Opinión OAJ</strong><small>Revisión jurídica del proyecto de convenio.</small></div>
+            <span class="flow-step__current"><i class="ri-map-pin-fill"></i> Etapa actual</span>
+          </article>
+          <article class="flow-step" data-flow-step="6">
+            <span class="flow-step__badge">6</span>
+            <div class="flow-step__copy"><strong>Suscripción MTC · Pliego</strong><small>Firma de las partes intervinientes.</small></div>
+            <span class="flow-step__current"><i class="ri-map-pin-fill"></i> Etapa actual</span>
+          </article>
+          <article class="flow-step" data-flow-step="7">
+            <span class="flow-step__badge">7</span>
+            <div class="flow-step__copy"><strong>Enumeración y notificación</strong><small>Numeración del convenio y comunicación al pliego.</small></div>
+            <span class="flow-step__current"><i class="ri-map-pin-fill"></i> Etapa actual</span>
+          </article>
+        </div>
+      </div>
+
+      <footer class="flow-modal__foot">
+        <span><i class="ri-information-line"></i></span>
+        <p id="flowModalNote">El flujo representa la secuencia administrativa de suscripción. Al abrirlo desde una inversión en trámite se resalta la etapa registrada en la fuente.</p>
+      </footer>
+    </section>
+  </div>
+
+  <div class="pdf-modal" id="pdfModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pdfModalTitle">
+    <div class="pdf-modal__backdrop" data-close-pdf-modal></div>
+
+    <section class="pdf-modal__panel">
+      <header class="pdf-modal__head">
+        <div class="pdf-modal__heading">
+          <span class="pdf-modal__icon"><i class="ri-file-pdf-2-line"></i></span>
+          <div>
+            <span class="pdf-modal__eyebrow">Documento del convenio</span>
+            <h2 id="pdfModalTitle">Convenio suscrito</h2>
+            <p id="pdfModalMeta">—</p>
+          </div>
+        </div>
+
+        <div class="pdf-modal__actions">
+          <a class="pdf-modal__action pdf-modal__action--ghost" id="pdfModalExternal" href="#" target="_blank" rel="noopener">
+            <i class="ri-external-link-line"></i>
+            <span>Abrir aparte</span>
+          </a>
+          <a class="pdf-modal__action pdf-modal__action--download" id="pdfModalDownload" href="#" download>
+            <i class="ri-download-2-line"></i>
+            <span>Descargar PDF</span>
+          </a>
+          <button class="pdf-modal__close" id="closePdfModal" type="button" data-close-pdf-modal aria-label="Cerrar vista del convenio">
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+      </header>
+
+      <div class="pdf-modal__viewer">
+        <iframe id="pdfModalFrame" src="about:blank" title="Vista previa del convenio PDF" loading="lazy" referrerpolicy="no-referrer"></iframe>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/convenios.js?v=20260914-14"></script>
+</body>
+</html>
